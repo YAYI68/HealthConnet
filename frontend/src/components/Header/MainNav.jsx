@@ -60,7 +60,7 @@ function MainNav() {
              </button>
              <div onClick={()=>setDropDown(!dropdown)} className="w-3rem cursor-pointer flex items-center border rounded-md border-primary relative">
               <div className="w-[2rem] h-[2rem] overflow-hidden  rounded-[50%]">
-                <img src={user.image?`${BASE_URL}/${user.image}`: UserImg} alt="" className="h-full w-full" />
+                <img src={user.image?user.image: UserImg} alt="" className="h-full w-full" />
               </div>
               <span className="h-[1rem] w-[1rem] flex justify-center items-center"><IoIosArrowDropdownCircle className="h-[80%] w-[80%] text-primary" /></span> 
               {dropdown && 

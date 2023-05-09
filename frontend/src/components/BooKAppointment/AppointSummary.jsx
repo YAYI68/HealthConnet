@@ -1,9 +1,13 @@
 import React from 'react'
 import { HiArrowLeft } from 'react-icons/hi'
+import { useAuthContext } from '../../context/AuthContext'
 
-const AppointSummary = ({step,setStep}) => {
-    const position = 1 -  step
-  
+const summaryPosition=1
+
+const AppointSummary = ({step,setStep,doctor}) => {
+    const {user} = useAuthContext()
+    const position = summaryPosition -  step
+    
   return (
     <div style={{
         transform:`translateX(${position * 100}%)`,
@@ -13,16 +17,19 @@ const AppointSummary = ({step,setStep}) => {
            <HiArrowLeft className='h-[80%] w-[80%] text-primary' />
         </button>
          <h3 className='text-primary lg:text-[1.5rem] font-semibold text-center'>Appointment Summary</h3>
-         <div className='w-full flex items-center justify-center'>
+         <div className='w-full flex text-[.7rem] md:text-[1rem]  items-center justify-center'>
             <div className='w-[90%]'>
               <div className=' w-full flex items-center justify-between p-2 border-b-2 border-b-black'>
                 <p>Medical Center</p>
-                <p className='text-primary'>unn teaching hospital</p>
+                <p className='text-primary'>{doctor.hospital}</p>
               </div>
-
+              <div className=' w-full flex items-center justify-between p-2 border-b-2 border-b-black'>
+                <p>Medical Location</p>
+                <p className='text-primary'>{doctor.location}</p>
+              </div>
               <div className=' w-full flex items-center justify-between p-2 border-b-2 border-b-black'>
                 <p>Specialist</p>
-                <p className='text-primary'>Dr, Sunday Anderson</p>
+                <p className='text-primary'>Dr, {doctor.firstname} {doctor.lastname}</p>
               </div>
 
               <div className=' w-full flex items-center justify-between p-2 border-b-2 border-b-black'>
@@ -32,7 +39,7 @@ const AppointSummary = ({step,setStep}) => {
 
               <div className=' w-full flex items-center justify-between p-2 border-b-2 border-b-black'>
                 <p>Patient</p>
-                <p className='text-primary'>Yayi Abiodun</p>
+                <p className='text-primary'>{user.firstname} {user.lastname}</p>
               </div>
               
               <div className=' w-full flex items-center justify-between p-2 border-b-2 border-b-black'>

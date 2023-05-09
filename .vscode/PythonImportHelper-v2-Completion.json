@@ -931,7 +931,7 @@
         "kind": 6,
         "importPath": "backend.Healthconnect.hcb.serializers",
         "description": "backend.Healthconnect.hcb.serializers",
-        "peekOfCode": "class UserLoginSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = User\n        fields = ('email', 'password','role')\n        extra_kwargs = {'password': {'write_only': True}}\nclass UserProfileSeriliazer(serializers.ModelSerializer):\n    class Meta:\n        model=User\n        fields=('id','image','role','email','first_name','last_name','phone_number','gender','state','country')  \nclass PatientProfileSerializer(serializers.ModelSerializer):",
+        "peekOfCode": "class UserLoginSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = User\n        fields = ('email', 'password','role')\n        extra_kwargs = {'password': {'write_only': True}}\nclass UserProfileSeriliazer(serializers.ModelSerializer):\n    firstname  = serializers.CharField(source='first_name')\n    lastname = serializers.CharField(source='last_name')\n    class Meta:\n        model=User",
         "detail": "backend.Healthconnect.hcb.serializers",
         "documentation": {}
     },
@@ -940,7 +940,7 @@
         "kind": 6,
         "importPath": "backend.Healthconnect.hcb.serializers",
         "description": "backend.Healthconnect.hcb.serializers",
-        "peekOfCode": "class UserProfileSeriliazer(serializers.ModelSerializer):\n    class Meta:\n        model=User\n        fields=('id','image','role','email','first_name','last_name','phone_number','gender','state','country')  \nclass PatientProfileSerializer(serializers.ModelSerializer):\n    uid = serializers.CharField(read_only=True,source='user.id')\n    image = serializers.ImageField(source='user.image')\n    email = serializers.EmailField(read_only=True,source='user.email')\n    firstname  = serializers.CharField(source='user.first_name')\n    lastname = serializers.CharField(source='user.last_name')",
+        "peekOfCode": "class UserProfileSeriliazer(serializers.ModelSerializer):\n    firstname  = serializers.CharField(source='first_name')\n    lastname = serializers.CharField(source='last_name')\n    class Meta:\n        model=User\n        fields=('id','image','role','email','firstname','lastname','phone_number','gender','state','country')  \nclass PatientProfileSerializer(serializers.ModelSerializer):\n    uid = serializers.CharField(read_only=True,source='user.id')\n    image = serializers.ImageField(source='user.image')\n    email = serializers.EmailField(read_only=True,source='user.email')",
         "detail": "backend.Healthconnect.hcb.serializers",
         "documentation": {}
     },
@@ -976,7 +976,7 @@
         "kind": 5,
         "importPath": "backend.Healthconnect.hcb.urls",
         "description": "backend.Healthconnect.hcb.urls",
-        "peekOfCode": "urlpatterns = [\n    path('signup/',views.UserRegistrationView.as_view()),\n    path('login/',views.LoginView.as_view()),\n    path('logout/',views.logout),\n    # path('signin/',views.MyTokenObtainPairView.as_view()),\n    path('user/',views.singleUser,name='singleUser'),\n    path('patient/',views.GetUpdateDeletePatientProfileView.as_view()),\n    path('doctor/',views.GetUpdateDeleteDoctorProfileView.as_view()),\n    path('doctors/all',views.GetAllDoctors.as_view()),\n    path('token/refresh/', views.CookieTokenRefreshView.as_view(), name='token_refresh'),",
+        "peekOfCode": "urlpatterns = [\n    path('signup/',views.UserRegistrationView.as_view()),\n    path('login/',views.LoginView.as_view()),\n    path('logout/',views.logout),\n    # path('signin/',views.MyTokenObtainPairView.as_view()),\n    path('user/',views.SingleUserView.as_view(),name='singleUser'),\n    path('patient/',views.GetUpdateDeletePatientProfileView.as_view()),\n    path('doctor/',views.GetUpdateDeleteDoctorProfileView.as_view()),\n    path('doctors/all/',views.GetAllDoctors.as_view()),\n    path('token/refresh/', views.CookieTokenRefreshView.as_view(), name='token_refresh'),",
         "detail": "backend.Healthconnect.hcb.urls",
         "documentation": {}
     },
@@ -1039,7 +1039,7 @@
         "kind": 6,
         "importPath": "backend.Healthconnect.hcb.views",
         "description": "backend.Healthconnect.hcb.views",
-        "peekOfCode": "class GetUpdateDeletePatientProfileView(generics.RetrieveUpdateDestroyAPIView):\n    serializer_class=PatientProfileSerializer\n    def get_object(self):\n        try:\n            user = self.request.user\n            return user.patient\n        except :\n            raise ValueError('You can only update Patient Profile')\n    def get_serializer_context(self):\n        context = super(GetUpdateDeletePatientProfileView, self).get_serializer_context()",
+        "peekOfCode": "class GetUpdateDeletePatientProfileView(generics.RetrieveUpdateDestroyAPIView):\n    serializer_class=PatientProfileSerializer\n    def get_object(self):\n        try:\n            user = self.request.user\n            return user.patient\n        except :\n            raise rest_exceptions.AuthenticationFailed(\n            'User is not authorized '\n            )",
         "detail": "backend.Healthconnect.hcb.views",
         "documentation": {}
     },
@@ -1062,6 +1062,24 @@
         "documentation": {}
     },
     {
+        "label": "SingleUserView",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "class SingleUserView(generics.RetrieveAPIView):\n    serializer_class = UserProfileSeriliazer\n    permission_classes= [IsAuthenticated]\n    def get_object(self):\n        user = self.request.user\n        return user\nclass ProfileDetailVeiw (generics.RetrieveAPIView):\n    permission_classes= [IsAuthenticated]\n    def get_object(self):\n        id = self.kwargs['pk']",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "ProfileDetailVei",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "class ProfileDetailVeiw (generics.RetrieveAPIView):\n    permission_classes= [IsAuthenticated]\n    def get_object(self):\n        id = self.kwargs['pk']\n        user = User.objects.get(pk=id)\n        if user.role == 'PATIENT':\n            patient = user.patient\n            return patient\n        elif user.role == 'DOCTOR':\n            doctor = user.doctor",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
         "label": "get_tokens_for_user",
         "kind": 2,
         "importPath": "backend.Healthconnect.hcb.views",
@@ -1076,24 +1094,6 @@
         "importPath": "backend.Healthconnect.hcb.views",
         "description": "backend.Healthconnect.hcb.views",
         "peekOfCode": "def logout(request):\n    try:\n        refresh = request.COOKIES.get(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])\n        token = RefreshToken(refresh)\n        token.blacklist()        \n        res = Response()\n        res.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE'])\n        res.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])\n        res.delete_cookie('X-CSRFToken')\n        res.delete_cookie('csrftoken')",
-        "detail": "backend.Healthconnect.hcb.views",
-        "documentation": {}
-    },
-    {
-        "label": "singleUser",
-        "kind": 2,
-        "importPath": "backend.Healthconnect.hcb.views",
-        "description": "backend.Healthconnect.hcb.views",
-        "peekOfCode": "def singleUser(request):\n    user = request.user\n    serializer = UserProfileSeriliazer(user,many=False)\n    return Response(serializer.data,status=status.HTTP_200_OK)\n@api_view(['GET'])\n@permission_classes([IsAuthenticated])\ndef userProfileDetail(request,pk):\n    user = User.objects.get(id=pk)\n    if user.role == 'PATIENT':\n        patient = user.patient",
-        "detail": "backend.Healthconnect.hcb.views",
-        "documentation": {}
-    },
-    {
-        "label": "userProfileDetail",
-        "kind": 2,
-        "importPath": "backend.Healthconnect.hcb.views",
-        "description": "backend.Healthconnect.hcb.views",
-        "peekOfCode": "def userProfileDetail(request,pk):\n    user = User.objects.get(id=pk)\n    if user.role == 'PATIENT':\n        patient = user.patient\n        serializer = PatientProfileSerializer(patient,many=False)\n        return Response(serializer.data,status=status.HTTP_202_ACCEPTED)\n    elif user.role == 'DOCTOR':\n        doctor = user.doctor\n        serializer = DoctorProfileSerializer(doctor,many=False)\n        return Response(serializer.data,status=status.HTTP_202_ACCEPTED)",
         "detail": "backend.Healthconnect.hcb.views",
         "documentation": {}
     },

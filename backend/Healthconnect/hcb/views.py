@@ -100,7 +100,7 @@ class MyTokenRefresh(TokenRefreshView):
                 secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
                 httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
                 samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
-                 )
+                )
                 response["X-CSRFToken"] = request.COOKIES.get("csrftoken")
                 return Response(serializer.validated_data)
             return Response('Invalid Token')
@@ -152,7 +152,9 @@ class GetUpdateDeletePatientProfileView(generics.RetrieveUpdateDestroyAPIView):
             user = self.request.user
             return user.patient
         except :
-            raise ValueError('You can only update Patient Profile')
+            raise rest_exceptions.AuthenticationFailed(
+            'User is not authorized '
+            )
         
     def get_serializer_context(self):
         context = super(GetUpdateDeletePatientProfileView, self).get_serializer_context()
@@ -193,8 +195,7 @@ class GetUpdateDeleteDoctorProfileView(generics.UpdateAPIView,generics.DestroyAP
 class GetAllDoctors(generics.ListAPIView):
     serializer_class = DoctorProfileSerializer
     permission_classes= [IsAuthenticated]
-    
-    
+       
     def get_queryset(self):
         queryset=Doctor.objects.all()
         query = self.request.query_params.get('q')
@@ -207,27 +208,39 @@ class GetAllDoctors(generics.ListAPIView):
             return queryset
         return queryset
       
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def singleUser(request):
-    user = request.user
-    serializer = UserProfileSeriliazer(user,many=False)
-    return Response(serializer.data,status=status.HTTP_200_OK)
 
+class SingleUserView(generics.RetrieveAPIView):
+    serializer_class = UserProfileSeriliazer
+    permission_classes= [IsAuthenticated]
+    
+    def get_object(self):
+        user = self.request.user
+        return user
+    
+
+   
+class ProfileDetailVeiw (generics.RetrieveAPIView):
+    permission_classes= [IsAuthenticated]
+    
+    def get_object(self):
+        id = self.kwargs['pk']
+        user = User.objects.get(pk=id)
+        if user.role == 'PATIENT':
+            patient = user.patient
+            return patient
+        elif user.role == 'DOCTOR':
+            doctor = user.doctor
+            return doctor
+            
+    def get_serializer_class(self):
+        obj = self.get_object()
+        if obj.user.role == 'PATIENT':
+            return PatientProfileSerializer
+        elif obj.user.role == 'DOCTOR':
+            return DoctorProfileSerializer        
         
     
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def userProfileDetail(request,pk):
-    user = User.objects.get(id=pk)
-    if user.role == 'PATIENT':
-        patient = user.patient
-        serializer = PatientProfileSerializer(patient,many=False)
-        return Response(serializer.data,status=status.HTTP_202_ACCEPTED)
-    elif user.role == 'DOCTOR':
-        doctor = user.doctor
-        serializer = DoctorProfileSerializer(doctor,many=False)
-        return Response(serializer.data,status=status.HTTP_202_ACCEPTED)
+
     
 
         

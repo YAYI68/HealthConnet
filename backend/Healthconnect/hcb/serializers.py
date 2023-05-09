@@ -59,10 +59,12 @@ class UserLoginSerializer(serializers.ModelSerializer):
         
 
 class UserProfileSeriliazer(serializers.ModelSerializer):
+    firstname  = serializers.CharField(source='first_name')
+    lastname = serializers.CharField(source='last_name')
    
     class Meta:
         model=User
-        fields=('id','image','role','email','first_name','last_name','phone_number','gender','state','country')  
+        fields=('id','image','role','email','firstname','lastname','phone_number','gender','state','country')  
         
       
              

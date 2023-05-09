@@ -3,6 +3,8 @@ import  OrderConfirm from '../../assets/svg/confirm.svg'
 import { useNavigate } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
 
+const succcessPosition = 2
+
 function AppointmentSuccess({step,setStep}) {
     const navigate = useNavigate()
     const componentRef = useRef();
@@ -10,7 +12,7 @@ function AppointmentSuccess({step,setStep}) {
       content: () => componentRef.current,
     });
 
-    const position = 2 -  step
+    const position = succcessPosition -  step
 
     const goHome = ()=>{
         setStep(0)

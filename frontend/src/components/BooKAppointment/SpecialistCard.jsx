@@ -4,25 +4,25 @@ import DoctorImg from "../../assets/images/hero2.png";
 import { MdStarRate, MdStarBorder } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
 
-export default function SpecialistCard({ id }) {
+export default function SpecialistCard({doctor}) {
   const navigate = useNavigate();
-  function handleNavigate() {
-    navigate(`/appointment/detail`);
+  function handleNavigate(id) {
+    navigate(`/appointment/detail`,{state:{id}});
   }
   return (
     <div
-      id={id}
-      className="card-hover w-[95%] sm:w-[30%] md:w-[45%] lg:w-[30%] justify-between 
+   
+      className="card-hover w-[95%]  md:w-[47%] lg:w-[40%] justify-between 
     flex relative rounded-xl shadow-services-card  cursor-pointer gap-4 pr-2"
       
     >
       <div className="flex-1 basis-[30%] flex items-center justify-center rounded-2xl bg-secondary">
-        <img src={DoctorImg} alt="doctor image" className="max-h-[80%] " />
+        <img src={doctor.image} alt="doctor image" className="max-h-[80%] " />
       </div>
       <div className="flex-1 basis-[70%] flex flex-col gap-4">
-        <p className="text-primary text-sm md:text-lg lg:text-xl font-[900] mt-2">
-          Dr. Sunday Anderson
-        </p>
+        <Link to={`/appointment/detail`} state={{id:doctor.uid}} className="text-primary text-sm md:text-lg lg:text-xl font-[900] mt-2">
+          Dr. {doctor.firstname} {doctor.lastname}
+        </Link>
         <div className="w-fit p-1 flex flex-col gap-1 items-center border border-primary rounded-md text-xs">
           <p>Mon - Fri</p>
           <p>8am - 5pm</p>
@@ -37,12 +37,12 @@ export default function SpecialistCard({ id }) {
             <span>
               <MdLocationPin />
             </span>{" "}
-            unn teaching hospital
+            {doctor?.hospital?doctor.hospital:'hospital'}
           </p>
 
           <button
             className="w-full lg:w-2/6 text-xs bg-primary text-white px-1 py-2 rounded-md "
-            onClick={handleNavigate}
+            onClick={()=>handleNavigate(doctor.uid)}
           >
             Book Now
           </button>
