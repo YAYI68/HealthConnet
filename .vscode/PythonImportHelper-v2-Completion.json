@@ -1,0 +1,1424 @@
+[
+    {
+        "label": "warnings",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "warnings",
+        "description": "warnings",
+        "detail": "warnings",
+        "documentation": {}
+    },
+    {
+        "label": "management",
+        "importPath": "django.core",
+        "description": "django.core",
+        "isExtraImport": true,
+        "detail": "django.core",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "authentication",
+        "importPath": "rest_framework_simplejwt",
+        "description": "rest_framework_simplejwt",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt",
+        "documentation": {}
+    },
+    {
+        "label": "tokens",
+        "importPath": "rest_framework_simplejwt",
+        "description": "rest_framework_simplejwt",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt",
+        "documentation": {}
+    },
+    {
+        "label": "views",
+        "importPath": "rest_framework_simplejwt",
+        "description": "rest_framework_simplejwt",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework_simplejwt",
+        "description": "rest_framework_simplejwt",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt",
+        "documentation": {}
+    },
+    {
+        "label": "exceptions",
+        "importPath": "rest_framework_simplejwt",
+        "description": "rest_framework_simplejwt",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt",
+        "documentation": {}
+    },
+    {
+        "label": "authentication",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "exceptions",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "generics",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "permissions",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "exceptions",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "generics",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractBaseUser",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "BaseUserManager",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "PermissionsMixin",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "TokenObtainPairSerializer",
+        "importPath": "rest_framework_simplejwt.serializers",
+        "description": "rest_framework_simplejwt.serializers",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "RefreshToken",
+        "importPath": "rest_framework_simplejwt.tokens",
+        "description": "rest_framework_simplejwt.tokens",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.tokens",
+        "documentation": {}
+    },
+    {
+        "label": "RefreshToken",
+        "importPath": "rest_framework_simplejwt.tokens",
+        "description": "rest_framework_simplejwt.tokens",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.tokens",
+        "documentation": {}
+    },
+    {
+        "label": "RefreshToken",
+        "importPath": "rest_framework_simplejwt.tokens",
+        "description": "rest_framework_simplejwt.tokens",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.tokens",
+        "documentation": {}
+    },
+    {
+        "label": "post_save",
+        "importPath": "django.db.models.signals",
+        "description": "django.db.models.signals",
+        "isExtraImport": true,
+        "detail": "django.db.models.signals",
+        "documentation": {}
+    },
+    {
+        "label": "post_delete",
+        "importPath": "django.db.models.signals",
+        "description": "django.db.models.signals",
+        "isExtraImport": true,
+        "detail": "django.db.models.signals",
+        "documentation": {}
+    },
+    {
+        "label": "send_mail",
+        "importPath": "django.core.mail",
+        "description": "django.core.mail",
+        "isExtraImport": true,
+        "detail": "django.core.mail",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "TokenRefreshView",
+        "importPath": "rest_framework_simplejwt.views",
+        "description": "rest_framework_simplejwt.views",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.views",
+        "documentation": {}
+    },
+    {
+        "label": "TokenObtainPairView",
+        "importPath": "rest_framework_simplejwt.views",
+        "description": "rest_framework_simplejwt.views",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.views",
+        "documentation": {}
+    },
+    {
+        "label": "TokenRefreshView",
+        "importPath": "rest_framework_simplejwt.views",
+        "description": "rest_framework_simplejwt.views",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.views",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Q",
+        "importPath": "django.db.models",
+        "description": "django.db.models",
+        "isExtraImport": true,
+        "detail": "django.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "permission_classes",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "csrf",
+        "importPath": "django.middleware",
+        "description": "django.middleware",
+        "isExtraImport": true,
+        "detail": "django.middleware",
+        "documentation": {}
+    },
+    {
+        "label": "IsAuthenticated",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "IsAdminUser",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "get_asgi_application",
+        "importPath": "django.core.asgi",
+        "description": "django.core.asgi",
+        "isExtraImport": true,
+        "detail": "django.core.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "importPath": "decouple",
+        "description": "decouple",
+        "isExtraImport": true,
+        "detail": "decouple",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "static",
+        "importPath": "django.conf.urls.static",
+        "description": "django.conf.urls.static",
+        "isExtraImport": true,
+        "detail": "django.conf.urls.static",
+        "documentation": {}
+    },
+    {
+        "label": "get_wsgi_application",
+        "importPath": "django.core.wsgi",
+        "description": "django.core.wsgi",
+        "isExtraImport": true,
+        "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0001_initial",
+        "description": "backend.Healthconnect.hcb.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('auth', '0012_alter_user_first_name_max_length'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='User',\n            fields=[\n                ('password', models.CharField(max_length=128, verbose_name='password')),",
+        "detail": "backend.Healthconnect.hcb.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0002_auto_20230407_0931",
+        "description": "backend.Healthconnect.hcb.migrations.0002_auto_20230407_0931",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='user',\n            name='gender',\n            field=models.CharField(blank=True, choices=[('MALE', 'MALE'), ('FEMALE', 'FEMALE')], max_length=10, null=True),\n        ),",
+        "detail": "backend.Healthconnect.hcb.migrations.0002_auto_20230407_0931",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0003_auto_20230407_0959",
+        "description": "backend.Healthconnect.hcb.migrations.0003_auto_20230407_0959",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0002_auto_20230407_0931'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='doctor',\n            name='experience',\n            field=models.IntegerField(blank=True, null=True),\n        ),",
+        "detail": "backend.Healthconnect.hcb.migrations.0003_auto_20230407_0959",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0004_auto_20230407_1008",
+        "description": "backend.Healthconnect.hcb.migrations.0004_auto_20230407_1008",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0003_auto_20230407_0959'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='appointment',\n            name='id',\n            field=models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False, unique=True),\n        ),",
+        "detail": "backend.Healthconnect.hcb.migrations.0004_auto_20230407_1008",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0005_auto_20230407_1202",
+        "description": "backend.Healthconnect.hcb.migrations.0005_auto_20230407_1202",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0004_auto_20230407_1008'),\n    ]\n    operations = [\n        migrations.RenameField(\n            model_name='patient',\n            old_name='blood_type',\n            new_name='blood_group',\n        ),",
+        "detail": "backend.Healthconnect.hcb.migrations.0005_auto_20230407_1202",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0006_auto_20230407_1441",
+        "description": "backend.Healthconnect.hcb.migrations.0006_auto_20230407_1441",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0005_auto_20230407_1202'),\n    ]\n    operations = [\n        migrations.RemoveField(\n            model_name='patient',\n            name='state',\n        ),\n        migrations.AddField(",
+        "detail": "backend.Healthconnect.hcb.migrations.0006_auto_20230407_1441",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0007_auto_20230407_1504",
+        "description": "backend.Healthconnect.hcb.migrations.0007_auto_20230407_1504",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0006_auto_20230407_1441'),\n    ]\n    operations = [\n        migrations.RenameField(\n            model_name='patient',\n            old_name='geno_type',\n            new_name='genotype',\n        ),",
+        "detail": "backend.Healthconnect.hcb.migrations.0007_auto_20230407_1504",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0008_auto_20230407_1835",
+        "description": "backend.Healthconnect.hcb.migrations.0008_auto_20230407_1835",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0007_auto_20230407_1504'),\n    ]\n    operations = [\n        migrations.RenameField(\n            model_name='doctor',\n            old_name='fields',\n            new_name='field',\n        ),",
+        "detail": "backend.Healthconnect.hcb.migrations.0008_auto_20230407_1835",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0009_alter_doctor_field",
+        "description": "backend.Healthconnect.hcb.migrations.0009_alter_doctor_field",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0008_auto_20230407_1835'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='doctor',\n            name='field',\n            field=models.CharField(blank=True, max_length=50, null=True),\n        ),",
+        "detail": "backend.Healthconnect.hcb.migrations.0009_alter_doctor_field",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0010_auto_20230506_2318",
+        "description": "backend.Healthconnect.hcb.migrations.0010_auto_20230506_2318",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0009_alter_doctor_field'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='doctor',\n            name='bio',\n            field=models.CharField(blank=True, max_length=50, null=True),\n        ),",
+        "detail": "backend.Healthconnect.hcb.migrations.0010_auto_20230506_2318",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0011_user_country",
+        "description": "backend.Healthconnect.hcb.migrations.0011_user_country",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0010_auto_20230506_2318'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='user',\n            name='country',\n            field=models.CharField(blank=True, max_length=20, null=True),\n        ),",
+        "detail": "backend.Healthconnect.hcb.migrations.0011_user_country",
+        "documentation": {}
+    },
+    {
+        "label": "HcbConfig",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.apps",
+        "description": "backend.Healthconnect.hcb.apps",
+        "peekOfCode": "class HcbConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'hcb'\n    def ready(self) -> None:\n        import hcb.signals",
+        "detail": "backend.Healthconnect.hcb.apps",
+        "documentation": {}
+    },
+    {
+        "label": "CustomAuthentication",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.authenticate",
+        "description": "backend.Healthconnect.hcb.authenticate",
+        "peekOfCode": "class CustomAuthentication(jwt_authentication.JWTAuthentication):\n    def authenticate(self, request):\n        header = self.get_header(request)\n        raw_token = request.COOKIES.get(settings.SIMPLE_JWT['AUTH_COOKIE']) or None\n        if header is None :\n            return None\n        else:\n            raw_token = self.get_raw_token(raw_token)\n        if raw_token is None:\n            return None",
+        "detail": "backend.Healthconnect.hcb.authenticate",
+        "documentation": {}
+    },
+    {
+        "label": "enforce_csrf",
+        "kind": 2,
+        "importPath": "backend.Healthconnect.hcb.authenticate",
+        "description": "backend.Healthconnect.hcb.authenticate",
+        "peekOfCode": "def enforce_csrf(request):\n    check = authentication.CSRFCheck(request)\n    reason = check.process_view(request,None,(),{})\n    if reason:\n        raise rest_exceptions.PermissionDenied('CSRF Failed: %s' % reason)\nclass CustomAuthentication(jwt_authentication.JWTAuthentication):\n    def authenticate(self, request):\n        header = self.get_header(request)\n        raw_token = request.COOKIES.get(settings.SIMPLE_JWT['AUTH_COOKIE']) or None\n        if header is None :",
+        "detail": "backend.Healthconnect.hcb.authenticate",
+        "documentation": {}
+    },
+    {
+        "label": "UserManager",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.models",
+        "description": "backend.Healthconnect.hcb.models",
+        "peekOfCode": "class UserManager(BaseUserManager):\n    def create_user(self, email, password=None, **extra_fields):\n        if not email:\n            raise ValueError('Users must have an email address')\n        user = self.model(\n            email=self.normalize_email(email),\n            **extra_fields\n        )\n        user.set_password(password)\n        user.save(using=self._db)",
+        "detail": "backend.Healthconnect.hcb.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.models",
+        "description": "backend.Healthconnect.hcb.models",
+        "peekOfCode": "class User(AbstractBaseUser, PermissionsMixin):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,\n                          primary_key=True, editable=False)\n    email = models.EmailField(unique=True)\n    first_name = models.CharField(max_length=30, blank=True)\n    last_name = models.CharField(max_length=30, blank=True)\n    is_active = models.BooleanField(default=True)\n    is_staff = models.BooleanField(default=False)\n    role= models.CharField(max_length=30,choices=User_Roles)\n    country = models.CharField(max_length=20,null=True, blank=True)",
+        "detail": "backend.Healthconnect.hcb.models",
+        "documentation": {}
+    },
+    {
+        "label": "Patien",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.models",
+        "description": "backend.Healthconnect.hcb.models",
+        "peekOfCode": "class Patient (models.Model):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,\n                          primary_key=True, editable=False)\n    user=models.OneToOneField(User, on_delete=models.CASCADE,related_name='patient')\n    blood_group=models.CharField(max_length=30,null=True,blank=True)\n    genotype=models.CharField(max_length=30,null=True,blank=True)\n    weight=models.FloatField(null=True,blank=True)\n    age=models.IntegerField(null=True, blank=True)\n    marital_status=models.CharField(max_length=20, choices=Patient_MaritalStatus, null=True, blank=True)\n    medical_history=models.TextField(blank=True, null=True)",
+        "detail": "backend.Healthconnect.hcb.models",
+        "documentation": {}
+    },
+    {
+        "label": "Specialization",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.models",
+        "description": "backend.Healthconnect.hcb.models",
+        "peekOfCode": "class Specialization(models.Model):\n    name = models.CharField(max_length=20)\n    def __str__(self):\n        return self.name\nclass Doctor(models.Model):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,\n                          primary_key=True, editable=False)\n    user= models.OneToOneField(User, on_delete=models.CASCADE,related_name='doctor')\n    hospital=models.CharField(max_length=50,null=True,blank=True)\n    experience=models.IntegerField(null=True,blank=True)",
+        "detail": "backend.Healthconnect.hcb.models",
+        "documentation": {}
+    },
+    {
+        "label": "Doctor",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.models",
+        "description": "backend.Healthconnect.hcb.models",
+        "peekOfCode": "class Doctor(models.Model):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,\n                          primary_key=True, editable=False)\n    user= models.OneToOneField(User, on_delete=models.CASCADE,related_name='doctor')\n    hospital=models.CharField(max_length=50,null=True,blank=True)\n    experience=models.IntegerField(null=True,blank=True)\n    field = models.CharField( max_length=50, null=True,blank=True)\n    bio = models.CharField(max_length=50, null=True, blank=True)\n    qualification = models.CharField(max_length=50, null=True,blank=True)\n    location = models.CharField(max_length=50, null=True,blank=True)",
+        "detail": "backend.Healthconnect.hcb.models",
+        "documentation": {}
+    },
+    {
+        "label": "Appointment",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.models",
+        "description": "backend.Healthconnect.hcb.models",
+        "peekOfCode": "class Appointment(models.Model):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,\n                          primary_key=True, editable=False)\n    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)\n    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)\n    start_date = models.DateTimeField(auto_now=True)\n    end_date = models.DateTimeField()\n    def __str__(self) -> str:\n        return f'{self.id}'",
+        "detail": "backend.Healthconnect.hcb.models",
+        "documentation": {}
+    },
+    {
+        "label": "User_Roles",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.hcb.models",
+        "description": "backend.Healthconnect.hcb.models",
+        "peekOfCode": "User_Roles = (\n    ('PATIENT','PATIENT'),\n    ('DOCTOR','DOCTOR'),\n)\nUser_Gender = (\n    ('MALE','MALE'),\n    ('FEMALE','FEMALE'),\n)\nclass User(AbstractBaseUser, PermissionsMixin):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,",
+        "detail": "backend.Healthconnect.hcb.models",
+        "documentation": {}
+    },
+    {
+        "label": "User_Gender",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.hcb.models",
+        "description": "backend.Healthconnect.hcb.models",
+        "peekOfCode": "User_Gender = (\n    ('MALE','MALE'),\n    ('FEMALE','FEMALE'),\n)\nclass User(AbstractBaseUser, PermissionsMixin):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,\n                          primary_key=True, editable=False)\n    email = models.EmailField(unique=True)\n    first_name = models.CharField(max_length=30, blank=True)\n    last_name = models.CharField(max_length=30, blank=True)",
+        "detail": "backend.Healthconnect.hcb.models",
+        "documentation": {}
+    },
+    {
+        "label": "Patient_MaritalStatus",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.hcb.models",
+        "description": "backend.Healthconnect.hcb.models",
+        "peekOfCode": "Patient_MaritalStatus = (\n    ('SINGLE', 'SINGLE'),\n    ('MARRIED', 'MARRIED'),\n    ('DIVORCED', 'DIVORCED'),\n)\nclass Patient (models.Model):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,\n                          primary_key=True, editable=False)\n    user=models.OneToOneField(User, on_delete=models.CASCADE,related_name='patient')\n    blood_group=models.CharField(max_length=30,null=True,blank=True)",
+        "detail": "backend.Healthconnect.hcb.models",
+        "documentation": {}
+    },
+    {
+        "label": "UserSerializerToken",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.serializers",
+        "description": "backend.Healthconnect.hcb.serializers",
+        "peekOfCode": "class UserSerializerToken(serializers.ModelSerializer):\n    slug = serializers.SerializerMethodField(read_only=True)\n    class Meta:\n        model = User\n        fields = ('id','role','email','slug')\n    def get_slug(self,obj):\n        slug = f'{obj.first_name}-{obj.last_name}'\n        return slug\nclass MyTokenObtainPairSerializer(TokenObtainPairSerializer):\n    class Meta:",
+        "detail": "backend.Healthconnect.hcb.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "MyTokenObtainPairSerializer",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.serializers",
+        "description": "backend.Healthconnect.hcb.serializers",
+        "peekOfCode": "class MyTokenObtainPairSerializer(TokenObtainPairSerializer):\n    class Meta:\n        fields = ('role','email','password')\n        model = User\n    @classmethod\n    def get_token(cls, user):\n        token = super().get_token(user)\n        token[\"role\"] = user.role\n        return token\n    # def validate(self, attrs):",
+        "detail": "backend.Healthconnect.hcb.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "UserSignUpSerializer",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.serializers",
+        "description": "backend.Healthconnect.hcb.serializers",
+        "peekOfCode": "class UserSignUpSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = User\n        fields = ('email', 'first_name', 'last_name', 'password','role')\n        extra_kwargs = {'password': {'write_only': True}}\n    def create(self, validated_data):\n        user = User.objects.create_user(**validated_data)\n        if user.role == 'Doctor':\n            user.is_staff = True\n            user.save()",
+        "detail": "backend.Healthconnect.hcb.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "UserLoginSerializer",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.serializers",
+        "description": "backend.Healthconnect.hcb.serializers",
+        "peekOfCode": "class UserLoginSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = User\n        fields = ('email', 'password','role')\n        extra_kwargs = {'password': {'write_only': True}}\nclass UserProfileSeriliazer(serializers.ModelSerializer):\n    class Meta:\n        model=User\n        fields=('id','image','role','email','first_name','last_name','phone_number','gender','state','country')  \nclass PatientProfileSerializer(serializers.ModelSerializer):",
+        "detail": "backend.Healthconnect.hcb.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "UserProfileSeriliazer",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.serializers",
+        "description": "backend.Healthconnect.hcb.serializers",
+        "peekOfCode": "class UserProfileSeriliazer(serializers.ModelSerializer):\n    class Meta:\n        model=User\n        fields=('id','image','role','email','first_name','last_name','phone_number','gender','state','country')  \nclass PatientProfileSerializer(serializers.ModelSerializer):\n    uid = serializers.CharField(read_only=True,source='user.id')\n    image = serializers.ImageField(source='user.image')\n    email = serializers.EmailField(read_only=True,source='user.email')\n    firstname  = serializers.CharField(source='user.first_name')\n    lastname = serializers.CharField(source='user.last_name')",
+        "detail": "backend.Healthconnect.hcb.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "PatientProfileSerializer",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.serializers",
+        "description": "backend.Healthconnect.hcb.serializers",
+        "peekOfCode": "class PatientProfileSerializer(serializers.ModelSerializer):\n    uid = serializers.CharField(read_only=True,source='user.id')\n    image = serializers.ImageField(source='user.image')\n    email = serializers.EmailField(read_only=True,source='user.email')\n    firstname  = serializers.CharField(source='user.first_name')\n    lastname = serializers.CharField(source='user.last_name')\n    phonenumber = serializers.CharField(source='user.phone_number')\n    gender = serializers.CharField(source='user.gender')\n    state = serializers.CharField(source='user.state') \n    country = serializers.CharField(source='user.country')   ",
+        "detail": "backend.Healthconnect.hcb.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "DoctorProfileSerializer",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.serializers",
+        "description": "backend.Healthconnect.hcb.serializers",
+        "peekOfCode": "class DoctorProfileSerializer(serializers.ModelSerializer):\n    uid = serializers.CharField(read_only=True,source='user.id')\n    image = serializers.ImageField(source='user.image')\n    email = serializers.EmailField(read_only=True,source='user.email')\n    firstname  = serializers.CharField(source='user.first_name')\n    lastname = serializers.CharField(source='user.last_name')\n    phonenumber = serializers.CharField(source='user.phone_number')\n    gender = serializers.CharField(source='user.gender')\n    state = serializers.CharField(source='user.state') \n    country = serializers.CharField(source='user.country')  ",
+        "detail": "backend.Healthconnect.hcb.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "createProfile",
+        "kind": 2,
+        "importPath": "backend.Healthconnect.hcb.signals",
+        "description": "backend.Healthconnect.hcb.signals",
+        "peekOfCode": "def createProfile(sender, instance, created, **kwargs):\n    if created:\n        user = instance\n        if user.role == 'PATIENT':\n            Patient.objects.create(user=user)   \n        if user.role == 'DOCTOR':\n            Doctor.objects.create(user=user)   \npost_save.connect(createProfile, sender=User)",
+        "detail": "backend.Healthconnect.hcb.signals",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.hcb.urls",
+        "description": "backend.Healthconnect.hcb.urls",
+        "peekOfCode": "urlpatterns = [\n    path('signup/',views.UserRegistrationView.as_view()),\n    path('login/',views.LoginView.as_view()),\n    path('logout/',views.logout),\n    # path('signin/',views.MyTokenObtainPairView.as_view()),\n    path('user/',views.singleUser,name='singleUser'),\n    path('patient/',views.GetUpdateDeletePatientProfileView.as_view()),\n    path('doctor/',views.GetUpdateDeleteDoctorProfileView.as_view()),\n    path('doctors/all',views.GetAllDoctors.as_view()),\n    path('token/refresh/', views.CookieTokenRefreshView.as_view(), name='token_refresh'),",
+        "detail": "backend.Healthconnect.hcb.urls",
+        "documentation": {}
+    },
+    {
+        "label": "LoginView",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "class LoginView(APIView):\n    def post(self, request, format=None):\n        data = request.data\n        response = Response()        \n        email = data.get('email', None)\n        password = data.get('password', None)\n        user = authenticate(email=email, password=password)\n        if user is not None:\n            data = get_tokens_for_user(user)\n            response.set_cookie(",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "MyTokenRefresh",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "class MyTokenRefresh(TokenRefreshView):\n    def post(self, request):\n        refresh = self.request.COOKIES.get(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])\n        response = Response()\n        if refresh :\n            data = {'refresh':refresh}\n            serializer = self.get_serializer(data=data,many=False)\n            if serializer.is_valid(raise_exception=True):\n                response.set_cookie(\n                key=settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'],",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "CookieTokenRefreshSerializer",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "class CookieTokenRefreshSerializer(jwt_serializers.TokenRefreshSerializer):\n    refresh = None\n    def validate(self, attrs):\n        attrs['refresh'] = self.context['request'].COOKIES.get('refresh_token')\n        if attrs['refresh']:\n            return super().validate(attrs)\n        else:\n            raise jwt_exceptions.InvalidToken(\n                'No valid token found in cookie \\'refresh\\'')\nclass CookieTokenRefreshView(jwt_views.TokenRefreshView):",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "CookieTokenRefreshView",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "class CookieTokenRefreshView(jwt_views.TokenRefreshView):\n    serializer_class = CookieTokenRefreshSerializer\n    def finalize_response(self, request, response, *args, **kwargs):\n        if response.data.get(\"refresh\"):\n            response.set_cookie(\n                key=settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'],\n                value=response.data['refresh'],\n                expires=settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME'],\n                secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],\n                httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "MyTokenObtainPairView",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "class MyTokenObtainPairView(TokenObtainPairView):\n    serializer_class = MyTokenObtainPairSerializer\nclass UserRegistrationView(generics.CreateAPIView):\n    queryset = User.objects.all()\n    serializer_class = UserSignUpSerializer\nclass GetUpdateDeletePatientProfileView(generics.RetrieveUpdateDestroyAPIView):\n    serializer_class=PatientProfileSerializer\n    def get_object(self):\n        try:\n            user = self.request.user",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "UserRegistrationView",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "class UserRegistrationView(generics.CreateAPIView):\n    queryset = User.objects.all()\n    serializer_class = UserSignUpSerializer\nclass GetUpdateDeletePatientProfileView(generics.RetrieveUpdateDestroyAPIView):\n    serializer_class=PatientProfileSerializer\n    def get_object(self):\n        try:\n            user = self.request.user\n            return user.patient\n        except :",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "GetUpdateDeletePatientProfileView",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "class GetUpdateDeletePatientProfileView(generics.RetrieveUpdateDestroyAPIView):\n    serializer_class=PatientProfileSerializer\n    def get_object(self):\n        try:\n            user = self.request.user\n            return user.patient\n        except :\n            raise ValueError('You can only update Patient Profile')\n    def get_serializer_context(self):\n        context = super(GetUpdateDeletePatientProfileView, self).get_serializer_context()",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "GetUpdateDeleteDoctorProfileView",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "class GetUpdateDeleteDoctorProfileView(generics.UpdateAPIView,generics.DestroyAPIView,generics.RetrieveAPIView):\n    serializer_class = DoctorProfileSerializer\n    permission_classes= [IsAdminUser]\n    def get_object(self):\n        try:\n            user = self.request.user\n            return user.doctor\n        except :\n            raise ValueError('You can only updateDoctorProfile')\n    def get_serializer_context(self):",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "GetAllDoctors",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "class GetAllDoctors(generics.ListAPIView):\n    serializer_class = DoctorProfileSerializer\n    permission_classes= [IsAuthenticated]\n    def get_queryset(self):\n        queryset=Doctor.objects.all()\n        query = self.request.query_params.get('q')\n        if query is not None:\n            queryset = queryset.filter(Q(user__first_name__icontains=query)\n                                       |Q(user__last_name__icontains=query)\n                                       |Q(hospital__icontains=query)",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_tokens_for_user",
+        "kind": 2,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "def get_tokens_for_user(user):\n    refresh = RefreshToken.for_user(user)    \n    return {\n        'refresh_token': str(refresh),\n        'access_token': str(refresh.access_token),\n    }\nclass LoginView(APIView):\n    def post(self, request, format=None):\n        data = request.data\n        response = Response()        ",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "kind": 2,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "def logout(request):\n    try:\n        refresh = request.COOKIES.get(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])\n        token = RefreshToken(refresh)\n        token.blacklist()        \n        res = Response()\n        res.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE'])\n        res.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])\n        res.delete_cookie('X-CSRFToken')\n        res.delete_cookie('csrftoken')",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "singleUser",
+        "kind": 2,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "def singleUser(request):\n    user = request.user\n    serializer = UserProfileSeriliazer(user,many=False)\n    return Response(serializer.data,status=status.HTTP_200_OK)\n@api_view(['GET'])\n@permission_classes([IsAuthenticated])\ndef userProfileDetail(request,pk):\n    user = User.objects.get(id=pk)\n    if user.role == 'PATIENT':\n        patient = user.patient",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "userProfileDetail",
+        "kind": 2,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "def userProfileDetail(request,pk):\n    user = User.objects.get(id=pk)\n    if user.role == 'PATIENT':\n        patient = user.patient\n        serializer = PatientProfileSerializer(patient,many=False)\n        return Response(serializer.data,status=status.HTTP_202_ACCEPTED)\n    elif user.role == 'DOCTOR':\n        doctor = user.doctor\n        serializer = DoctorProfileSerializer(doctor,many=False)\n        return Response(serializer.data,status=status.HTTP_202_ACCEPTED)",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "application",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.asgi",
+        "description": "backend.Healthconnect.Healthconnect.asgi",
+        "peekOfCode": "application = get_asgi_application()",
+        "detail": "backend.Healthconnect.Healthconnect.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_DIR",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY =  config('SECRET_KEY')\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = config('DEBUG', cast = bool)\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "SECRET_KEY =  config('SECRET_KEY')\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = config('DEBUG', cast = bool)\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "DEBUG = config('DEBUG', cast = bool)\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_HOSTS",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    \"corsheaders\",",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "INSTALLED_APPS",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    \"corsheaders\",\n    'hcb.apps.HcbConfig',\n    'rest_framework',",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MIDDLEWARE",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "MIDDLEWARE = [\n    \"corsheaders.middleware.CorsMiddleware\",\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n    'django.middleware.common.CommonMiddleware',",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ROOT_URLCONF",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "ROOT_URLCONF = 'Healthconnect.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TEMPLATES",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "WSGI_APPLICATION",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "WSGI_APPLICATION = 'Healthconnect.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/3.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n# Password validation",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASES",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n# Password validation\n# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators\nAUTH_PASSWORD_VALIDATORS = [\n    {",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_PASSWORD_VALIDATORS",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "AUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SIMPLE_JWT",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "SIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),\n    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),\n    'ROTATE_REFRESH_TOKENS': True,\n    'BLACKLIST_AFTER_ROTATION': True,\n    'UPDATE_LAST_LOGIN': False,\n    'ALGORITHM': 'HS256',\n    'SIGNING_KEY': SECRET_KEY,\n    'VERIFYING_KEY': None,\n    'AUDIENCE': None,",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOW_CREDENTIALS",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "CORS_ALLOW_CREDENTIALS = True\nCORS_ALLOWED_ORIGINS = [\n    \"http://localhost:5173\",\n]\nCORS_ORIGIN_WHITELIST = (\n  'http://localhost:5173',\n)\nCSRF_COOKIE_SECURE = True\nCSRF_COOKIE_HTTP_ONLY = True\nCSRF_TRUSTED_ORIGINS = [",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOWED_ORIGINS",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "CORS_ALLOWED_ORIGINS = [\n    \"http://localhost:5173\",\n]\nCORS_ORIGIN_WHITELIST = (\n  'http://localhost:5173',\n)\nCSRF_COOKIE_SECURE = True\nCSRF_COOKIE_HTTP_ONLY = True\nCSRF_TRUSTED_ORIGINS = [\n    'http://localhost:5173',",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ORIGIN_WHITELIST",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "CORS_ORIGIN_WHITELIST = (\n  'http://localhost:5173',\n)\nCSRF_COOKIE_SECURE = True\nCSRF_COOKIE_HTTP_ONLY = True\nCSRF_TRUSTED_ORIGINS = [\n    'http://localhost:5173',\n]\nCORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']\nSESSION_COOKIE_SECURE = True",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CSRF_COOKIE_SECURE",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "CSRF_COOKIE_SECURE = True\nCSRF_COOKIE_HTTP_ONLY = True\nCSRF_TRUSTED_ORIGINS = [\n    'http://localhost:5173',\n]\nCORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']\nSESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SAMESITE='Lax'\nSESSION_COOKIE_SAMESITE ='Lax'\n# JWT Authentication settings for default",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CSRF_COOKIE_HTTP_ONLY",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "CSRF_COOKIE_HTTP_ONLY = True\nCSRF_TRUSTED_ORIGINS = [\n    'http://localhost:5173',\n]\nCORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']\nSESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SAMESITE='Lax'\nSESSION_COOKIE_SAMESITE ='Lax'\n# JWT Authentication settings for default\nREST_FRAMEWORK = {",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CSRF_TRUSTED_ORIGINS",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "CSRF_TRUSTED_ORIGINS = [\n    'http://localhost:5173',\n]\nCORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']\nSESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SAMESITE='Lax'\nSESSION_COOKIE_SAMESITE ='Lax'\n# JWT Authentication settings for default\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_EXPOSE_HEADERS",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']\nSESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SAMESITE='Lax'\nSESSION_COOKIE_SAMESITE ='Lax'\n# JWT Authentication settings for default\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n        'hcb.authenticate.CustomAuthentication',\n    ),",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SESSION_COOKIE_SECURE",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "SESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SAMESITE='Lax'\nSESSION_COOKIE_SAMESITE ='Lax'\n# JWT Authentication settings for default\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n        'hcb.authenticate.CustomAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "REST_FRAMEWORK",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n        'hcb.authenticate.CustomAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (\n        'rest_framework.permissions.AllowAny',\n    )\n}\n# Internationalization",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "LANGUAGE_CODE",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_L10N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TIME_ZONE",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_L10N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_I18N",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "USE_I18N = True\nUSE_L10N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]\nMEDIA_URL = \"/images/\"",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_L10N",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "USE_L10N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]\nMEDIA_URL = \"/images/\"\nMEDIA_ROOT = \"media/images\"",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_TZ",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]\nMEDIA_URL = \"/images/\"\nMEDIA_ROOT = \"media/images\"\n# Default primary key field type",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_URL",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "STATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]\nMEDIA_URL = \"/images/\"\nMEDIA_ROOT = \"media/images\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nAUTH_USER_MODEL = 'hcb.User'",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATICFILES_DIRS",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "STATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]\nMEDIA_URL = \"/images/\"\nMEDIA_ROOT = \"media/images\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nAUTH_USER_MODEL = 'hcb.User'",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_URL",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "MEDIA_URL = \"/images/\"\nMEDIA_ROOT = \"media/images\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nAUTH_USER_MODEL = 'hcb.User'",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_ROOT",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "MEDIA_ROOT = \"media/images\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nAUTH_USER_MODEL = 'hcb.User'",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_AUTO_FIELD",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nAUTH_USER_MODEL = 'hcb.User'",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_USER_MODEL",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.settings",
+        "description": "backend.Healthconnect.Healthconnect.settings",
+        "peekOfCode": "AUTH_USER_MODEL = 'hcb.User'",
+        "detail": "backend.Healthconnect.Healthconnect.settings",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.urls",
+        "description": "backend.Healthconnect.Healthconnect.urls",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('api/v1/', include('hcb.urls'))\n]\nif settings.DEBUG:\n    urlpatterns += static(settings.MEDIA_URL,\n                          document_root=settings.MEDIA_ROOT)",
+        "detail": "backend.Healthconnect.Healthconnect.urls",
+        "documentation": {}
+    },
+    {
+        "label": "application",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.Healthconnect.wsgi",
+        "description": "backend.Healthconnect.Healthconnect.wsgi",
+        "peekOfCode": "application = get_wsgi_application()",
+        "detail": "backend.Healthconnect.Healthconnect.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "backend.Healthconnect.manage",
+        "description": "backend.Healthconnect.manage",
+        "peekOfCode": "def main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Healthconnect.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"",
+        "detail": "backend.Healthconnect.manage",
+        "documentation": {}
+    }
+]

@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  box-sizing:border-box;
+
+  /* width:100%;
+  height:100%; */
+}
+::-webkit-scrollbar-thumb{
+  background: #1d8e66; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1d8e66; 
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+/* ::-webkit-scrollbar-track {
+  background: #1d8e66;
+} */
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/static/Inter-Regular.ttf");
+}
+@font-face {
+  font-family: "Jost";
+  src: url("/fonts/jost/static/Jost-Regular.ttf");
+}
+@layer base {
+  html {
+    font-family: Inter, sans-serif;
+  }
+}
+
+@layer components {
+body{
+  overflow-x: hidden;
+}
+  .password-icon{
+    @apply text-gray-500
+  }
+ .textfield:focus-within .password-icon{
+  @apply text-primary
+ }
+ .medical-icons{
+  filter: invert(41%) sepia(91%) saturate(355%) hue-rotate(107deg) brightness(92%) contrast(91%);
+ }
+ .justify-text{
+  text-align: justify;
+  text-justify: inter-word;
+ }
+
+
+.checkbox-label{
+display: block;
+position: relative;
+/* padding-left: 45px;
+padding-bottom: 15px; */
+height: 20px;
+width: 20px;
+cursor: pointer;
+font-size: 20px;
+}
+input[type=checkbox]{
+  visibility: hidden;
+}
+.checkmark{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /* background-color: gray; */
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+.checkbox-label input:checked ~ .checkmark{
+  background-color: #1d8e66;
+}
+.checkmark::after{
+  content: "";
+  position: absolute;
+  display: none;
+}
+.checkbox-label input:checked ~ .checkmark::after{
+display: block;
+}
+.checkbox-label .checkmark::after{
+  left: 5px;
+  bottom: 6px;
+  width: 7px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+/* custom radio button */
+.radio-label{
+  position: relative;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  border: 1px solid #1d8e66;
+  cursor: pointer;
+  /* overflow: hidden; */
+
+
+}
+.radio-label input[type=radio]{
+  visibility: hidden;
+}
+.radio-input-span{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+.radio-label input:checked ~ .radio-input-span{
+  background-color: #1d8e66;
+}
+.radio-input-span::after{
+  content: "";
+  position: absolute;
+  left: 7px;
+  bottom: 6px;
+  width: 9px;
+  height: 14px;
+  border: solid white;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+display: none;
+}
+.radio-label input:checked ~ .radio-input-span::after{
+  display: block;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active{
+  opacity: 1;
+  background-color: #1d8e66;
+}
+
+/* select component */
+.select-container{
+  height: 2rem;
+  /* border: 1px solid gray; */
+  width: fit-content;
+  position: relative;
+cursor: default;
+}
+
+.select-title{
+  box-shadow: 0px 0px 2px 0px grey;
+  height: 2.5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-items{
+  position: absolute;
+  width: 100%;
+  box-shadow: 0px 0px 3px 3px #f9f9f9;
+  z-index: 0;
+  transition: all .1s ease-out;
+  
+  
+  
+  
+}
+.select-items ul li{
+  height: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 1rem;
+  align-items: center;
+  cursor: default;
+}
+.select-items ul li:hover{
+  background-color: green;
+}
+.active-shadow{
+  box-shadow: 0px 0px 2px 0px green;
+}
+.not-active{
+   box-shadow: 0px 0px 2px 0px grey;
+}
+
+
+}
