@@ -47,6 +47,18 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
     objects = UserManager()
+     
+    def total_appointments(self,status):
+        if self.role == 'PATIENT':
+            patient = self.patient
+            appointment = patient.patient_appointment.filter(status=status)
+            total = appointment.count()
+            return total
+        elif self.role == 'DOCTOR':
+            doctor = self.doctor
+            appointment = doctor.doctor_appointment
+            total = appointment.count()
+            return total
 
     def __str__(self):
         return self.email
@@ -93,17 +105,26 @@ class Doctor(models.Model):
     qualification = models.CharField(max_length=50, null=True,blank=True)
     location = models.CharField(max_length=50, null=True,blank=True)
     
+    
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'
     
+
+AppointmentStatus = (
+    ('PENDING', 'PENDING'),
+    ('DONE', 'DONE'),
+    ('CANCELLED', 'CANCELLED'),
+)
     
 class Appointment(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
-    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    start_date = models.DateTimeField(auto_now=True)
-    end_date = models.DateTimeField()
+    doctor = models.ForeignKey(Doctor, on_delete=models.SET_NULL,null=True,related_name='doctor_appointment')
+    patient = models.ForeignKey(Patient, on_delete=models.SET_NULL,null=True,related_name='patient_appointment')
+    status = models.CharField(max_length=10,choices=AppointmentStatus, default='PENDING', null=True, blank=True)
+    date = models.CharField(max_length=20, blank=True,null=True)
+    time = models.CharField(max_length=10, blank=True,null=True)
+    
     
     def __str__(self) -> str:
         return f'{self.id}'

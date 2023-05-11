@@ -16,10 +16,11 @@ from django.middleware import csrf
 from django.conf import settings
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework_simplejwt import tokens, views as jwt_views, serializers as jwt_serializers, exceptions as jwt_exceptions
-from .models import User,Doctor,Patient
+from .models import User,Doctor,Patient,Appointment
 from .serializers import (UserSignUpSerializer,MyTokenObtainPairSerializer,
                           PatientProfileSerializer,DoctorProfileSerializer,
-                          UserProfileSeriliazer
+                          UserProfileSeriliazer,
+                          AppointmentSerializer
                           )
 from rest_framework_simplejwt.views import (
     TokenRefreshView,
@@ -237,8 +238,41 @@ class ProfileDetailVeiw (generics.RetrieveAPIView):
         if obj.user.role == 'PATIENT':
             return PatientProfileSerializer
         elif obj.user.role == 'DOCTOR':
-            return DoctorProfileSerializer        
+            return DoctorProfileSerializer   
         
+class AppointmentView(generics.CreateAPIView):
+    serializer_class = AppointmentSerializer 
+    
+    def post(self, request):
+        user = request.user
+        patient = user.patient
+        doctor = Doctor.objects.get(user__id=request.data['doctor_id'])
+        if doctor is not None :
+            appointment = Appointment.objects.create(
+                patient=patient,
+                doctor=doctor,
+                time=request.data.get('time',None),
+                date=request.data.get('date',None),
+            )
+            serializer = self.get_serializer(appointment,many=False)
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+        
+        
+class AppointmentPutDetailVeiw(generics.UpdateAPIView,generics.RetrieveAPIView):
+    serializer_class = AppointmentSerializer
+    
+    def get_object(self):
+        id = self.kwargs['pk']
+        appointment = Appointment.objects.get(pk=id)
+        return appointment
+    
+    
+    
+
+       
+    
+    
     
 
     

@@ -13,7 +13,10 @@ urlpatterns = [
     path('user/',views.SingleUserView.as_view(),name='singleUser'),
     path('patient/',views.GetUpdateDeletePatientProfileView.as_view()),
     path('doctor/',views.GetUpdateDeleteDoctorProfileView.as_view()),
+     path('appointment/', views.AppointmentView.as_view()),
     path('doctors/all/',views.GetAllDoctors.as_view()),
     path('token/refresh/', views.CookieTokenRefreshView.as_view(), name='token_refresh'),
-    path('user/<str:pk>/',views.ProfileDetailVeiw.as_view())  
+    path('user/<str:pk>/',views.ProfileDetailVeiw.as_view()),
+    path('appointment/<str:pk>/',views.AppointmentPutDetailVeiw.as_view()),
+    
 ]

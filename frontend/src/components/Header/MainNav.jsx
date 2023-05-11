@@ -55,7 +55,9 @@ function MainNav() {
              :
              <div className="flex items-center gap-2">
              <button className="h-[2rem] cursor-pointer w-[2rem] rounded-[50%] bg-primary relative flex flex-col items-center justify-center">
-               <span className="w-[.8rem] h-[.8rem] rounded-[50%] bg-red-500 absolute top-0 right-0 text-white text-xs flex flex-col justify-center items-center ">2</span>
+               {user.total_pending_appointment &&
+               <span className="w-[.8rem] h-[.8rem] rounded-[50%] bg-red-500 absolute top-0 right-0 text-white text-xs flex flex-col justify-center items-center ">{user.total_pending_appointment}</span>               
+               }
                <BsBellFill className='lg:h-[1.5rem] lg:w-[1.5rem]  fill-white' />
              </button>
              <div onClick={()=>setDropDown(!dropdown)} className="w-3rem cursor-pointer flex items-center border rounded-md border-primary relative">
@@ -67,7 +69,7 @@ function MainNav() {
                <div className="w-[10rem] h-fit  absolute top-[130%] right-1 rounded-md bg-secondary shadow-md border-primary border">
                <ul className="w-full p-2  font-semibold text-[.85rem] md:text-[1rem]">
                  <li className="w-full">
-                   <Link to={'/dashboard/overview'}  className="w-full p-2 group hover:bg-primary hover:text-white flex items-center gap-2 rounded-md"> <span> <FaUserAlt className="fill-primary group-hover:fill-white " /> </span>  <span>Profile</span> </Link>
+                   <Link to={'/dashboard/profile'}  className="w-full p-2 group hover:bg-primary hover:text-white flex items-center gap-2 rounded-md"> <span> <FaUserAlt className="fill-primary group-hover:fill-white " /> </span>  <span>Profile</span> </Link>
                  </li>
                  <li>
                  <Link   to={'/dashboard/overview'} className="w-full p-2 hover:bg-primary hover:text-white flex items-center gap-2 group rounded-md"> <span> <MdSpaceDashboard className="fill-primary group-hover:fill-white " /> </span>  <span>Dashboard</span> </Link>

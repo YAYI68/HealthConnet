@@ -1,7 +1,8 @@
+import django.db
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import User,Patient,Doctor
+from .models import User,Patient,Doctor,Appointment
 
 
 class UserSerializerToken(serializers.ModelSerializer):
@@ -66,7 +67,18 @@ class UserProfileSeriliazer(serializers.ModelSerializer):
         model=User
         fields=('id','image','role','email','firstname','lastname','phone_number','gender','state','country')  
         
-      
+    def to_representation(self,instance):
+        data = super().to_representation(instance)
+        user = instance
+        data['total_pending_appointment'] = user.total_appointments(status='PENDING')
+        data['total_cancelled_appointments'] = user.total_appointments(status='CANCELLED')
+        data['total_success_appointments'] = user.total_appointments(status='DONE')
+        return data
+       
+            
+            
+            
+        
              
 
     
@@ -140,7 +152,66 @@ class DoctorProfileSerializer(serializers.ModelSerializer):
         instance.save()
         return instance   
     
-         
+class ShortDoctorProfileSerializer(serializers.ModelSerializer):
+    uid = serializers.CharField(read_only=True,source='user.id')
+    image = serializers.ImageField(source='user.image')
+    fullname  = serializers.SerializerMethodField(read_only=True)
+    service = serializers.CharField(source='field')
+    
+    class Meta:
+        model=Doctor
+        fields=('uid','fullname','image','service')
+        
+    def get_fullname(self,obj):
+        firstname = obj.user.first_name
+        lastname = obj.user.last_name
+        return f'{firstname} {lastname}'
+        
+class ShortPatientProfileSerializer(serializers.ModelSerializer):
+    uid = serializers.CharField(read_only=True,source='user.id')
+    image = serializers.ImageField(source='user.image')
+    fullname  = serializers.SerializerMethodField(read_only=True)
+
+    class Meta:
+        model=Patient
+        fields=('uid','fullname', 'image')
+        
+    def get_fullname(self,obj):
+        firstname = obj.user.first_name
+        lastname = obj.user.last_name
+        return f'{firstname} {lastname}'
+ 
+    
+class AppointmentSerializer(serializers.ModelSerializer):
+    patient = serializers.SerializerMethodField(read_only=True)
+    doctor = serializers.SerializerMethodField(read_only=True)
+    class Meta:
+        model = Appointment
+        fields = ['id','patient','doctor','status','date','time']
+        
+    def get_patient(self,obj):
+        patient = obj.patient
+        serializer = ShortPatientProfileSerializer(patient,many=False)
+        return serializer.data
+    
+    def get_doctor(self,obj):
+       doctor = obj.doctor
+       serializer = ShortDoctorProfileSerializer(doctor,many=False)
+       return serializer.data
+    
+    
+        
+class PatientOverviewSerializer(serializers.Serializer):
+    upcoming = serializers.SerializerMethodField(read_only=True)
+    
+    class Meta:
+        models = User
+        fields=['upcoming']
+        
+    
+  
+        
+        
     
 
 # class PatientSerializer(serializers.ModelSerializer): 

@@ -73,6 +73,63 @@
         "documentation": {}
     },
     {
+        "label": "django.db",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db",
+        "description": "django.db",
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
@@ -792,6 +849,33 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0012_auto_20230510_1309",
+        "description": "backend.Healthconnect.hcb.migrations.0012_auto_20230510_1309",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0011_user_country'),\n    ]\n    operations = [\n        migrations.RemoveField(\n            model_name='appointment',\n            name='end_date',\n        ),\n        migrations.RemoveField(",
+        "detail": "backend.Healthconnect.hcb.migrations.0012_auto_20230510_1309",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0013_auto_20230510_1311",
+        "description": "backend.Healthconnect.hcb.migrations.0013_auto_20230510_1311",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0012_auto_20230510_1309'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='appointment',\n            name='doctor',\n            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='hcb.doctor'),\n        ),",
+        "detail": "backend.Healthconnect.hcb.migrations.0013_auto_20230510_1311",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0014_auto_20230510_1812",
+        "description": "backend.Healthconnect.hcb.migrations.0014_auto_20230510_1812",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0013_auto_20230510_1311'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='appointment',\n            name='doctor',\n            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='doctor_appointment', to='hcb.doctor'),\n        ),",
+        "detail": "backend.Healthconnect.hcb.migrations.0014_auto_20230510_1812",
+        "documentation": {}
+    },
+    {
         "label": "HcbConfig",
         "kind": 6,
         "importPath": "backend.Healthconnect.hcb.apps",
@@ -868,7 +952,7 @@
         "kind": 6,
         "importPath": "backend.Healthconnect.hcb.models",
         "description": "backend.Healthconnect.hcb.models",
-        "peekOfCode": "class Appointment(models.Model):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,\n                          primary_key=True, editable=False)\n    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)\n    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)\n    start_date = models.DateTimeField(auto_now=True)\n    end_date = models.DateTimeField()\n    def __str__(self) -> str:\n        return f'{self.id}'",
+        "peekOfCode": "class Appointment(models.Model):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,\n                          primary_key=True, editable=False)\n    doctor = models.ForeignKey(Doctor, on_delete=models.SET_NULL,null=True,related_name='doctor_appointment')\n    patient = models.ForeignKey(Patient, on_delete=models.SET_NULL,null=True,related_name='patient_appointment')\n    status = models.CharField(max_length=10,choices=AppointmentStatus, default='PENDING', null=True, blank=True)\n    date = models.CharField(max_length=20, blank=True,null=True)\n    time = models.CharField(max_length=10, blank=True,null=True)\n    def __str__(self) -> str:\n        return f'{self.id}'",
         "detail": "backend.Healthconnect.hcb.models",
         "documentation": {}
     },
@@ -896,6 +980,15 @@
         "importPath": "backend.Healthconnect.hcb.models",
         "description": "backend.Healthconnect.hcb.models",
         "peekOfCode": "Patient_MaritalStatus = (\n    ('SINGLE', 'SINGLE'),\n    ('MARRIED', 'MARRIED'),\n    ('DIVORCED', 'DIVORCED'),\n)\nclass Patient (models.Model):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,\n                          primary_key=True, editable=False)\n    user=models.OneToOneField(User, on_delete=models.CASCADE,related_name='patient')\n    blood_group=models.CharField(max_length=30,null=True,blank=True)",
+        "detail": "backend.Healthconnect.hcb.models",
+        "documentation": {}
+    },
+    {
+        "label": "AppointmentStatus",
+        "kind": 5,
+        "importPath": "backend.Healthconnect.hcb.models",
+        "description": "backend.Healthconnect.hcb.models",
+        "peekOfCode": "AppointmentStatus = (\n    ('PENDING', 'PENDING'),\n    ('DONE', 'DONE'),\n    ('CANCELLED', 'CANCELLED'),\n)\nclass Appointment(models.Model):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,\n                          primary_key=True, editable=False)\n    doctor = models.ForeignKey(Doctor, on_delete=models.SET_NULL,null=True,related_name='doctor_appointment')\n    patient = models.ForeignKey(Patient, on_delete=models.SET_NULL,null=True,related_name='patient_appointment')",
         "detail": "backend.Healthconnect.hcb.models",
         "documentation": {}
     },
@@ -940,7 +1033,7 @@
         "kind": 6,
         "importPath": "backend.Healthconnect.hcb.serializers",
         "description": "backend.Healthconnect.hcb.serializers",
-        "peekOfCode": "class UserProfileSeriliazer(serializers.ModelSerializer):\n    firstname  = serializers.CharField(source='first_name')\n    lastname = serializers.CharField(source='last_name')\n    class Meta:\n        model=User\n        fields=('id','image','role','email','firstname','lastname','phone_number','gender','state','country')  \nclass PatientProfileSerializer(serializers.ModelSerializer):\n    uid = serializers.CharField(read_only=True,source='user.id')\n    image = serializers.ImageField(source='user.image')\n    email = serializers.EmailField(read_only=True,source='user.email')",
+        "peekOfCode": "class UserProfileSeriliazer(serializers.ModelSerializer):\n    firstname  = serializers.CharField(source='first_name')\n    lastname = serializers.CharField(source='last_name')\n    class Meta:\n        model=User\n        fields=('id','image','role','email','firstname','lastname','phone_number','gender','state','country')  \n    def to_representation(self,instance):\n        data = super().to_representation(instance)\n        user = instance\n        data['total_pending_appointment'] = user.total_appointments(status='PENDING')",
         "detail": "backend.Healthconnect.hcb.serializers",
         "documentation": {}
     },
@@ -963,6 +1056,42 @@
         "documentation": {}
     },
     {
+        "label": "ShortDoctorProfileSerializer",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.serializers",
+        "description": "backend.Healthconnect.hcb.serializers",
+        "peekOfCode": "class ShortDoctorProfileSerializer(serializers.ModelSerializer):\n    uid = serializers.CharField(read_only=True,source='user.id')\n    image = serializers.ImageField(source='user.image')\n    fullname  = serializers.SerializerMethodField(read_only=True)\n    service = serializers.CharField(source='field')\n    class Meta:\n        model=Doctor\n        fields=('uid','fullname','image','service')\n    def get_fullname(self,obj):\n        firstname = obj.user.first_name",
+        "detail": "backend.Healthconnect.hcb.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "ShortPatientProfileSerializer",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.serializers",
+        "description": "backend.Healthconnect.hcb.serializers",
+        "peekOfCode": "class ShortPatientProfileSerializer(serializers.ModelSerializer):\n    uid = serializers.CharField(read_only=True,source='user.id')\n    image = serializers.ImageField(source='user.image')\n    fullname  = serializers.SerializerMethodField(read_only=True)\n    class Meta:\n        model=Patient\n        fields=('uid','fullname', 'image')\n    def get_fullname(self,obj):\n        firstname = obj.user.first_name\n        lastname = obj.user.last_name",
+        "detail": "backend.Healthconnect.hcb.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "AppointmentSerializer",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.serializers",
+        "description": "backend.Healthconnect.hcb.serializers",
+        "peekOfCode": "class AppointmentSerializer(serializers.ModelSerializer):\n    patient = serializers.SerializerMethodField(read_only=True)\n    doctor = serializers.SerializerMethodField(read_only=True)\n    class Meta:\n        model = Appointment\n        fields = ['id','patient','doctor','status','date','time']\n    def get_patient(self,obj):\n        patient = obj.patient\n        serializer = ShortPatientProfileSerializer(patient,many=False)\n        return serializer.data",
+        "detail": "backend.Healthconnect.hcb.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "PatientOverviewSerializer",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.serializers",
+        "description": "backend.Healthconnect.hcb.serializers",
+        "peekOfCode": "class PatientOverviewSerializer(serializers.Serializer):\n    upcoming = serializers.SerializerMethodField(read_only=True)\n    class Meta:\n        models = User\n        fields=['upcoming']\n# class PatientSerializer(serializers.ModelSerializer): \n#     class  Meta:\n#         model = Patient\n#         fields=('blood_group','age','weight','genotype','marital_status','medical_history')\n#     def update(self,instance,validated_data):",
+        "detail": "backend.Healthconnect.hcb.serializers",
+        "documentation": {}
+    },
+    {
         "label": "createProfile",
         "kind": 2,
         "importPath": "backend.Healthconnect.hcb.signals",
@@ -976,7 +1105,7 @@
         "kind": 5,
         "importPath": "backend.Healthconnect.hcb.urls",
         "description": "backend.Healthconnect.hcb.urls",
-        "peekOfCode": "urlpatterns = [\n    path('signup/',views.UserRegistrationView.as_view()),\n    path('login/',views.LoginView.as_view()),\n    path('logout/',views.logout),\n    # path('signin/',views.MyTokenObtainPairView.as_view()),\n    path('user/',views.SingleUserView.as_view(),name='singleUser'),\n    path('patient/',views.GetUpdateDeletePatientProfileView.as_view()),\n    path('doctor/',views.GetUpdateDeleteDoctorProfileView.as_view()),\n    path('doctors/all/',views.GetAllDoctors.as_view()),\n    path('token/refresh/', views.CookieTokenRefreshView.as_view(), name='token_refresh'),",
+        "peekOfCode": "urlpatterns = [\n    path('signup/',views.UserRegistrationView.as_view()),\n    path('login/',views.LoginView.as_view()),\n    path('logout/',views.logout),\n    # path('signin/',views.MyTokenObtainPairView.as_view()),\n    path('user/',views.SingleUserView.as_view(),name='singleUser'),\n    path('patient/',views.GetUpdateDeletePatientProfileView.as_view()),\n    path('doctor/',views.GetUpdateDeleteDoctorProfileView.as_view()),\n     path('appointment/', views.AppointmentView.as_view()),\n    path('doctors/all/',views.GetAllDoctors.as_view()),",
         "detail": "backend.Healthconnect.hcb.urls",
         "documentation": {}
     },
@@ -1076,6 +1205,24 @@
         "importPath": "backend.Healthconnect.hcb.views",
         "description": "backend.Healthconnect.hcb.views",
         "peekOfCode": "class ProfileDetailVeiw (generics.RetrieveAPIView):\n    permission_classes= [IsAuthenticated]\n    def get_object(self):\n        id = self.kwargs['pk']\n        user = User.objects.get(pk=id)\n        if user.role == 'PATIENT':\n            patient = user.patient\n            return patient\n        elif user.role == 'DOCTOR':\n            doctor = user.doctor",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "AppointmentView",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "class AppointmentView(generics.CreateAPIView):\n    serializer_class = AppointmentSerializer \n    def post(self, request):\n        user = request.user\n        patient = user.patient\n        doctor = Doctor.objects.get(user__id=request.data['doctor_id'])\n        if doctor is not None :\n            appointment = Appointment.objects.create(\n                patient=patient,\n                doctor=doctor,",
+        "detail": "backend.Healthconnect.hcb.views",
+        "documentation": {}
+    },
+    {
+        "label": "AppointmentPutDetailVeiw",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.views",
+        "description": "backend.Healthconnect.hcb.views",
+        "peekOfCode": "class AppointmentPutDetailVeiw(generics.UpdateAPIView,generics.RetrieveAPIView):\n    serializer_class = AppointmentSerializer\n    def get_object(self):\n        id = self.kwargs['pk']\n        appointment = Appointment.objects.get(pk=id)\n        return appointment",
         "detail": "backend.Healthconnect.hcb.views",
         "documentation": {}
     },
