@@ -21,7 +21,9 @@ from .serializers import (UserSignUpSerializer,MyTokenObtainPairSerializer,
                           PatientProfileSerializer,DoctorProfileSerializer,
                           UserProfileSeriliazer,
                           AppointmentSerializer,
-                          PatientOverviewSerializer
+                          PatientOverviewSerializer,
+                          DoctorOverviewSerializer,
+                          ReviewSerializer
                           )
 from rest_framework_simplejwt.views import (
     TokenRefreshView,
@@ -241,8 +243,27 @@ class ProfileDetailVeiw (generics.RetrieveAPIView):
         elif obj.user.role == 'DOCTOR':
             return DoctorProfileSerializer   
         
-class AppointmentView(generics.CreateAPIView):
+class AppointmentView(generics.CreateAPIView,generics.ListAPIView):
     serializer_class = AppointmentSerializer 
+    
+    def get_object(self):
+        user = self.request.user
+        if user.role == 'PATIENT':
+            return user.patient
+        elif user.role == 'DOCTOR':
+            return user.doctor
+    
+    def get_queryset(self):
+        status = self.request.query_params.get('status')
+        print('status', status)
+        obj = self.get_object()
+        if status != None:
+            queryset=obj.appointments(status=status)
+            return queryset
+        else:
+            queryset = obj.appointments()
+            return queryset
+    
     
     def post(self, request):
         user = request.user
@@ -273,7 +294,52 @@ class AppointmentOverviewView(generics.RetrieveAPIView):
     
     def get_object(self):
         user = self.request.user
-        return user
+        if user.role == 'PATIENT':
+            return user.patient
+        elif user.role == 'DOCTOR':
+            return user.doctor
+        
+    def get_serializer_class(self):
+           user = self.request.user
+           if user.role == 'PATIENT':
+               return PatientOverviewSerializer
+           elif user.role == 'DOCTOR':
+               return DoctorOverviewSerializer
+           
+class ReviewView(generics.ListAPIView,generics.CreateAPIView):
+    serializer_class = ReviewSerializer
+    def get_object(self):
+        user = self.request.user
+        if user.role == 'PATIENT':
+            return user.patient
+        elif user.role == 'DOCTOR':
+            return user.doctor
+    
+    def get_queryset(self):
+        obj = self.get_object()
+        queryset=obj.reviews
+        return queryset
+    
+    def post(self, request):
+        data = request.data
+        patient = self.get_object()
+        doctor = Doctor.objects.get(user__id=data['doctor_id'])
+        if doctor != None or (patient.id != doctor.id) :
+            print('doctor',doctor)
+            return Response('Good job')
+        # if doctor is not None :
+        #     appointment = Appointment.objects.create(
+        #         patient=patient,
+        #         doctor=doctor,
+        #         content=request,
+        #         date=request.data.get('date',None),
+        #     )
+        #     serializer = self.get_serializer(appointment,many=False)
+        #     return Response(serializer.data,status=status.HTTP_201_CREATED)
+        # return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+        return Response('Badddddddd')
+    
+    
     
 
        

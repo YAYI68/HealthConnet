@@ -2,7 +2,7 @@ import django.db
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import User,Patient,Doctor,Appointment
+from .models import User,Patient,Doctor,Appointment,Review
 
 
 class UserSerializerToken(serializers.ModelSerializer):
@@ -79,7 +79,14 @@ class UserProfileSeriliazer(serializers.ModelSerializer):
             
             
             
-        
+class ReviewSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(read_only=True,source='patient.user.fullname')
+    image = serializers.ImageField(read_only=True,source='patient.user.image')
+    
+    
+    class Meta:
+        model = Review
+        fields = ('id','content','name','image','date')       
              
 
     
@@ -128,10 +135,17 @@ class DoctorProfileSerializer(serializers.ModelSerializer):
     gender = serializers.CharField(source='user.gender')
     state = serializers.CharField(source='user.state') 
     country = serializers.CharField(source='user.country')  
+    reviews = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model=Doctor
-        fields=('uid','image','email','firstname','lastname','phonenumber','gender','state','country','hospital','experience','field','bio','qualification','location')
+        fields=('uid','image','email','firstname','lastname','phonenumber','gender','state','country','hospital','experience','field','bio','qualification','location','reviews')
 
+    def get_reviews(self,obj):
+        reviews = obj.reviews
+        serializer = ReviewSerializer(reviews,many=True)
+        return serializer.data
+        
+    
     def update(self,instance,validated_data):
         user_data = validated_data.get('user',None)
         user = instance.user
@@ -212,25 +226,24 @@ class PatientOverviewSerializer(serializers.Serializer):
         fields=['appointment']
         
     def get_appointment(self,obj):
-        patient = obj.patient
+        patient = obj
         appointments = Appointment.objects.filter(patient=patient)
         serializer = AppointmentSerializer(appointments,many=True)
         return serializer.data
     
     def to_representation(self,instance):
         patient = instance
-        print('patient',patient)
         data = super().to_representation(instance)
-        data['total_booking'] = patient.total_appointments(status=None)
-        data['total_success'] = patient.total_appointments(status='DONE')
-        data['total_cancelled'] = patient.total_appointments(status='CANCELLED')
+        data['total_booking'] = patient.appointments().count()
+        data['total_success'] = patient.appointments(status='PENDING').count()
+        data['total_cancelled'] = patient.appointments(status='CANCELLED').count()
         return data
     
 class DoctorOverviewSerializer(serializers.Serializer):
     appointment = serializers.SerializerMethodField(read_only=True)
     
     class Meta:
-        models = User
+        models = Doctor
         fields=['appointment']
         
     def get_appointment(self,obj):
@@ -242,9 +255,9 @@ class DoctorOverviewSerializer(serializers.Serializer):
     def to_representation(self,instance):
         doctor = instance
         data = super().to_representation(instance)
-        data['total_booking'] = doctor.total_appointments(status=None)
-        data['total_success'] = doctor.total_appointments(status='DONE')
-        data['total_cancelled'] = doctor.total_appointments(status='CANCELLED')
+        data['total_booking'] = doctor.appointments().count()
+        data['total_success'] = doctor.appointments(status='DONE').count()
+        data['total_cancelled'] = doctor.appointments(status='CANCELLED').count()
         return data
     
 

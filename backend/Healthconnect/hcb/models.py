@@ -47,22 +47,11 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
     objects = UserManager()
-     
-    def total_appointments(self,status):
-        if status is not None:  
-            if self.role == 'PATIENT':
-                patient = self.patient
-                appointment = patient.patient_appointment.filter(status=status)
-                total = appointment.count()
-                return total
-            elif self.role == 'DOCTOR':
-                doctor = self.doctor
-                appointment = doctor.doctor_appointment
-                total = appointment.count()
-                return total
-            
-            
-
+    
+    @property
+    def fullname(self):
+        return f'{self.first_name} {self.last_name}'
+              
     def __str__(self):
         return self.email
     def has_perm(self, perm: str, obj: None = None) -> bool:
@@ -88,15 +77,14 @@ class Patient (models.Model):
     marital_status=models.CharField(max_length=20, choices=Patient_MaritalStatus, null=True, blank=True)
     medical_history=models.TextField(blank=True, null=True)
     
-    def total_appointments(self,status=None):
-        if status is not None:  
+    def appointments(self,status=None):
+        if status != None:  
             appointment = self.patient_appointment.filter(status=status)
-            total = appointment.count()
-            return total
+            return appointment
         else:
             appointment = self.patient_appointment.all()
-            total = appointment.count()
-            return total
+            return appointment
+        
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'
     
@@ -119,15 +107,19 @@ class Doctor(models.Model):
     location = models.CharField(max_length=50, null=True,blank=True)
     
     
-    def total_appointments(self,status=None):
-        if status is not None:  
-            appointment = self.doctor_appointment.filter(status=status)
-            total = appointment.count()
-            return total
+    def appointments(self,status=None):
+        if status != None:  
+            appointment = self.doctor_appointment.filter(status=status).order_by('date')
+            return appointment
         else:
-            appointment = self.doctor_appointment.all()
-            total = appointment.count()
-            return total
+            appointment = self.doctor_appointment.all().order_by('date')
+            return appointment
+        
+    @property    
+    def reviews(self):
+        reviews=self.doctor_reviews.all()
+        return reviews
+        
     
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'
@@ -151,5 +143,15 @@ class Appointment(models.Model):
     
     def __str__(self) -> str:
         return f'{self.id}'
+    
+class Review(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, unique=True,primary_key=True, editable=False)
+    doctor = models.ForeignKey(Doctor, on_delete=models.SET_NULL,null=True,related_name='doctor_reviews')
+    patient = models.ForeignKey(Patient, on_delete=models.SET_NULL,null=True,related_name='patient_reviews')
+    content = models.TextField(blank=True, null=True)
+    date = models.DateField(auto_now=True)
+    
+    def __str__(self):
+        return f'{self.date} {self.doctor.user.first_name}'
     
     
