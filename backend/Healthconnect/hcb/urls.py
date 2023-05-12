@@ -17,6 +17,7 @@ urlpatterns = [
     path('doctors/all/',views.GetAllDoctors.as_view()),
     path('token/refresh/', views.CookieTokenRefreshView.as_view(), name='token_refresh'),
     path('user/<str:pk>/',views.ProfileDetailVeiw.as_view()),
+    path('appointment/overview/',views.AppointmentOverviewView.as_view()),
     path('appointment/<str:pk>/',views.AppointmentPutDetailVeiw.as_view()),
     
 ]

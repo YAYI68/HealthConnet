@@ -49,16 +49,19 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
      
     def total_appointments(self,status):
-        if self.role == 'PATIENT':
-            patient = self.patient
-            appointment = patient.patient_appointment.filter(status=status)
-            total = appointment.count()
-            return total
-        elif self.role == 'DOCTOR':
-            doctor = self.doctor
-            appointment = doctor.doctor_appointment
-            total = appointment.count()
-            return total
+        if status is not None:  
+            if self.role == 'PATIENT':
+                patient = self.patient
+                appointment = patient.patient_appointment.filter(status=status)
+                total = appointment.count()
+                return total
+            elif self.role == 'DOCTOR':
+                doctor = self.doctor
+                appointment = doctor.doctor_appointment
+                total = appointment.count()
+                return total
+            
+            
 
     def __str__(self):
         return self.email
@@ -84,6 +87,16 @@ class Patient (models.Model):
     age=models.IntegerField(null=True, blank=True)
     marital_status=models.CharField(max_length=20, choices=Patient_MaritalStatus, null=True, blank=True)
     medical_history=models.TextField(blank=True, null=True)
+    
+    def total_appointments(self,status=None):
+        if status is not None:  
+            appointment = self.patient_appointment.filter(status=status)
+            total = appointment.count()
+            return total
+        else:
+            appointment = self.patient_appointment.all()
+            total = appointment.count()
+            return total
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'
     
@@ -105,6 +118,16 @@ class Doctor(models.Model):
     qualification = models.CharField(max_length=50, null=True,blank=True)
     location = models.CharField(max_length=50, null=True,blank=True)
     
+    
+    def total_appointments(self,status=None):
+        if status is not None:  
+            appointment = self.doctor_appointment.filter(status=status)
+            total = appointment.count()
+            return total
+        else:
+            appointment = self.doctor_appointment.all()
+            total = appointment.count()
+            return total
     
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'

@@ -70,9 +70,10 @@ class UserProfileSeriliazer(serializers.ModelSerializer):
     def to_representation(self,instance):
         data = super().to_representation(instance)
         user = instance
-        data['total_pending_appointment'] = user.total_appointments(status='PENDING')
-        data['total_cancelled_appointments'] = user.total_appointments(status='CANCELLED')
-        data['total_success_appointments'] = user.total_appointments(status='DONE')
+        if user.role == 'PATIENT':
+            data['total_pending_appointment'] = user.patient.total_appointments(status='PENDING')
+        elif user.role=='DOCTOR':
+            data['total_pending_appointment'] = user.doctor.total_appointments(status='PENDING')
         return data
        
             
@@ -198,21 +199,61 @@ class AppointmentSerializer(serializers.ModelSerializer):
        doctor = obj.doctor
        serializer = ShortDoctorProfileSerializer(doctor,many=False)
        return serializer.data
+   
+        
     
     
         
 class PatientOverviewSerializer(serializers.Serializer):
-    upcoming = serializers.SerializerMethodField(read_only=True)
+    appointment = serializers.SerializerMethodField(read_only=True)
+    
+    class Meta:
+        models = Patient
+        fields=['appointment']
+        
+    def get_appointment(self,obj):
+        patient = obj.patient
+        appointments = Appointment.objects.filter(patient=patient)
+        serializer = AppointmentSerializer(appointments,many=True)
+        return serializer.data
+    
+    def to_representation(self,instance):
+        patient = instance
+        print('patient',patient)
+        data = super().to_representation(instance)
+        data['total_booking'] = patient.total_appointments(status=None)
+        data['total_success'] = patient.total_appointments(status='DONE')
+        data['total_cancelled'] = patient.total_appointments(status='CANCELLED')
+        return data
+    
+class DoctorOverviewSerializer(serializers.Serializer):
+    appointment = serializers.SerializerMethodField(read_only=True)
     
     class Meta:
         models = User
-        fields=['upcoming']
+        fields=['appointment']
+        
+    def get_appointment(self,obj):
+        doctor = obj.doctor
+        appointments = Appointment.objects.filter(doctor=doctor)
+        serializer = AppointmentSerializer(appointments,many=True)
+        return serializer.data
+    
+    def to_representation(self,instance):
+        doctor = instance
+        data = super().to_representation(instance)
+        data['total_booking'] = doctor.total_appointments(status=None)
+        data['total_success'] = doctor.total_appointments(status='DONE')
+        data['total_cancelled'] = doctor.total_appointments(status='CANCELLED')
+        return data
+    
+
         
     
   
         
         
-    
+     
 
 # class PatientSerializer(serializers.ModelSerializer): 
 #     class  Meta:
@@ -232,4 +273,4 @@ class PatientOverviewSerializer(serializers.Serializer):
 #         for k, v in serializer.items():
 #             data[k] = v
 #         return data        
-  
+ 

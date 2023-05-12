@@ -20,7 +20,8 @@ from .models import User,Doctor,Patient,Appointment
 from .serializers import (UserSignUpSerializer,MyTokenObtainPairSerializer,
                           PatientProfileSerializer,DoctorProfileSerializer,
                           UserProfileSeriliazer,
-                          AppointmentSerializer
+                          AppointmentSerializer,
+                          PatientOverviewSerializer
                           )
 from rest_framework_simplejwt.views import (
     TokenRefreshView,
@@ -267,7 +268,12 @@ class AppointmentPutDetailVeiw(generics.UpdateAPIView,generics.RetrieveAPIView):
         appointment = Appointment.objects.get(pk=id)
         return appointment
     
+class AppointmentOverviewView(generics.RetrieveAPIView):
+    serializer_class = PatientOverviewSerializer
     
+    def get_object(self):
+        user = self.request.user
+        return user
     
 
        
