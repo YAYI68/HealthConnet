@@ -2,7 +2,7 @@ import django.db
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import User,Patient,Doctor,Appointment,Review
+from .models import User,Patient,Doctor,Appointment,Review,Blog
 
 
 class UserSerializerToken(serializers.ModelSerializer):
@@ -241,6 +241,7 @@ class PatientOverviewSerializer(serializers.Serializer):
     
 class DoctorOverviewSerializer(serializers.Serializer):
     appointment = serializers.SerializerMethodField(read_only=True)
+    slug = serializers
     
     class Meta:
         models = Doctor
@@ -261,29 +262,19 @@ class DoctorOverviewSerializer(serializers.Serializer):
         return data
     
 
+class BlogSerializer(serializers.ModelSerializer):
+    excerpt = serializers.SerializerMethodField(read_only=True)
+    
+    class Meta:
+        model = Blog
+        fields = ('id','author','title','excerpt','content','created_at','updated_at')
         
+    def get_excerpt(self,obj):
+        content = obj.content
+        word = content[:100]
+        return word
     
   
         
-        
-     
-
-# class PatientSerializer(serializers.ModelSerializer): 
-#     class  Meta:
-#         model = Patient
-#         fields=('blood_group','age','weight','genotype','marital_status','medical_history')
-        
-#     def update(self,instance,validated_data):
-#         print('validated_data', validated_data)
-#         return instance
     
-#     def to_representation(self, instance):
-#         print('att',instance)
-#         data = super().to_representation(instance)
-#         user = self.context['user']
-#         serializer = UserProfileSeriliazer(user).data
-#         print(serializer)
-#         for k, v in serializer.items():
-#             data[k] = v
-#         return data        
  

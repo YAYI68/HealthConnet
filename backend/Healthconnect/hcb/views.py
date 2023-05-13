@@ -16,14 +16,15 @@ from django.middleware import csrf
 from django.conf import settings
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework_simplejwt import tokens, views as jwt_views, serializers as jwt_serializers, exceptions as jwt_exceptions
-from .models import User,Doctor,Patient,Appointment
+from .models import User,Doctor,Patient,Appointment,Review,Blog
 from .serializers import (UserSignUpSerializer,MyTokenObtainPairSerializer,
                           PatientProfileSerializer,DoctorProfileSerializer,
                           UserProfileSeriliazer,
                           AppointmentSerializer,
                           PatientOverviewSerializer,
                           DoctorOverviewSerializer,
-                          ReviewSerializer
+                          ReviewSerializer,
+                          BlogSerializer,
                           )
 from rest_framework_simplejwt.views import (
     TokenRefreshView,
@@ -244,7 +245,8 @@ class ProfileDetailVeiw (generics.RetrieveAPIView):
             return DoctorProfileSerializer   
         
 class AppointmentView(generics.CreateAPIView,generics.ListAPIView):
-    serializer_class = AppointmentSerializer 
+    serializer_class = AppointmentSerializer
+    permission_classes= [IsAuthenticated] 
     
     def get_object(self):
         user = self.request.user
@@ -283,6 +285,7 @@ class AppointmentView(generics.CreateAPIView,generics.ListAPIView):
         
 class AppointmentPutDetailVeiw(generics.UpdateAPIView,generics.RetrieveAPIView):
     serializer_class = AppointmentSerializer
+    permission_classes= [IsAuthenticated]
     
     def get_object(self):
         id = self.kwargs['pk']
@@ -308,6 +311,8 @@ class AppointmentOverviewView(generics.RetrieveAPIView):
            
 class ReviewView(generics.ListAPIView,generics.CreateAPIView):
     serializer_class = ReviewSerializer
+    permission_classes= [IsAuthenticated]
+    
     def get_object(self):
         user = self.request.user
         if user.role == 'PATIENT':
@@ -326,22 +331,46 @@ class ReviewView(generics.ListAPIView,generics.CreateAPIView):
         doctor = Doctor.objects.get(user__id=data['doctor_id'])
         if doctor != None or (patient.id != doctor.id) :
             print('doctor',doctor)
-            return Response('Good job')
-        # if doctor is not None :
-        #     appointment = Appointment.objects.create(
-        #         patient=patient,
-        #         doctor=doctor,
-        #         content=request,
-        #         date=request.data.get('date',None),
-        #     )
-        #     serializer = self.get_serializer(appointment,many=False)
-        #     return Response(serializer.data,status=status.HTTP_201_CREATED)
-        # return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-        return Response('Badddddddd')
+            review = Review.objects.create(
+                 patient=patient,
+                 doctor=doctor,
+                 content=data['content'],
+             )
+            serializer = ReviewSerializer(review,many=False)
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+class BlogView(generics.CreateAPIView,generics.ListAPIView):
+    serializer_class = BlogSerializer
+    queryset = Blog.objects.all()
+    
+    def post(self, request):
+        user = request.user
+        print('superuser',user.is_superuser)
+        
+        if not user.is_superuser: 
+            raise rest_exceptions.PermissionDenied(
+            'UnAuthorized User '
+            )
+        
+        data = request.data
+        blog=Blog.objects.create(
+            author=user,
+            title=data['title'],
+            content=data['content'],
+        )
+        serializer = BlogSerializer(blog,many=False)
+        return Response(serializer.data,status=status.HTTP_201_CREATED)
     
     
     
-
+class BlogDetailView(generics.RetrieveAPIView,generics.DestroyAPIView,generics.UpdateAPIView):
+    serializer_class = BlogSerializer
+    queryset = Blog.objects.all()
+    
+    # def get_object(self):
+    #     id=self.kwargs['id']
+    #     blog = 
        
     
     

@@ -155,3 +155,15 @@ class Review(models.Model):
         return f'{self.date} {self.doctor.user.first_name}'
     
     
+class Blog(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, unique=True,primary_key=True, editable=False)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=150)
+    content = models.TextField(blank=True, null=True)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+    
+    def __str__(self):
+        return f'{self.title}'
+    
+    
