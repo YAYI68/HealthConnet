@@ -36,7 +36,7 @@ function MainNav() {
               <Link to={'/'} className="hover:text-primary">About</Link>
             </li>
             <li>
-              <Link to={'/'} className="hover:text-primary">Blog</Link>
+              <Link to={'/blog'} className="hover:text-primary">Blog</Link>
             </li>
             <li>
               <Link  to={'/'} className="hover:text-primary">Contact</Link>

@@ -158,6 +158,7 @@ class Review(models.Model):
 class Blog(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True,primary_key=True, editable=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='blog', null=True,blank=True,default='default.jpg')
     title = models.CharField(max_length=150)
     content = models.TextField(blank=True, null=True)
     created_at = models.DateField(auto_now_add=True)

@@ -11,7 +11,9 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { MdSettings, MdWorkHistory } from "react-icons/md";
 import { BsBellFill, BsFillCalendarCheckFill, BsFillCalendarXFill } from "react-icons/bs";
 import { HiCurrencyDollar } from "react-icons/hi";
-
+import articleImg1 from '../assets/images/EXercisess.webp';
+import articleImg2 from '../assets/images/mentalHealth.jpg';
+import articleImg3 from '../assets/images/medications.jpg';
 
 
 export const successHistory = [
@@ -260,3 +262,30 @@ export const workHours = ['9:00 AM', '9:15 AM', '9:30 AM', '9:45 AM',
                           '4:00 PM', '4:15 PM', '4:30 PM', '4:45 PM',
                           '5:00 PM', 
                         ]
+
+
+export const blogPosts = [
+    {
+      id: 1,
+      title:
+        'The Benefits of Regular Exercise: How a Healthy Lifestyle Can Improve Your Health',
+      date: '2023-02-10',
+      image: articleImg1,
+      body: 'Regular exercise is a crucial component of a healthy lifestyle, and has been shown to have numerous benefits for both physical and mental health.',
+    },
+    {
+      id: 2,
+      title:
+        'Mental Health and Wellbeing: Tips for Managing Stress, Anxiety, and Depression',
+      date: '2023-03-28',
+      image: articleImg2,
+      body: 'Mental health and wellbeing are crucial components of overall health and happiness. Unfortunately, many people struggle with stress, anxiety, and depression.',
+    },
+    {
+      id: 3,
+      title: 'Understanding Your Medications: Tips for Safe and Effective Use',
+      date: '2023-04-03',
+      image: articleImg3,
+      body: 'Medications are an important tool in managing many health conditions, but they can also be complex and confusing.',
+    },
+   ]

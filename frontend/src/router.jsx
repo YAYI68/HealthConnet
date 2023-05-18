@@ -14,6 +14,7 @@ import ProtectedRoute from "./components/RouteGuard/ProtectedRoute";
 import DashboardLayout from "./components/Layout/DashboardLayout";
 import EditProfile from "./pages/EditProfile";
 import Profile from "./pages/Profile";
+import BlogList from "./pages/BlogList";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +29,10 @@ export const router = createBrowserRouter([
             path: "login",
             element: <Register />,
           },
-        
+          {
+            path:'blog',
+            element: <BlogList />,
+          },
           {
             path: "sign-up",
             element: <Register />,

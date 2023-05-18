@@ -263,11 +263,10 @@ class DoctorOverviewSerializer(serializers.Serializer):
     
 
 class BlogSerializer(serializers.ModelSerializer):
-    excerpt = serializers.SerializerMethodField(read_only=True)
-    
+    excerpt = serializers.SerializerMethodField(read_only=True)   
     class Meta:
         model = Blog
-        fields = ('id','author','title','excerpt','content','created_at','updated_at')
+        fields = ('id','author','image','title','excerpt','content','created_at','updated_at')
         
     def get_excerpt(self,obj):
         content = obj.content
