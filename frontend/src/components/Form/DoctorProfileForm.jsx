@@ -48,11 +48,7 @@ function DoctorProfileForm() {
           });}
       },[imgFile])
 
-     console.log( 'type', typeof imgFile)
-     console.log({preview})
-
-     console.log({values})
-
+    
      const handleOnChange = (event) =>{
         setValues((prev)=>({...prev,[event.target.name]:event.target.value}))
      }
@@ -63,7 +59,6 @@ function DoctorProfileForm() {
         console.log({imgFile})
         const inputData = {...values,image:imgFile}
         const newData = filteredInput(inputData)
-         console.log({newData})
          await updateData(newData)
          mutate()
     }

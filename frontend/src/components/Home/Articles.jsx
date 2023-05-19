@@ -1,10 +1,15 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Blog } from '../Blog';
 import { blogPosts } from '../../data';
+import { axiosInstance } from '../../utils/axios';
+import useDataFetcher from '../../hooks/useDataFetcher';
 
 
-const Articles = () => {
-  
+
+
+const Articles = ({blogs}) => {
+    
+
   return (
     <Fragment>
       <section
@@ -19,7 +24,7 @@ const Articles = () => {
           Latest news & articles
         </h3>
         <div className="flex flex-col lg:flex-row gap-7">
-          {blogPosts.map((article) => (
+          {blogs.map((article) => (
             <Blog article={article} key={article.id} />
           ))}
         </div>

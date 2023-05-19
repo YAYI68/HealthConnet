@@ -1,10 +1,13 @@
+
 import React from 'react'
 import {CgArrowRight} from "react-icons/cg";
+import { Link } from 'react-router-dom';
 
 
 function Blog({article}) {
+
   return (  
-            <div className="flex flex-col w-full gap-5 rounded-2xl overflow-hidden shadow">
+            <div className="flex flex-col w-full lg:w-[30%] gap-5 rounded-2xl overflow-hidden shadow">
               <div className="w-full min-h-[15rem] h-[15rem]">
                 <img
                   src={article.image}
@@ -18,9 +21,9 @@ function Blog({article}) {
                 </div>
                 <div className="font-jost font-[900]">{article.title}</div>
                 <div className=" text-gray-600 font-inter">{article.body}</div>
-                <a href="#" className=" text-primary font-bold mt-auto w-fit flex items-center">
+                <Link to={`/blog/${article.id}`} className=" text-primary font-bold mt-auto w-fit flex items-center">
                   Read more <span className='ml-2'><CgArrowRight className='text-primary text-[1.5rem]'/></span>
-                </a>
+                </Link>
               </div>
             </div>
   )

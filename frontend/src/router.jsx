@@ -15,6 +15,7 @@ import DashboardLayout from "./components/Layout/DashboardLayout";
 import EditProfile from "./pages/EditProfile";
 import Profile from "./pages/Profile";
 import BlogList from "./pages/BlogList";
+import BlogDetail from "./pages/BlogDetail";
 
 export const router = createBrowserRouter([
   {
@@ -31,7 +32,12 @@ export const router = createBrowserRouter([
           },
           {
             path:'blog',
-            element: <BlogList />,
+            children:[
+              {path:'',element:<BlogList />,},
+              {
+                path:':id',element:<BlogDetail />,
+              }
+            ]
           },
           {
             path: "sign-up",

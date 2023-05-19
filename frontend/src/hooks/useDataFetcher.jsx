@@ -1,14 +1,14 @@
-import React from 'react'
-import useAxiosPrivate from './useAxiosPrivate'
-import useSWR from 'swr'
 
-function useDataFetcher(key,url) {
-    const axiosPrivate = useAxiosPrivate()
+
+import useSWR from 'swr'
+import { axiosInstance } from '../utils/axios'
+
+function useDataFetcher(key,url,options) {
     const  fetcher = async()=>{
-      const {data} = await axiosPrivate.get(`/${url}/`)
+      const {data} = await axiosInstance.get(`/${url}`)
       return data
     }
-    const data = useSWR(`${key}`, fetcher)
+    const data = useSWR(`${key}`, fetcher,options)
   return data
 }
 

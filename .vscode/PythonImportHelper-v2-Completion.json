@@ -354,6 +354,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -460,6 +476,14 @@
         "documentation": {}
     },
     {
+        "label": "permissions",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
         "label": "serializers",
         "importPath": "rest_framework",
         "description": "rest_framework",
@@ -537,6 +561,14 @@
         "description": "django.contrib.auth.models",
         "isExtraImport": true,
         "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "PageNumberPagination",
+        "importPath": "rest_framework.pagination",
+        "description": "rest_framework.pagination",
+        "isExtraImport": true,
+        "detail": "rest_framework.pagination",
         "documentation": {}
     },
     {
@@ -951,6 +983,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.migrations.0018_blog_image",
+        "description": "backend.Healthconnect.hcb.migrations.0018_blog_image",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('hcb', '0017_blog'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='blog',\n            name='image',\n            field=models.ImageField(blank=True, default='default.jpg', null=True, upload_to='blog'),\n        ),",
+        "detail": "backend.Healthconnect.hcb.migrations.0018_blog_image",
+        "documentation": {}
+    },
+    {
         "label": "HcbConfig",
         "kind": 6,
         "importPath": "backend.Healthconnect.hcb.apps",
@@ -1045,7 +1086,7 @@
         "kind": 6,
         "importPath": "backend.Healthconnect.hcb.models",
         "description": "backend.Healthconnect.hcb.models",
-        "peekOfCode": "class Blog(models.Model):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,primary_key=True, editable=False)\n    author = models.ForeignKey(User, on_delete=models.CASCADE)\n    title = models.CharField(max_length=150)\n    content = models.TextField(blank=True, null=True)\n    created_at = models.DateField(auto_now_add=True)\n    updated_at = models.DateField(auto_now=True)\n    def __str__(self):\n        return f'{self.title}'",
+        "peekOfCode": "class Blog(models.Model):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,primary_key=True, editable=False)\n    author = models.ForeignKey(User, on_delete=models.CASCADE)\n    image = models.ImageField(upload_to='blog', null=True,blank=True,default='default.jpg')\n    title = models.CharField(max_length=150)\n    content = models.TextField(blank=True, null=True)\n    created_at = models.DateField(auto_now_add=True)\n    updated_at = models.DateField(auto_now=True)\n    def __str__(self):\n        return f'{self.title}'",
         "detail": "backend.Healthconnect.hcb.models",
         "documentation": {}
     },
@@ -1083,6 +1124,24 @@
         "description": "backend.Healthconnect.hcb.models",
         "peekOfCode": "AppointmentStatus = (\n    ('PENDING', 'PENDING'),\n    ('DONE', 'DONE'),\n    ('CANCELLED', 'CANCELLED'),\n)\nclass Appointment(models.Model):\n    id = models.UUIDField(default=uuid.uuid4, unique=True,\n                          primary_key=True, editable=False)\n    doctor = models.ForeignKey(Doctor, on_delete=models.SET_NULL,null=True,related_name='doctor_appointment')\n    patient = models.ForeignKey(Patient, on_delete=models.SET_NULL,null=True,related_name='patient_appointment')",
         "detail": "backend.Healthconnect.hcb.models",
+        "documentation": {}
+    },
+    {
+        "label": "BlogPagination",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.pagination",
+        "description": "backend.Healthconnect.hcb.pagination",
+        "peekOfCode": "class BlogPagination(PageNumberPagination):\n    page_size = 9\n    page_size_query_param = 'page_size'\n    max_page_size = 1000",
+        "detail": "backend.Healthconnect.hcb.pagination",
+        "documentation": {}
+    },
+    {
+        "label": "IsAdminOrReadOnly",
+        "kind": 6,
+        "importPath": "backend.Healthconnect.hcb.permissions",
+        "description": "backend.Healthconnect.hcb.permissions",
+        "peekOfCode": "class IsAdminOrReadOnly(permissions.BasePermission):\n    def has_permission(self, request, view):\n        if request.method in permissions.SAFE_METHODS:\n            return True\n        return request.user.is_superuser",
+        "detail": "backend.Healthconnect.hcb.permissions",
         "documentation": {}
     },
     {
@@ -1207,7 +1266,7 @@
         "kind": 6,
         "importPath": "backend.Healthconnect.hcb.serializers",
         "description": "backend.Healthconnect.hcb.serializers",
-        "peekOfCode": "class BlogSerializer(serializers.ModelSerializer):\n    excerpt = serializers.SerializerMethodField(read_only=True)\n    class Meta:\n        model = Blog\n        fields = ('id','author','title','excerpt','content','created_at','updated_at')\n    def get_excerpt(self,obj):\n        content = obj.content\n        word = content[:100]\n        return word",
+        "peekOfCode": "class BlogSerializer(serializers.ModelSerializer):\n    excerpt = serializers.SerializerMethodField(read_only=True)\n    date  = serializers.CharField(read_only=True,source='created_at')\n    class Meta:\n        model = Blog\n        fields = ('id','author','image','title','excerpt','content','date','updated_at')\n    def get_excerpt(self,obj):\n        content = obj.content\n        word = content[:100]\n        return word",
         "detail": "backend.Healthconnect.hcb.serializers",
         "documentation": {}
     },
@@ -1369,7 +1428,7 @@
         "kind": 6,
         "importPath": "backend.Healthconnect.hcb.views",
         "description": "backend.Healthconnect.hcb.views",
-        "peekOfCode": "class BlogView(generics.CreateAPIView,generics.ListAPIView):\n    serializer_class = BlogSerializer\n    queryset = Blog.objects.all()\n    def post(self, request):\n        user = request.user\n        print('superuser',user.is_superuser)\n        if not user.is_superuser: \n            raise rest_exceptions.PermissionDenied(\n            'UnAuthorized User '\n            )",
+        "peekOfCode": "class BlogView(generics.CreateAPIView,generics.ListAPIView):\n    permission_classes = [IsAdminOrReadOnly]\n    serializer_class = BlogSerializer\n    queryset = Blog.objects.all()\n    pagination_class = BlogPagination\n    def post(self, request):\n        user = request.user\n        if not user.is_superuser: \n            raise rest_exceptions.PermissionDenied(\n            'UnAuthorized User '",
         "detail": "backend.Healthconnect.hcb.views",
         "documentation": {}
     },
@@ -1378,7 +1437,7 @@
         "kind": 6,
         "importPath": "backend.Healthconnect.hcb.views",
         "description": "backend.Healthconnect.hcb.views",
-        "peekOfCode": "class BlogDetailView(generics.RetrieveAPIView,generics.DestroyAPIView,generics.UpdateAPIView):\n    serializer_class = BlogSerializer\n    queryset = Blog.objects.all()\n    # def get_object(self):\n    #     id=self.kwargs['id']\n    #     blog =",
+        "peekOfCode": "class BlogDetailView(generics.RetrieveAPIView,generics.DestroyAPIView,generics.UpdateAPIView):\n    permission_classes = [IsAdminOrReadOnly]\n    serializer_class = BlogSerializer\n    queryset = Blog.objects.all()",
         "detail": "backend.Healthconnect.hcb.views",
         "documentation": {}
     },

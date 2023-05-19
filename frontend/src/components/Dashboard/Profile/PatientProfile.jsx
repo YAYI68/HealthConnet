@@ -2,13 +2,13 @@ import React from 'react';
 import { FaPen } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import UserImg from '../../../assets/images/default.png';
-import useDataFetcher from '../../../hooks/useDataFetcher';
+import useSecureDataFetcher from '../../../hooks/useSecureDataFetcher';
 
 const API_URL = 'patient'
 const DATA_KEY = 'patientProfile';
 
 function PatientProfile() {
-    const { data:patient, error, isLoading } =  useDataFetcher(DATA_KEY,API_URL)
+    const { data:patient, error, isLoading } =  useSecureDataFetcher(DATA_KEY,API_URL)
     console.log({patient})
     if(isLoading){
         return <h1>Loading.....</h1>

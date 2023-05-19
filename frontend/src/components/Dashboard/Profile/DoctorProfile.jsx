@@ -2,15 +2,14 @@ import React from 'react'
 import { FaPen } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import UserImg from '../../../assets/images/default.png';
-import axios from 'axios';
-import useDataFetcher from '../../../hooks/useDataFetcher';
-import { BASE_URL } from '../../../utils/constant';
+
+import useSecureDataFetcher from '../../../hooks/useSecureDataFetcher';
 
 const API_URL = 'doctor'
 const DATA_KEY = 'doctorProfile';
 
 function DoctorProfile() {
-    const { data:doctor, error, isLoading } =  useDataFetcher(DATA_KEY,API_URL)
+    const { data:doctor, error, isLoading } =  useSecureDataFetcher(DATA_KEY,API_URL)
     if(isLoading){
         return <h1>Loading.....</h1>
     }

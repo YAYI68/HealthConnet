@@ -373,7 +373,7 @@ class BlogDetailView(generics.RetrieveAPIView,generics.DestroyAPIView,generics.U
     serializer_class = BlogSerializer
     queryset = Blog.objects.all()
     
-       
+    
     
     
     
