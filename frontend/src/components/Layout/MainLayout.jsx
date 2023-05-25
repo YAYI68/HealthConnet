@@ -6,7 +6,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 
 function MainLayout() {
   const { pathname } = useLocation();
-  console.log({pathname})
+
   return (
     <Fragment>
       {pathname === '/login' ||

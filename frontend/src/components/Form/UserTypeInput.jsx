@@ -18,16 +18,17 @@ export default function UserTypeInput({userType, handleUserType}) {
       </div>
 
       <div className="flex gap-4">
-        <div
+      <div
           className={`w-1/2 max-w-[9rem] min-h-[10rem] cursor-pointer relative flex flex-col flex-1  border-2 ${
             userType == "DOCTOR" ? "shadow-user-select-shadow" : "none"
           }   rounded-md items-center justify-center`}
           onClick={()=>handleUserCardClick("DOCTOR")}
+
         >
-          <img src={DoctorImg} alt="" className=" h-[60%] md:h-[90%] " />
-          <p className="font-bold text-primary">Doctor</p>
+          <img src={DoctorImg} alt="" className="h-[60%] md:h-[90%]" />
+          <p className="font-bold text-primary ">Doctor</p>
           <div className=" rounded-full  absolute top-1 right-1">
-            <RadioButton name="user" defaultValue={userType} value="DOTOR" user={userType} onChange={handleUser} />
+            <RadioButton name="user" value="DOCTOR" user={userType} onChange={handleUser} />
           </div>
         </div>
         <div

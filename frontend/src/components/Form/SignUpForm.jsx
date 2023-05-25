@@ -1,11 +1,13 @@
 import React, { useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TextField, CheckBox } from "../Form";
 import { useAuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import  { axiosInstance } from "../../utils/axios";
 
+
  function SignUpForm({userType}) {
+  const navigate = useNavigate()
   const [signUpValues, setSignUpValues] = useState({
     firstname: "",
     lastname: "",
@@ -14,6 +16,7 @@ import  { axiosInstance } from "../../utils/axios";
     agree: false,
     role:userType
   });
+
 
   const onChange = ({ target }) => {
     const { name, value, checked } = target;
@@ -42,9 +45,13 @@ import  { axiosInstance } from "../../utils/axios";
       email:email
   }
   try{
-      const {data} = await axiosInstance.post(`/signup/`,user)
-      toast.success('Account successfully Registered, please log in');
-      navigate("/login");
+      const {data} = await axiosInstance.post(`/signup/`,user)    
+      if(data){
+        toast.success('Account successfully Registered, please log in');
+        navigate("/login");
+        setSignUpValues()
+      }
+    
   }
   catch(error){
     console.log({error});

@@ -26,7 +26,7 @@ function MainNav() {
    <nav  className={` hidden lg:flex w-full  lg:flex-col md:items-center lg:justify-center fixed z-[10] shadow-md bg-secondary h-[10vh] top-0 left-0 `}>
        <div onClick={()=>setDropDown(false)} className={`w-full h-screen absolute  top-[100%] ${dropdown?'block':'hidden'}`}></div>
       <div className="w-[80%] h-full flex items-center justify-between ">
-        <Link className="text-[2rem] font-jost font-bold text-primary">HealthConnect</Link>
+        <Link to={'/'} className="text-[2rem] font-jost font-bold text-primary">HealthConnect</Link>
         <div className="flex items-center justify-between w-[60%] 2xl:w-[45%]">
           <ul className="flex list-none items-center gap-6 font-semibold" onClick={()=>setDropDown(false)}>
             <li>

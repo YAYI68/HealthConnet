@@ -1,5 +1,5 @@
 import React, {useState,useEffect, Fragment} from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GoogleLogin, LoginForm, SignUpForm, UserTypeInput } from "../components/Form";
 
 import ConsultantImg from "../assets/svg/medical-consultant.svg";
@@ -10,6 +10,7 @@ export default function Register() {
   const { accessToken } = useAuthContext()
   const navigate = useNavigate()
   const [userType, setUserType] = useState("DOCTOR")
+
 
   const authUser = !!accessToken
 
@@ -44,7 +45,10 @@ useEffect(()=>{
         {/* sign up with google */}
 
         <div className="mt-8">
-          <GoogleLogin pathname={pathname} />
+         <p className="text-center mt-6 text-[.9rem] mb-4">
+          {pathname === "/login" ? "Don't have an account?" : "Already have an account"}{" "}
+          <Link to={pathname === "/login"? "/sign-up": "/login"} className="text-primary hover:underline">{pathname === "/login"? "Sign Up": "Sign in"}</Link>
+         </p>
         </div>
       </div>
     </div>
