@@ -13,7 +13,7 @@ export default function useLogout() {
             const response = await axiosPrivateInstance.post("/logout/")
             setAccessToken(null)
             setCSRFToken(null)
-            setUser({})
+            setUser(null)
             navigate('/login')
 
         } catch (error) {

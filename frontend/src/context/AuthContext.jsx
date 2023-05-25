@@ -9,7 +9,7 @@ import useRefreshToken from "../hooks/useRefreshToken";
 const AuthContext = createContext()
   
 export function AuthProvider({ children }) {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(null)
     const [accessToken, setAccessToken] = useState('')
     const [refreshToken, setRefreshToken] = useState('')
     const [csrftoken, setCSRFToken] = useState('')

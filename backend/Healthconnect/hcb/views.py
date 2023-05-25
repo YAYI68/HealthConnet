@@ -67,7 +67,8 @@ class LoginView(APIView):
                 samesite = settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
             )
             csrf.get_token(request)
-            response.data = {"success" : "Login successfully",'access_token': data['access_token'],'refresh_token':data['refresh_token'],'role':user.role}
+            userInfo = UserProfileSeriliazer(user).data
+            response.data = {"success" : "Login successfully",'access_token': data['access_token'],'refresh_token':data['refresh_token'],'user':userInfo}
             response.status = status.HTTP_200_OK
             response['X-CSRFToken'] = csrf.get_token(request)
                 

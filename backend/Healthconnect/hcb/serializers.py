@@ -57,6 +57,9 @@ class UserLoginSerializer(serializers.ModelSerializer):
         model = User
         fields = ('email', 'password','role')
         extra_kwargs = {'password': {'write_only': True}}
+
+  
+
         
 
 class UserProfileSeriliazer(serializers.ModelSerializer):
@@ -65,15 +68,16 @@ class UserProfileSeriliazer(serializers.ModelSerializer):
    
     class Meta:
         model=User
-        fields=('id','image','role','email','firstname','lastname','phone_number','gender','state','country')  
+        fields=('id','image','role','email','firstname','lastname')  
+
         
     def to_representation(self,instance):
         data = super().to_representation(instance)
         user = instance
         if user.role == 'PATIENT':
-            data['total_pending_appointment'] = user.patient.appointments(status='PENDING')
+            data['total_pending_appointment'] = user.patient.appointments(status='PENDING').count()
         elif user.role=='DOCTOR':
-            data['total_pending_appointment'] = user.doctor.appointments(status='PENDING')
+            data['total_pending_appointment'] = user.doctor.appointments(status='PENDING').count()
         return data
        
             

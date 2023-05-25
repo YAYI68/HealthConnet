@@ -18,6 +18,8 @@ function MainNav() {
  const navigate = useNavigate()
   const { inView } = useAppContext()
   const { accessToken,user } = useAuthContext()
+  console.log({accessToken})
+  console.log({user})
   const logout = useLogout()
 
   const authUser = !!accessToken
@@ -43,7 +45,7 @@ function MainNav() {
             </li>
           </ul>
           <ul className="flex items-center gap-4 list-none ">
-            {!authUser ?
+            {!authUser && !user?
             <>
             <li>
              <Link to={'/login'}  className='text-primary'>Login</Link>
@@ -55,14 +57,14 @@ function MainNav() {
              :
              <div className="flex items-center gap-2">
              <button className="h-[2rem] cursor-pointer w-[2rem] rounded-[50%] bg-primary relative flex flex-col items-center justify-center">
-               {user.total_pending_appointment &&
-               <span className="w-[.8rem] h-[.8rem] rounded-[50%] bg-red-500 absolute top-0 right-0 text-white text-xs flex flex-col justify-center items-center ">{user.total_pending_appointment}</span>               
+               { user.total_pending_appointment &&
+               <span className="w-[.8rem] h-[.8rem] rounded-[50%] text-white bg-red-500 absolute top-0 right-0 text-white text-xs flex flex-col justify-center items-center ">{user.total_pending_appointment}</span>               
                }
                <BsBellFill className='lg:h-[1.5rem] lg:w-[1.5rem]  fill-white' />
              </button>
              <div onClick={()=>setDropDown(!dropdown)} className="w-3rem cursor-pointer flex items-center border rounded-md border-primary relative">
               <div className="w-[2rem] h-[2rem] overflow-hidden  rounded-[50%]">
-                <img src={user.image?user.image: UserImg} alt="" className="h-full w-full" />
+                <img src={user.image.includes(BASE_URL)?user.image:`${BASE_URL}/${user.image}`} alt="" className="h-full w-full" />
               </div>
               <span className="h-[1rem] w-[1rem] flex justify-center items-center"><IoIosArrowDropdownCircle className="h-[80%] w-[80%] text-primary" /></span> 
               {dropdown && 

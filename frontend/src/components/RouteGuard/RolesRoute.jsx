@@ -5,10 +5,10 @@ import { DOCTOR, PATIENT } from '../../utils/constant'
 function RolesRoute({doctor,patient}) {
     const {user} = useAuthContext()
     console.log({user})
-    if (user.role === DOCTOR){
+    if (user && user.role === DOCTOR){
         return doctor
     }
-    else if (user.role === PATIENT){
+    else if (user && user.role === PATIENT){
        return patient
     }
 }

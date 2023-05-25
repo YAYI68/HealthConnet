@@ -5,9 +5,11 @@ import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
 import { axiosInstance } from "../../utils/axios";
 import { useAuthContext } from "../../context/AuthContext";
+import useUser from "../../hooks/useUser";
 
  function LoginForm({userType}) {
-  const { setAccessToken, setCSRFToken } =  useAuthContext()
+  const { setAccessToken, setCSRFToken,setUser } =  useAuthContext()
+  const getUser = useUser()
   const navigate = useNavigate()
   const { state } = useLocation();
 
@@ -39,12 +41,16 @@ import { useAuthContext } from "../../context/AuthContext";
       const user = {email,password}
     try{
          const response = await axiosInstance.post(`/login/`,user)
-         setAccessToken(response?.data?.access_token)
-         setCSRFToken(response.headers["x-csrftoken"])
-         navigate(state.path ? state.path : '/dashboard/overview')
-         toast.success("User successfully Login ");
+         if(response.data){
+          setAccessToken(response?.data?.access_token)
+          setCSRFToken(response.headers["x-csrftoken"])
+          setUser(response.data?.user)
+          navigate(state.path ? state.path : '/dashboard/overview')
+          toast.success("User successfully Login ");
+         }      
     }
     catch(error){
+        console.log({error})
         toast.error("Invalid Email/Password!");
         }
   };
