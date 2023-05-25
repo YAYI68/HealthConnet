@@ -19,9 +19,9 @@ function Blog({article}) {
                 <div className=" font-jost bg-secondary text-primary font-bold rounded-sm p-1 w-fit">
                   {article.date}
                 </div>
-                <div className="font-jost font-[900]">{article.title}</div>
-                <div className=" text-gray-600 font-inter">{article.body}</div>
-                <Link to={`/blog/${article.id}`} className=" text-primary font-bold mt-auto w-fit flex items-center">
+                <h3 className="font-jost font-[900]">{article.title}</h3>
+                <p className=" text-gray-600 font-inter">{article.excerpt}...</p>
+                <Link to={`/blog/${article.slug}`} state={{postId:article.id}} className=" text-primary font-bold mt-auto w-fit flex items-center">
                   Read more <span className='ml-2'><CgArrowRight className='text-primary text-[1.5rem]'/></span>
                 </Link>
               </div>
