@@ -1,4 +1,5 @@
 
+import useSWR from 'swr'
 import useAxiosPrivate from './useAxiosPrivate'
 
 function useSecureDataFetcher(key,url) {

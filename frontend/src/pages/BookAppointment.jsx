@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppointmentHeader, SpecialistCard } from '../components/BooKAppointment'
-import useDataFetcher from '../hooks/useDataFetcher'
+import useSecureDataFetcher from '../hooks/useSecureDataFetcher'
 
 
 const API_URL = 'doctors/all'
@@ -8,7 +8,7 @@ const DATA_KEY = 'allDoctors';
 
 
 export default function BookAppointment() {
-  const {data:doctors, isLoading } = useDataFetcher(DATA_KEY,API_URL)
+  const {data:doctors, isLoading } = useSecureDataFetcher(DATA_KEY,API_URL)
   console.log({all:doctors})
   if(isLoading){
     return <h1>Loading.....</h1>

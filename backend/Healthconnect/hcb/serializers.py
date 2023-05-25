@@ -45,7 +45,7 @@ class UserSignUpSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
-        if user.role == 'Doctor':
+        if user.role == 'DOCTOR':
             user.is_staff = True
             user.save()
             return user
@@ -71,9 +71,9 @@ class UserProfileSeriliazer(serializers.ModelSerializer):
         data = super().to_representation(instance)
         user = instance
         if user.role == 'PATIENT':
-            data['total_pending_appointment'] = user.patient.total_appointments(status='PENDING')
+            data['total_pending_appointment'] = user.patient.appointments(status='PENDING')
         elif user.role=='DOCTOR':
-            data['total_pending_appointment'] = user.doctor.total_appointments(status='PENDING')
+            data['total_pending_appointment'] = user.doctor.appointments(status='PENDING')
         return data
        
             
