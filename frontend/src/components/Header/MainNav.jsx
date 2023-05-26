@@ -15,13 +15,9 @@ import { BASE_URL } from "../../utils/constant";
 
 function MainNav() {
   const [dropdown,setDropDown] = useState(false);
- const navigate = useNavigate()
-  const { inView } = useAppContext()
+  const navigate = useNavigate()
   const { accessToken,user } = useAuthContext()
-  console.log({accessToken})
-  console.log({user})
   const logout = useLogout()
-
   const authUser = !!accessToken
 
   return (
@@ -45,7 +41,7 @@ function MainNav() {
             </li>
           </ul>
           <ul className="flex items-center gap-4 list-none ">
-            {!authUser && !user?
+            { !user?
             <>
             <li>
              <Link to={'/login'}  className='text-primary'>Login</Link>
@@ -57,9 +53,9 @@ function MainNav() {
              :
              <div className="flex items-center gap-2">
              <button className="h-[2rem] cursor-pointer w-[2rem] rounded-[50%] bg-primary relative flex flex-col items-center justify-center">
-               { user.total_pending_appointment &&
-               <span className="w-[.8rem] h-[.8rem] rounded-[50%] text-white bg-red-500 absolute top-0 right-0 text-white text-xs flex flex-col justify-center items-center ">{user.total_pending_appointment}</span>               
-               }
+               { user.total_pending_appointment?
+               <span className="w-[.8rem] h-[.8rem] rounded-[50%]  bg-red-500 absolute top-0 right-0 text-white text-xs flex flex-col justify-center items-center ">{user.total_pending_appointment}</span>               
+               :''}
                <BsBellFill className='lg:h-[1.5rem] lg:w-[1.5rem]  fill-white' />
              </button>
              <div onClick={()=>setDropDown(!dropdown)} className="w-3rem cursor-pointer flex items-center border rounded-md border-primary relative">

@@ -39,7 +39,7 @@ function MobileNav() {
            </div>
            <div onClick={()=>setDropDown(!dropdown)} className="w-3rem flex items-center border rounded-md border-primary relative">
             <div className="w-[2rem] h-[2rem]  rounded-[50%]">
-            <img src={user && user.image?user.image: UserImg} alt="" className="h-full w-full" />
+            <img src={user.image.includes(BASE_URL)?user.image:`${BASE_URL}/${user.image}`} alt="" className="h-full w-full" />
             </div>
             <span className="h-[1rem] w-[1rem] flex justify-center items-center"><FiArrowDown className="h-[80%] w-[80%] text-primary" /></span> 
             {dropdown && 

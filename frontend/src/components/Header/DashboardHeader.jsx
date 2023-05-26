@@ -35,7 +35,7 @@ function DashboardHeader({setSlide}) {
              </div>
 
              <div className='xl:h-[3rem] xl:w-[3rem] w-[2rem] h-[2rem]  rounded-[50%] lg:h-[70%] cursor-pointer overflow-hidden'>
-             <img src={user && user.image?user.image: DefaultImg} alt="" className="h-full w-full" />
+             <img src={user.image.includes(BASE_URL)?user.image:`${BASE_URL}/${user.image}`} alt="" className="h-full w-full" />
              </div>
             </div>
           </div>

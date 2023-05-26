@@ -6,14 +6,16 @@ import { BiInjection } from "react-icons/bi";
 import BookingReview from './BookingReview';
 import AppoimentSection from './AppoimentSection';
 import { FaHospitalAlt, FaTimes } from 'react-icons/fa';
-import useDataFetcher from '../../hooks/useDataFetcher';
+
+import useSecureDataFetcher from '../../hooks/useSecureDataFetcher';
 
 const API_URL = 'user'
 const DATA_KEY = 'Doctor';
 
 export default function BookingPage() {
+  
     const {state} = useLocation()
-    const {data:doctor, isLoading  } =  useDataFetcher(DATA_KEY,`${API_URL}/${state.id}`)
+    const {data:doctor, isLoading  } =  useSecureDataFetcher(DATA_KEY,`${API_URL}/${state.id}`)
     const [ step, setStep ] = useState(0)
     const [ toggle, setToggle ] = useState(false)
 

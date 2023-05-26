@@ -13,6 +13,8 @@ import useUser from "../../hooks/useUser";
   const navigate = useNavigate()
   const { state } = useLocation();
 
+  console.log({state})
+
   const [loginValues, setLoginValues] = useState({
     email: "",
     password: "",
@@ -45,13 +47,13 @@ import useUser from "../../hooks/useUser";
           setAccessToken(response?.data?.access_token)
           setCSRFToken(response.headers["x-csrftoken"])
           setUser(response.data?.user)
-          navigate(state.path ? state.path : '/dashboard/overview')
+          navigate('/dashboard/overview')
           toast.success("User successfully Login ");
          }      
     }
     catch(error){
         console.log({error})
-        toast.error("Invalid Email/Password!");
+        // toast.error("Invalid Email/Password!");
         }
   };
   return (
