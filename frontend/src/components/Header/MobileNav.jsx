@@ -9,21 +9,16 @@ import { MdSpaceDashboard } from "react-icons/md";
 import { IoExit } from "react-icons/io5";
 import { useAuthContext } from "../../context/AuthContext";
 import { BASE_URL } from "../../utils/constant";
+import useLogout from "../../hooks/useLogout";
 
 function MobileNav() {
   const [dropdown,setDropDown] = useState(false);
   const [toggle,setToggle] = useState(false)
   const { accessToken,user } = useAuthContext()
   const navigate = useNavigate()
-
+  const logout = useLogout()
   const authUser = !!accessToken
   
-  const routeTo = (path)=>{
-    setDropDown(false)
-    setToggle(false)
-    navigate(path)
-  }
-
   return (
     <nav className="w-full  flex flex-col items-center justify-center  lg:hidden shadow-lg fixed z-[10] h-[10vh] bg-secondary">
       <div className="h-full p-4 w-full  flex justify-center items-center relative">
@@ -34,7 +29,7 @@ function MobileNav() {
            {authUser?
            <div className="flex items-center gap-2">
            <div className="h-[2rem] w-[2rem] rounded-[50%] bg-primary relative flex flex-col items-center justify-center">
-             <span className="w-[.8rem] h-[.8rem] rounded-[50%] bg-red-500 absolute top-0 right-0 text-white text-xs flex flex-col justify-center items-center ">2</span>
+             <span className="w-[.5rem] h-[.5rem] md:w-[.8rem] md:h-[.8rem] rounded-[50%] bg-red-500 absolute top-0 right-0 text-white text-[.5rem] md:text-xs flex flex-col justify-center items-center ">2</span>
              <BsBellFill className='lg:h-[1.5rem] lg:w-[1.5rem]  fill-white' />
            </div>
            <div onClick={()=>setDropDown(!dropdown)} className="w-3rem flex items-center border rounded-md border-primary relative">
@@ -52,7 +47,7 @@ function MobileNav() {
                <Link   to={'/dashboard/overview'} className="w-full p-2 hover:bg-primary hover:text-white flex items-center gap-2 rounded-md"> <span> <MdSpaceDashboard className="fill-primary hover:fill-white hover:text-white" /> </span>  <span>Dashboard</span> </Link>
                </li>
                <li>
-               <Link  to={'/dashboard/overview'} className="w-full p-2 hover:bg-primary hover:text-white flex items-center gap-2  rounded-md"> <span> <IoExit className="fill-primary hover:fill-white hover:text-white" /> </span>  <span>Signout</span> </Link>
+               <button  onClick={()=>logout()} className="w-full p-2 hover:bg-primary hover:text-white flex items-center gap-2  rounded-md"> <span> <IoExit className="fill-primary hover:fill-white hover:text-white" /> </span>  <span>Signout</span> </button>
                </li>
              </ul>
            </div>

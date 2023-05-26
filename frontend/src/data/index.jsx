@@ -114,7 +114,7 @@ export const DashboardLink = [
     link:'/dashboard/overview'
   },
   {
-    icon:<ImAddressBook className='h-[1rem] w-[1rem] lg:h-[1.5rem] lg:w-[1.5rem]'/>,
+    icon:<ImAddressBook className='h-[1rem] w-[1rem]  lg:h-[1.5rem] lg:w-[1.5rem]'/>,
     name:'Appointment',
     link:'/dashboard/appointment'
   },

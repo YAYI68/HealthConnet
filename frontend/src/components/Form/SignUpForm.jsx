@@ -14,9 +14,9 @@ import  { axiosInstance } from "../../utils/axios";
     email: "",
     password: "",
     agree: false,
-    role:userType
   });
 
+  console.log({userType})
 
   const onChange = ({ target }) => {
     const { name, value, checked } = target;
@@ -36,16 +36,17 @@ import  { axiosInstance } from "../../utils/axios";
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const {firstname,lastname,password,email,role} = signUpValues;
-    const user = {
+    const {firstname,lastname,password,email} = signUpValues;
+    const userInput = {
       first_name:firstname,
       last_name:lastname,
       password:password,
-      role:role,
+      role:userType,
       email:email
   }
+  console.log({userInput})
   try{
-      const {data} = await axiosInstance.post(`/signup/`,user)    
+      const {data} = await axiosInstance.post(`/signup/`,userInput)    
       if(data){
         toast.success('Account successfully Registered, please log in');
         navigate("/login");

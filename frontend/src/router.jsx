@@ -16,6 +16,7 @@ import EditProfile from "./pages/EditProfile";
 import Profile from "./pages/Profile";
 import BlogList from "./pages/BlogList";
 import BlogDetail from "./pages/BlogDetail";
+import AllAppointments from "./pages/AllAppointments";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,7 @@ export const router = createBrowserRouter([
           children: [
           { path: "overview", element: <OverviewPage />},  
           { path: "setting", element:<SettingPage /> },
+          {path:'appointment',element:<AllAppointments/>},
           { path: "history", element:<HistoryPage /> },
           { path: "notification", element:<Notification /> },
           { path: "profile", element:<Profile />},

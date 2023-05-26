@@ -5,13 +5,15 @@ import { workHours } from '../../data'
 import { toast } from 'react-toastify'
 import { checkWokingDays } from '../../utils'
 import { FaHospitalAlt } from 'react-icons/fa'
+import usePostData from '../../hooks/usePostData'
 
 const schedulePosition = 0
-
+const KEY = 'new_appointment'
+const URL = 'appointment'
 function AppointmentSchedule({step,setStep,doctor}) {
+    const { data,isLoading ,mutate,postData } = usePostData(KEY,URL)
     const [ date , setDate ] = useState('')
     const [ time, setTime ] = useState('')
-     
     const position = schedulePosition - step
 
     const currentAppointmentTime = [
@@ -31,7 +33,13 @@ function AppointmentSchedule({step,setStep,doctor}) {
      setTime((time))
     }
 
-    const nextPage = ()=>{
+    const nextPage = async()=>{
+        const inputData = {
+          time,
+          date,
+          name:'Hello',
+          doctor_id:doctor.uid,
+        }
         if(time && !date){
             toast.warning('Sorry, Please select Your Appointment Date before you proceed.')
         }
@@ -42,6 +50,8 @@ function AppointmentSchedule({step,setStep,doctor}) {
             toast.warning('Sorry, Please select Your Appointment Time and Date before you proceed.')
         }
         else{
+            mutate()
+            await postData(inputData)
             setStep((prev)=>prev + 1)
         }
        

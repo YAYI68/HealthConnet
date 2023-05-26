@@ -273,6 +273,7 @@ class AppointmentView(generics.CreateAPIView,generics.ListAPIView):
     def post(self, request):
         user = request.user
         patient = user.patient
+        data = request.data      
         doctor = Doctor.objects.get(user__id=request.data['doctor_id'])
         if doctor is not None :
             appointment = Appointment.objects.create(
