@@ -48,14 +48,14 @@ class AppointmentSerializer(serializers.ModelSerializer):
     doctor = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Appointment
-        fields = ['id','patient','doctor','status','date','time']
+        fields = ['id','patient','doctor','status','date','time','fee']
         
     def get_patient(self,obj):
         patient = obj.patient
-        serializer = ShortPatientProfileSerializer(patient,many=False)
+        serializer = PatientAppointmentProfileSerializer(patient,many=False)
         return serializer.data
     
     def get_doctor(self,obj):
        doctor = obj.doctor
-       serializer = ShortDoctorProfileSerializer(doctor,many=False)
+       serializer = DoctorAppointmentProfileSerializer(doctor,many=False)
        return serializer.data

@@ -43,6 +43,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     image= models.ImageField(upload_to='users', null=True,blank=True,default='default.jpg')
     phone_number = models.CharField(max_length=20 , blank=True,null=True)
     gender = models.CharField(max_length=10, choices=User_Gender,null=True,blank=True)
+
     date_joined = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = 'email'
@@ -111,6 +112,7 @@ class Doctor(models.Model):
     bio = models.CharField(max_length=50, null=True, blank=True)
     qualification = models.CharField(max_length=50, null=True,blank=True)
     location = models.CharField(max_length=50, null=True,blank=True)
+    price = models.PositiveBigIntegerField(null=True,blank=True)
     
     
     def appointments(self,status=None):
@@ -145,6 +147,7 @@ class Appointment(models.Model):
     status = models.CharField(max_length=10,choices=AppointmentStatus, default='PENDING', null=True, blank=True)
     date = models.CharField(max_length=20, blank=True,null=True)
     time = models.CharField(max_length=10, blank=True,null=True)
+    fee = models.PositiveBigIntegerField(null=True,blank=True)
     
     
     def __str__(self) -> str:

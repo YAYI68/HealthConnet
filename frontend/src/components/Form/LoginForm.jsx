@@ -6,9 +6,11 @@ import jwt_decode from "jwt-decode";
 import { axiosInstance } from "../../utils/axios";
 import { useAuthContext } from "../../context/AuthContext";
 import useUser from "../../hooks/useUser";
+import { useAppContext } from "../../context/AppContext";
 
  function LoginForm({userType}) {
   const { setAccessToken, setCSRFToken,setUser } =  useAuthContext()
+  const {upDateModal, setUpdateModal,setModalMessage } = useAppContext()
   const getUser = useUser()
   const navigate = useNavigate()
   const { state } = useLocation();
@@ -47,6 +49,9 @@ import useUser from "../../hooks/useUser";
           setAccessToken(response?.data?.access_token)
           setCSRFToken(response.headers["x-csrftoken"])
           setUser(response.data?.user)
+          const currentUser = response.data.user
+          setModalMessage('Please complete your profile Information for good user experince.')
+          setUpdateModal(!currentUser.isProfileComplete)
           navigate('/dashboard/overview')
           toast.success("User successfully Login ");
          }      

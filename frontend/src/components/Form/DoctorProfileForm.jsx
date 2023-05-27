@@ -62,6 +62,12 @@ function DoctorProfileForm() {
          await updateData(newData)
          mutate()
     }
+   
+    if(isLoading){
+        return <h1>Loading....</h1>
+    }
+
+
   return (
     <div className='w-full flex flex-col items-center'>
       <div className='w-full lg:w-[90%] relative overflow-scroll h-full'>

@@ -8,12 +8,15 @@ import AppoimentSection from './AppoimentSection';
 import { FaHospitalAlt, FaTimes } from 'react-icons/fa';
 
 import useSecureDataFetcher from '../../hooks/useSecureDataFetcher';
+import { useAppContext } from '../../context/AppContext';
+import { useAuthContext } from '../../context/AuthContext';
 
 const API_URL = 'user'
 const DATA_KEY = 'Doctor';
 
 export default function BookingPage() {
-  
+    const {setModalMessage,setUpdateModal } = useAppContext()
+    const { user } = useAuthContext()
     const {state} = useLocation()
     const {data:doctor, isLoading  } =  useSecureDataFetcher(DATA_KEY,`${API_URL}/${state.id}`)
     const [ step, setStep ] = useState(0)
@@ -22,6 +25,17 @@ export default function BookingPage() {
     const closeToggle = ()=>{
       setToggle(false)
       setStep(0)
+    }
+
+    function handleNavigate() {
+      if(user.isProfileComlete){
+        ()=>setToggle(true)
+      }
+      else{
+        setModalMessage('Please Update your profile and medical information before you proceed to Book Appointment')
+        setUpdateModal(!user.isProfileComlete)
+      }
+     
     }
 
     if(isLoading){
@@ -35,19 +49,16 @@ export default function BookingPage() {
          <AppoimentSection doctor={doctor} step={step} setStep={setStep} closeToggle={closeToggle} />
       </div>
       <section className=' w-[95%] md:w-[80%] mx-auto p-2 md:p-6 mt-6'>
-      <div className='flex w-full flex-col lg:flex-row lg:items-center p-4'>
-         <div className='w-full flex lg:justify-between p-4 gap-4 lg:items-center lg:w-[80%]'>
-          <div className='h-[12rem] md:h-[15rem] lg:h-[18rem] w-[40%] lg:w-[28%] bg-secondary rounded-md'>
+      <div className='flex w-full flex-col bg-secondary rounded-md lg:flex-row lg:items-center p-4'>
+         <div className='w-full flex lg:justify-between flex-col md:flex-row p-4 gap-4 lg:items-center lg:w-[80%]'>
+          <div className='h-[12rem] md:h-[15rem] lg:h-[18rem] w-full lg:w-[30%] bg-secondary rounded-md'>
            <img src={doctor.image} alt="doctor image" className=" w-full h-full " />
           </div>
-          <div className='w-[50%] md:flex md:flex-col md:gap-2'>
-           <p className='text-[1rem] md:text-[1.5rem] font-semibold'>Dr, {doctor.firstname} {doctor.lastname}</p>
+          <div className='w-full text-[1.5rem] md:w-[50%] md:flex md:flex-col md:gap-2'>
+           <p className='text-[1.2rem] md:text-[1.5rem] font-semibold w-full'>Dr, {doctor.firstname} {doctor.lastname}</p>
            <p className='text-[.8rem] sm:text-[1rem] lg:text-[1.2rem]'>{doctor.field}</p>
-          
               <div className="flex">
-                {Array.from({ length: 5 }, () => {
-                return <MdStarRate className="text-primary" />;
-                })}
+                <p className='text-primary font-semibold text-[1rem] md:text-[1.2rem]'># 5000</p>
               </div>
               <div className='flex w-full gap-2 lg:gap-4'>
                <div className=' flex items-center bg-secondary p-1 rounded-md'>
@@ -58,33 +69,37 @@ export default function BookingPage() {
                </div>
               </div>
            
-           <div className="flex flex-col  justify-between items-center lg:items-start relative gap-2">
+           <div className="flex flex-col  justify-between items-center lg:items-start relative gap-2 md:gap-4">
             <p className="text-[.7rem] flex items-center text-primary font-[500] w-full lg:w-4/6 lg:text-[1rem]">
             <span className='mr-2'>
               <FaHospitalAlt />
             </span>{" "}
             {doctor.hospital}
           </p>
+          <button
+            className="w-full lg:w-2/6 text-xs font-semibold lg:text-[1rem] bg-primary text-white px-2 py-3 rounded-md "
+            onClick={()=>handleNavigate()}
+          >
+            Book Now
+          </button>
+        </div>
+        </div>
+         </div>
+         <div className='w-full md:w-[50%] lg:w-[30%]  p-2 rounded-md h-fit flex flex-col gap-2'>
+          <div className=''>
           <p className="text-[.7rem] flex items-center md:items-baseline text-primary font-[500] w-full lg:w-4/6 lg:text-[1rem]">
             <span className='mr-2'>
             <MdLocationPin />
             </span>{" "}
            <span>{doctor.location}</span> 
           </p>
-          
-          <button
-            className="w-full lg:w-2/6 text-xs lg:text-[1rem] bg-primary text-white px-1 py-2 rounded-md "
-            onClick={()=>setToggle(true)}
-          >
-            Book Now
-          </button>
-        </div>
           </div>
-         </div>
-         <div className='w-full md:w-[50%] lg:w-[20%] bg-secondary p-2 rounded-md h-fit'>
-          <p className='text-primary'>Availability:</p>
-           <p className='text-[.8rem] md:text-[1rem]' >Mon - Fri</p>
-           <p className='text-[.8rem] md:text-[1rem]'>9:00AM - 5:00PM</p>
+          <div className='w-[80%] bg-secondary'>
+            <p className='text-primary'>Availability:</p>
+             <p className='text-[.8rem] md:text-[1rem]' >Mon - Fri</p>
+            <p className='text-[.8rem] md:text-[1rem]'>9:00AM - 5:00PM</p>
+          </div>
+       
          </div> 
       </div>
 

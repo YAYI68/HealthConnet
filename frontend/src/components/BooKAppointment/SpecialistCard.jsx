@@ -3,11 +3,23 @@ import { useNavigate, Link } from "react-router-dom";
 import DoctorImg from "../../assets/images/hero2.png";
 import { MdStarRate, MdStarBorder } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
+import { useAuthContext } from "../../context/AuthContext";
+import { useAppContext } from "../../context/AppContext";
 
 export default function SpecialistCard({doctor}) {
+  const { user } = useAuthContext()
+  const { setUpdateModal, setModalMessage}= useAppContext()
+
   const navigate = useNavigate();
   function handleNavigate(id) {
-    navigate(`/appointment/detail`,{state:{id}});
+    if(user.isProfileComlete){
+      navigate(`/appointment/detail`,{state:{id}});
+    }
+    else{
+      setModalMessage('Please Update your profile and medical information before you proceed to Book Appointment')
+      setUpdateModal(!user.isProfileComlete)
+    }
+   
   }
   return (
     <div
@@ -20,7 +32,7 @@ export default function SpecialistCard({doctor}) {
         <img src={doctor.image} alt="doctor image" className="max-h-[80%] " />
       </div>
       <div className="flex-1 basis-[70%] flex flex-col gap-4">
-        <Link to={`/appointment/detail`} state={{id:doctor.uid}} className="text-primary text-sm md:text-lg lg:text-xl font-[900] mt-2">
+        <Link to={`/appointment/${doctor.slug}`} state={{id:doctor.uid}} className="text-primary text-sm md:text-lg lg:text-xl font-[900] mt-2">
           Dr. {doctor.firstname} {doctor.lastname}
         </Link>
         <div className="w-fit p-1 flex flex-col gap-1 items-center border border-primary rounded-md text-xs">
@@ -28,9 +40,7 @@ export default function SpecialistCard({doctor}) {
           <p>8am - 5pm</p>
         </div>
         <div className="flex">
-          {Array.from({ length: 5 }, () => {
-            return <MdStarRate className="text-primary" />;
-          })}
+         <p className="text-primary font-semibold"># 5,000</p>
         </div>
         <div className="flex flex-col lg:flex-row justify-between items-center relative">
           <p className="text-[.8rem] flex items-center text-primary font-[500] w-full lg:w-4/6">

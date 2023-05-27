@@ -2,11 +2,13 @@
 from rest_framework import serializers
 from hcb.models import Doctor,Appointment
 from .review_serializers import ReviewSerializer
+from .appointment_serializers import AppointmentSerializer
 
 
 
 
 class DoctorProfileSerializer(serializers.ModelSerializer):
+    slug = serializers.SerializerMethodField(read_only=True)
     uid = serializers.CharField(read_only=True,source='user.id')
     image = serializers.ImageField(source='user.image')
     email = serializers.EmailField(read_only=True,source='user.email')
@@ -19,8 +21,13 @@ class DoctorProfileSerializer(serializers.ModelSerializer):
     reviews = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model=Doctor
-        fields=('uid','image','email','firstname','lastname','phonenumber','gender','state','country','hospital','experience','field','bio','qualification','location','reviews')
+        fields=('uid','slug','image','email','firstname','lastname','phonenumber','gender','state','price','country','hospital','experience','field','bio','qualification','location','reviews')
 
+    def get_slug(self,obj):
+        fullname = obj.user.fullname
+        slug = fullname.replace(" ","-")
+        return slug
+    
     def get_reviews(self,obj):
         reviews = obj.reviews
         serializer = ReviewSerializer(reviews,many=True)

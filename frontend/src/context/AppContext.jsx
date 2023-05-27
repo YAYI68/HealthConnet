@@ -11,18 +11,14 @@ import { useInView } from 'react-intersection-observer'
 export const AppContext = createContext()
 
 export function AppProvider({ children }) {
-  const [navHeight, setNavHeight] = useState('')
-  const headerRef = useRef()
-  const { ref, inView } = useInView({
-    root: null,
-    threshold: 0,
-  })
+  const [ upDateModal, setUpdateModal ] = useState(false)
+  const [ modalMessage , setModalMessage ] = useState('')
+
 
 
   const value = {
-    ref,
-    inView,
-    headerRef,
+    upDateModal, setUpdateModal,
+    modalMessage , setModalMessage
   }
   return <AppContext.Provider value={value}>
     {children}

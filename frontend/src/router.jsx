@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
            children:[
             
            { path:'appointment',element: <BookAppointment />},
-           {path:'appointment/detail',element: <BookingPage />}
+           {path:'appointment/:slug',element: <BookingPage />}
           ]
          },
          

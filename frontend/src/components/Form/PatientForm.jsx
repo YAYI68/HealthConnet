@@ -4,12 +4,14 @@ import UserImg from '../../assets/images/default.png';
 import useUpdateData from '../../hooks/useUpdateData';
 import { filteredInput } from '../../utils';
 import { useEffect, useState } from 'react';
+import { useAppContext } from '../../context/AppContext';
 
 
 const API_URL = 'patient'
 const DATA_KEY = 'patientProfile';
 
 function PatientForm() {
+    const { setUpdateModal } = useAppContext()
     const navigate = useNavigate()
     const { data:patient, error, isLoading,updateData,mutate } =  useUpdateData(DATA_KEY,API_URL)
     const [preview ,setPreview ] = useState();
@@ -44,24 +46,31 @@ function PatientForm() {
          });}
      },[imgFile])
 
-    console.log( 'type', typeof imgFile)
-    console.log({preview})
-
-    console.log({values})
-
+ 
     const handleOnChange = (event) =>{
        setValues((prev)=>({...prev,[event.target.name]:event.target.value}))
     }
-   console.log({patient})
+
 
    const handleSubmit = async()=>{
-       console.log({imgFile})
        const inputData = {...values,image:imgFile}
        const newData = filteredInput(inputData)
-        console.log({newData})
         await updateData(newData)
         mutate()
+        setUpdateModal(false)
+        navigate('/dashboard/profile')
    }
+
+   const goBack = ()=>{
+    setUpdateModal(false)
+    navigate('/dashboard/profile')
+   }
+
+   if(isLoading){
+    return <h1>Loading....</h1>
+}
+
+
     return (
       <div className='w-full flex flex-col items-center'>
         <div className='w-full lg:w-[90%] relative overflow-scroll h-full'>
@@ -71,7 +80,7 @@ function PatientForm() {
                   <p className='text-primary font-jost text-xs lg:text-[1rem]'>Enter the required information below to register. You can change it anytime. </p>
               </div>
               <div className='w-full lg:w-[15%] flex items-center mt-2 justify-between'>
-                  <button  onClick={()=>navigate('/dashboard/profile')} type="button" className='p-2 border border-primary rounded-md text-primary text-xs lg:text-[1rem]'>Cancel</button>
+                  <button  onClick={()=>goBack()} type="button" className='p-2 border border-primary rounded-md text-primary text-xs lg:text-[1rem]'>Cancel</button>
                   <button  onClick={handleSubmit} type="button" className='p-2 border border-primary bg-primary text-white rounded-md text-xs lg:text-[1rem]'>Save</button>
               </div>
           </div>
