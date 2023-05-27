@@ -32,6 +32,7 @@ class UserProfileSeriliazer(serializers.ModelSerializer):
         user = instance
         if user.role == 'PATIENT':
             data['total_pending_appointment'] = user.patient.appointments(status='PENDING').count()
+            data['isProfileComplete'] = user.patient.isPatientComplete()
         elif user.role=='DOCTOR':
             data['total_pending_appointment'] = user.doctor.appointments(status='PENDING').count()
         return data

@@ -85,6 +85,12 @@ class Patient (models.Model):
             appointment = self.patient_appointment.all()
             return appointment
         
+    def isPatientComplete(self):
+        if((self.blood_group is None) &(self.genotype is None) & 
+           (self.weight is None) & (self.age is None) ):
+            return False
+        return True
+        
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'
     
