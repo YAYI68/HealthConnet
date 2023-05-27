@@ -1,8 +1,19 @@
 
+from rest_framework import status, generics
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.response import Response
+
+from hcb.serializers.appointment_serializers import AppointmentSerializer
+from hcb.serializers.patient_serializers  import PatientOverviewSerializer
+from hcb.serializers.doctor_serializers import DoctorOverviewSerializer
+
+from hcb.models import Appointment, Doctor
+
+
 
 
 class AppointmentView(generics.CreateAPIView,generics.ListAPIView):
-    serializer_class = AppointmentSerializer
+    serializer_class = AppointmentSerializer 
     permission_classes= [IsAuthenticated] 
     
     def get_object(self):

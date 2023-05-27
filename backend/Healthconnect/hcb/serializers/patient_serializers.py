@@ -3,19 +3,7 @@ from rest_framework import serializers
 from hcb.models import Patient,Appointment
 from .appointment_serializers import AppointmentSerializer
 
-class ShortPatientProfileSerializer(serializers.ModelSerializer):
-    uid = serializers.CharField(read_only=True,source='user.id')
-    image = serializers.ImageField(source='user.image')
-    fullname  = serializers.SerializerMethodField(read_only=True)
 
-    class Meta:
-        model=Patient
-        fields=('uid','fullname', 'image')
-        
-    def get_fullname(self,obj):
-        firstname = obj.user.first_name
-        lastname = obj.user.last_name
-        return f'{firstname} {lastname}'
     
 
 

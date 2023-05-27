@@ -1,13 +1,14 @@
+from django.db.models import Q
+
 from rest_framework import exceptions as rest_exceptions
 from rest_framework import status, generics
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
+
 from hcb.models import Doctor
 
 from hcb.serializers.doctor_serializers import (
-    DoctorOverviewSerializer,
-    ShortDoctorProfileSerializer,
     DoctorProfileSerializer
 )
 
