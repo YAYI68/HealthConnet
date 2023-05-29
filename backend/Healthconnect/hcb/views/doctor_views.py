@@ -44,11 +44,17 @@ class GetAllDoctors(generics.ListAPIView):
     def get_queryset(self):
         queryset=Doctor.objects.all()
         query = self.request.query_params.get('q')
-        if query is not None:
-            queryset = queryset.filter(Q(user__first_name__icontains=query)
-                                       |Q(user__last_name__icontains=query)
-                                       |Q(hospital__icontains=query)
-                                       |Q(experience__icontains=query)
+        state = self.request.query_params.get('state')
+        
+        if (query or state) is not None:
+            print(f'state:{state}')
+            print(f'q:{query}')
+            queryset = queryset.filter(
+                                       Q(user__state__icontains=state)&
+                                       (Q(user__first_name__icontains=query)
+                                        |Q(user__last_name__icontains=query)
+                                        |Q(field__icontains=query)
+                                        )
                                        )
             return queryset
         return queryset

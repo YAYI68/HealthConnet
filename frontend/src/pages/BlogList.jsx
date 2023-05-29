@@ -20,8 +20,7 @@ function BlogList() {
   if(isLoading){
    return <h1>Loading...</h1>
   }
-  console.log({pageNum})
-  console.log({data})
+
 
   return (
     <Fragment>

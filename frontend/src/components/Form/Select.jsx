@@ -10,9 +10,14 @@ const dropDownData = [
   "Katelyn Rohan",
 ];
 
-export default function Select({dropDownData, imageIcon, svgIcon, placeholder}) {
+export default function Select({dropDownData, imageIcon, svgIcon, placeholder,onSelect}) {
   const [selectedPerson, setSelectedPerson] = useState(dropDownData[0]);
   const [query, setQuery] = useState("");
+
+  const handleSelect = (data)=>{
+    setQuery(data)
+    onSelect(data)
+  }
 
   const filteredPeople =
     query === ""
@@ -24,18 +29,18 @@ export default function Select({dropDownData, imageIcon, svgIcon, placeholder}) 
   return (
     <Combobox value={selectedPerson} onChange={setSelectedPerson}>
       <div className="">
-        <div className={`flex items-center border border-primary rounded-[4rem] px-2`}>
+        <div className={`flex items-center border border-primary rounded-md bg-white px-2`}>
           
           {svgIcon && svgIcon}
           {imageIcon && <img src={imageIcon} alt="" className="max-h-[1.5rem] max-w-[1.5rem]"/>}
           <Combobox.Input
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => handleSelect(event.target.value)}
             placeholder={placeholder}
             className={`h-[2.5rem] outline-none   pl-4 w-[80%]`}
           />
         </div>
 
-        <Combobox.Options className=" shadow-services-card w-full mt-2 rounded-[6px] py-2 absolute z-[100] bg-white" >
+        <Combobox.Options className=" shadow-services-card w-full mt-2 h-[15rem] border-primary border  overflow-scroll rounded-[6px] py-2 absolute z-[100] bg-white" >
           {filteredPeople.map((person) => (
             <Combobox.Option
               key={person}
