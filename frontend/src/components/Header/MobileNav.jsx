@@ -26,7 +26,7 @@ function MobileNav() {
        <div className="w-full px-4 bg-secondary  h-full absolute z-[30]  flex justify-between items-center ">
         <Link to={'/'} className="text-primary font-jost font-semibold text-[1.3rem] md:text-[1.5rem] ">HealthConnect</Link>
         <div className="flex items-center gap-4">
-           {authUser?
+           { user?
            <div className="flex items-center gap-2">
            <div className="h-[2rem] w-[2rem] rounded-[50%] bg-primary relative flex flex-col items-center justify-center">
              <span className="w-[.5rem] h-[.5rem] md:w-[.8rem] md:h-[.8rem] rounded-[50%] bg-red-500 absolute top-0 right-0 text-white text-[.5rem] md:text-xs flex flex-col justify-center items-center ">2</span>

@@ -10,7 +10,7 @@ import { useAuthContext } from '../../context/AuthContext'
 export default function PersistLogin() {
 
     const refresh = useRefreshToken()
-    const { accessToken, setUser } = useAuthContext()
+    const { accessToken, setUser, user } = useAuthContext()
     const [loading, setLoading] = useState(true)
     const axiosPrivate = useAxiosPrivate()
 
@@ -37,6 +37,6 @@ export default function PersistLogin() {
     }, [])
 
     return (
-        loading ? "Loading" : <Outlet />
+        loading ? <h1>Loading</h1>  : <Outlet />
     )
 }

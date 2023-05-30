@@ -10,6 +10,8 @@ export default function TextField({
   onChange,
   readonly,
   placeholder,
+  onBlur,
+  error
 }) {
   const [visible, setVisible] = useState(false);
   const setType = (type) => {
@@ -26,7 +28,7 @@ export default function TextField({
   };
 
   return (
-    <div className=" flex textfield items-center w-full textfield border-b-[1px] border-b-gray-500 focus-within:border-b-[2px] focus-within:border-primary lg:focus-within:border-b-[3px]">
+    <div className={` flex textfield items-center w-full textfield border-b-[1px] border-b-gray-500 focus-within:border-b-[2px] focus-within:border-primary ${error?'border-b-red-700':""} lg:focus-within:border-b-[3px]`}>
       <input
         type={setType(type) || "text"}
         id={id}
@@ -34,6 +36,7 @@ export default function TextField({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        onBlur={onBlur}
         name={name}
         readOnly={readonly}
         autoComplete="off"

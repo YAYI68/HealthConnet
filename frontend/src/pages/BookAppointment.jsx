@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import { AppointmentHeader, SpecialistCard } from '../components/BooKAppointment'
 import useSecureDataFetcher from '../hooks/useSecureDataFetcher'
+import NotFound from '../components/UI/NotFound';
+import { useAuthContext } from '../context/AuthContext';
 
 
-const API_URL = 'doctors/all'
+const API_URL = 'doctors/all/'
 const DATA_KEY = 'allDoctors';
 
 
 export default function BookAppointment() {
-  const [location,setLocation] = useState('')
+  const { user } = useAuthContext()
+  const [location,setLocation] = useState(`${user.state?user.state:''}`)
   const [searchquery,setSearchQuery] = useState('')
-  const {data:doctors, isLoading } = useSecureDataFetcher(`${DATA_KEY}\?state=${location}&q=${searchquery}`,`${API_URL}\state=${location}&q=${searchquery}`)
+  const {data:doctors, isLoading } = useSecureDataFetcher(`${DATA_KEY}\?state=${location}&q=${searchquery}`,`${API_URL}?state=${location}&q=${searchquery}`)
   console.log({all:doctors})
   console.log({searchquery})
   console.log({location})
@@ -23,11 +26,11 @@ export default function BookAppointment() {
         getLocation={setLocation}
         getQuery={setSearchQuery}
       />
-      <section className='flex flex-wrap justify-center gap-4 mt-8 mb-4 md:flex-wrap'>
-        {doctors.length? doctors.map((doctor,index)=>(
+      <section className='flex flex-wrap  gap-4 mt-8 mb-4 md:flex-wrap'>
+        {doctors.length  ? doctors.map((doctor,index)=>(
             < SpecialistCard key={index} doctor={doctor} />
         )) :
-         <h1>No result found</h1>
+         <NotFound/>
         }
       
       </section>

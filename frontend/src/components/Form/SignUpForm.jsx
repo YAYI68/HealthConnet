@@ -4,10 +4,12 @@ import { TextField, CheckBox } from "../Form";
 import { useAuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import  { axiosInstance } from "../../utils/axios";
+import useError from "../../hooks/useError";
 
 
  function SignUpForm({userType}) {
   const navigate = useNavigate()
+  const {errors,dispatch} =  useError()
   const [signUpValues, setSignUpValues] = useState({
     firstname: "",
     lastname: "",
@@ -16,10 +18,14 @@ import  { axiosInstance } from "../../utils/axios";
     agree: false,
   });
 
-  console.log({userType})
+  const [validatorError,setValidatorError] = useState({
+   
+  })
+
+ console.log(errors)
 
   const onChange = ({ target }) => {
-    const { name, value, checked } = target;
+    const { name, value, checked,type } = target;
     
     if (name !== "agree") {
       setSignUpValues({
@@ -34,6 +40,14 @@ import  { axiosInstance } from "../../utils/axios";
     }
   };
 
+  const handleBlur = ({target})=>{
+    const { type, value ,name} = target
+    if(!value){
+      dispatch({type:name,value})
+    }
+      
+  }
+
   const handleSubmit = async(e) => {
     e.preventDefault();
     const {firstname,lastname,password,email} = signUpValues;
@@ -44,21 +58,29 @@ import  { axiosInstance } from "../../utils/axios";
       role:userType,
       email:email
   }
-  console.log({userInput})
-  try{
+  dispatch({type:'firstname',value:firstname})
+  dispatch({type:'lastname',value:lastname})
+  dispatch({type:'email',value:email})
+  dispatch({type:'password',value:password})
+
+  if(!Object.values(errors).includes(true)){
+    try{
       const {data} = await axiosInstance.post(`/signup/`,userInput)    
       if(data){
         toast.success('Account successfully Registered, please log in');
         navigate("/login");
         setSignUpValues()
       }
-    
-  }
+   }
   catch(error){
-    console.log({error});
      toast.error(error.response.data?.email?error.response.data?.email?.[0]:'Invalid Credentials ');
   }
-  };
+
+  }
+   
+  
+  return
+  }
   return (
     <div>
       <form action="" className="w-full" onSubmit={handleSubmit}>
@@ -70,7 +92,13 @@ import  { axiosInstance } from "../../utils/axios";
               name="firstname"
               value={signUpValues.firstname}
               onChange={onChange}
+              error={errors.firstname}
+              onBlur={handleBlur}
             />
+            {errors.firstname ?
+            <small className="text-[.65rem] text-red-700">Text should be between 3 and 20 characters </small>
+            :""
+            }
           </div>
           <div className="lg:w-1/2 ">
             <TextField
@@ -78,7 +106,13 @@ import  { axiosInstance } from "../../utils/axios";
               name="lastname"
               value={signUpValues.lastname}
               onChange={onChange}
+              error={errors.lastname}
+              onBlur={handleBlur}
             />
+            {errors.lastname ?
+            <small className="text-[.65rem] text-red-700">Text should be between 3 and 20 characters </small>
+            :""
+            }
           </div>
         </div>
         <div className="mt-[1rem]">
@@ -87,7 +121,13 @@ import  { axiosInstance } from "../../utils/axios";
             name="email"
             value={signUpValues.email}
             onChange={onChange}
+            error={errors.email}
+            onBlur={handleBlur}
           />
+           {errors.email ?
+            <small className="text-[.65rem] text-red-700">Please enter a valid email </small>
+            :""
+            }
         </div>
         <div className="mt-[1rem]">
           <TextField
@@ -96,7 +136,13 @@ import  { axiosInstance } from "../../utils/axios";
             name="password"
             value={signUpValues.password}
             onChange={onChange}
+            error={errors.password}
+            onBlur={handleBlur}
           />
+          {errors.password ?
+            <small className="text-[.65rem] text-red-700"> Password should be more than 5 characters long</small>
+            :""
+            }
         </div>
 
         <div className="flex items-center relative gap-4 mt-8">

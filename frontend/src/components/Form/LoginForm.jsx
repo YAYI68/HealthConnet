@@ -15,13 +15,15 @@ import { useAppContext } from "../../context/AppContext";
   const navigate = useNavigate()
   const { state } = useLocation();
 
-  console.log({state})
+ 
 
   const [loginValues, setLoginValues] = useState({
     email: "",
     password: "",
     agree: false,
   });
+
+
 
   const onChange = ({ target }) => {
     const { name, value, checked } = target;
@@ -38,6 +40,7 @@ import { useAppContext } from "../../context/AppContext";
       });
     }
   }
+
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -58,7 +61,7 @@ import { useAppContext } from "../../context/AppContext";
     }
     catch(error){
         console.log({error})
-        // toast.error("Invalid Email/Password!");
+        toast.error("Invalid Email/Password!");
         }
   };
   return (
@@ -71,6 +74,7 @@ import { useAppContext } from "../../context/AppContext";
             name="email"
             value={loginValues.email}
             onChange={onChange}
+          
           />
         </div>
         <div className="mt-[1rem]">

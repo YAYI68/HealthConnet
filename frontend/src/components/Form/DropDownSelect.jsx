@@ -44,7 +44,7 @@ export default DropDownSelect
 
 function DropDownOption ({options,setOption,currentValue}){
     return(
-        <div className='w-full max-h-[15rem] overflow-scroll top-[110%]  absolute z-[10] bg-white border border-primary p-2 rounded-md '>
+        <div className='w-full max-h-[15rem] overflow-scroll top-[110%]  absolute z-[5] bg-white border border-primary p-2 rounded-md '>
           <ul className='w-full'>
             {options.map((option,i)=>(
             <li onClick={()=>setOption(option)} key={i} className={`w-full my-1 cursor-pointer rounded-md flex items-center hover:text-black justify-between    hover:bg-secondary p-2 ${currentValue===option?'bg-primary text-white':''}`}> <span>{option}</span> {currentValue===option?<span><MdOutlineCheck /></span>:''} </li>

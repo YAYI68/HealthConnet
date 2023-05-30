@@ -5,15 +5,17 @@ import Doctor from "../../assets/svg/doctor_male.svg";
 import { MdLocationPin } from "react-icons/md";
 import SearchInput from "../UI/SearchInput";
 import DropDownSelect from "../Form/DropDownSelect";
+import { useAppContext } from "../../context/AppContext";
+import { useAuthContext } from "../../context/AuthContext";
 
 
 
 
 
 export default function AppointmentHeader({getLocation,getQuery}) {
-  const serviceTitle = NigeriaState.map((item) => {
-    return item;
-  });
+   const { user } = useAuthContext()
+   console.log({user})
+
   return (
     <>
       <div className=" w-full bg-secondary p-2 rounded-md">
@@ -29,7 +31,7 @@ export default function AppointmentHeader({getLocation,getQuery}) {
               placeholder="select location"
             /> */}
             <DropDownSelect 
-              defaultValue={'Lagos'}
+              defaultValue={`${user?user.state:''}`}
               svgIcon={<MdLocationPin className="text-[1.2rem] text-primary" />}
               onChange={getLocation}
               options={NigeriaState}
