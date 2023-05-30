@@ -14,8 +14,7 @@ import { useAuthContext } from "../../context/AuthContext";
 
 export default function AppointmentHeader({getLocation,getQuery}) {
    const { user } = useAuthContext()
-   console.log({user})
-
+   
   return (
     <>
       <div className=" w-full bg-secondary p-2 rounded-md">
@@ -24,12 +23,6 @@ export default function AppointmentHeader({getLocation,getQuery}) {
         </h3>
         <div className="flex flex-col lg:flex-row  gap-2 justify-flex-start">
           <div className="relative w-full lg:w-[20%]">
-            {/* <Select
-             onSelect={getLocation}
-              dropDownData={serviceTitle}
-              svgIcon={<MdLocationPin className="text-[1.2rem] text-primary" />}
-              placeholder="select location"
-            /> */}
             <DropDownSelect 
               defaultValue={`${user?user.state:''}`}
               svgIcon={<MdLocationPin className="text-[1.2rem] text-primary" />}
@@ -39,7 +32,7 @@ export default function AppointmentHeader({getLocation,getQuery}) {
           </div>
            <div className="w-full lg:w-[60%] border border-primary rounded-md overflow-hidden">
              <SearchInput
-              placeholder={'Search for your Doctor or Specialty'}
+              placeholder={'Search for a Doctor or Specialty'}
               onSubmit={getQuery}
              />
            </div>

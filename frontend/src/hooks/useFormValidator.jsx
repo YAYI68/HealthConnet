@@ -26,14 +26,14 @@ const reducer = (state,action)=>{
         if( value.length < 3 || value.length > 20){
             return {...state,firstname:true}
         }
-        return {...state,text:false} 
+        return {...state,firstname:false} 
     }
     if(action.type === LASTNAME){
         const { value } = action
         if ( value.length < 3 || value.length > 20){
             return {...state,lastname:true}
         }
-        return {...state,text:false} 
+        return {...state,lastname:false} 
     }
     if(action.type === PASSWORD){
         const { value } = action
@@ -48,9 +48,9 @@ const reducer = (state,action)=>{
 
 import React, { useReducer } from 'react'
 
-function useError() {
-    const [errors,dispatch] = useReducer(reducer,InitialState)
-  return {errors,dispatch}
+function useFormValidator() {
+    const [validator,dispatch] = useReducer(reducer,InitialState)
+  return {validator,dispatch}
 }
 
-export default useError
+export default useFormValidator

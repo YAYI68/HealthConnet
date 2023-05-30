@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import { filteredInput } from '../../utils';
 import { BASE_URL } from '../../utils/constant';
 import useUpdateData from '../../hooks/useUpdateData';
+import { toast } from 'react-toastify';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 
 const API_URL = 'doctor'
 const DATA_KEY = 'doctorProfile';
@@ -13,9 +15,11 @@ const DATA_KEY = 'doctorProfile';
 
 
 function DoctorProfileForm() {
-     const { data:doctor, error, isLoading,updateData,mutate } =  useUpdateData(DATA_KEY,API_URL)
+    const axiosPrivate =  useAxiosPrivate()
+     const { data:doctor, error, isLoading,mutate } =  useUpdateData(DATA_KEY,API_URL)
      const [preview ,setPreview ] = useState();
      const [imgFile, setImgFile] = useState();
+     const navigate = useNavigate();
      const [values, setValues] = useState({
         firstname:'',
         lastname:'',
@@ -52,15 +56,20 @@ function DoctorProfileForm() {
      const handleOnChange = (event) =>{
         setValues((prev)=>({...prev,[event.target.name]:event.target.value}))
      }
-    console.log({doctor})
-    const navigate = useNavigate()
+   
 
     const handleSubmit = async()=>{
-        console.log({imgFile})
         const inputData = {...values,image:imgFile}
         const newData = filteredInput(inputData)
-         await updateData(newData)
-         mutate()
+        console.log({newData})
+        const response =  await axiosPrivate.patch(`/doctor/`,newData)
+        if (response.status === 200){
+            mutate()
+            toast.success("Profile successfully updated ");
+            navigate('/dashboard/profile')
+        }
+        
+
     }
    
     if(isLoading){

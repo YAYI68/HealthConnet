@@ -20,7 +20,7 @@ function PatientProfile() {
             <span><FaPen className='h-3 w-3' /></span>  <span>Edit</span>  
             </Link>
             <div className='w-[80%] flex items-center flex-col lg:flex-row gap-2 lg:gap-4 lg:w-[50%]'>
-               <div className='h-[7rem] w-[7rem] lg:h-[12rem] lg:w-[12rem] rounded-[50%]'>
+               <div className='h-[7rem] w-[7rem] lg:h-[12rem] lg:w-[12rem] rounded-[50%]  overflow-hidden'>
                <img src={patient?.image?patient.image: UserImg} alt=""  className='h-full w-full' />
                 </div> 
                 <div className='w-full lg:w-fit p-2'>

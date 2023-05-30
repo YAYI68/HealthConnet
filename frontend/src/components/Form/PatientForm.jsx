@@ -5,6 +5,8 @@ import useUpdateData from '../../hooks/useUpdateData';
 import { filteredInput } from '../../utils';
 import { useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContext';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import { toast } from 'react-toastify';
 
 
 const API_URL = 'patient'
@@ -12,6 +14,7 @@ const DATA_KEY = 'patientProfile';
 
 function PatientForm() {
     const { setUpdateModal } = useAppContext()
+    const axiosPrivate =  useAxiosPrivate()
     const navigate = useNavigate()
     const { data:patient, error, isLoading,updateData,mutate } =  useUpdateData(DATA_KEY,API_URL)
     const [preview ,setPreview ] = useState();
@@ -53,12 +56,16 @@ function PatientForm() {
 
 
    const handleSubmit = async()=>{
+    
        const inputData = {...values,image:imgFile}
        const newData = filteredInput(inputData)
-        await updateData(newData)
-        mutate()
-        setUpdateModal(false)
-        navigate('/dashboard/profile')
+       const response =  await axiosPrivate.patch(`/patient/`,newData)
+       if (response.status === 200){
+           mutate()
+           toast.success("Profile successfully updated ");
+           setUpdateModal(false)
+           navigate('/dashboard/profile')
+       }
    }
 
    const goBack = ()=>{

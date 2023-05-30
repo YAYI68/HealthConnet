@@ -38,8 +38,10 @@ class DoctorProfileSerializer(serializers.ModelSerializer):
         user_data = validated_data.get('user',None)
         user = instance.user
         if user_data is not None:
-            user.first_name = user_data.get('first_name',user.first_name)
+            print(user_data.get('image'))
             user.image = user_data.get('image',user.image)
+            user.first_name = user_data.get('first_name',user.first_name)
+            # user.image = user_data.get('image',user.image)
             user.last_name = user_data.get('last_name',user.last_name)
             user.phone_number = user_data.get('phone_number',user.phone_number)
             user.gender = user_data.get('gender',user.gender)

@@ -13,7 +13,7 @@ export const axiosPrivateInstance = axios.create({
     baseURL: `${BASE_URL}/api/v1`,
     withCredentials: true,
     headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "multipart/form-data"
     }
 })
 

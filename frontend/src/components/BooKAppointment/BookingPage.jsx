@@ -28,12 +28,12 @@ export default function BookingPage() {
     }
 
     function handleNavigate() {
-      if(user.isProfileComlete){
-        ()=>setToggle(true)
+      if(user.isProfileComplete){
+        setToggle(true)
       }
       else{
         setModalMessage('Please Update your profile and medical information before you proceed to Book Appointment')
-        setUpdateModal(!user.isProfileComlete)
+        setUpdateModal(!user.isProfileComplete)
       }
      
     }

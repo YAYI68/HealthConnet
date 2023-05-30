@@ -26,7 +26,7 @@ export default function BookAppointment() {
         getLocation={setLocation}
         getQuery={setSearchQuery}
       />
-      <section className='flex flex-wrap  gap-4 mt-8 mb-4 md:flex-wrap'>
+      <section className='flex flex-wrap lg:justify-between gap-4 mt-8 mb-4 md:flex-wrap'>
         {doctors.length  ? doctors.map((doctor,index)=>(
             < SpecialistCard key={index} doctor={doctor} />
         )) :

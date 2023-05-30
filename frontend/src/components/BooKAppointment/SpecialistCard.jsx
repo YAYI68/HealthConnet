@@ -12,9 +12,10 @@ export default function SpecialistCard({doctor}) {
   const { setUpdateModal, setModalMessage}= useAppContext()
 
   const navigate = useNavigate();
-  function handleNavigate(id) {
-    if(user.isProfileComlete){
-      navigate(`/appointment/detail`,{state:{id}});
+
+  function handleNavigate(doctor) {
+    if(user.isProfileComplete){
+      navigate(`/appointment/${doctor.slug}`,{state:{id:doctor.uid}});
     }
     else{
       setModalMessage('Please Update your profile and medical information before you proceed to Book Appointment')
@@ -54,7 +55,7 @@ export default function SpecialistCard({doctor}) {
 
           <button
             className="w-full lg:w-2/6 text-xs bg-primary text-white px-1 py-2 rounded-md "
-            onClick={()=>handleNavigate(doctor.uid)}
+            onClick={()=>handleNavigate(doctor)}
           >
             Book Now
           </button>

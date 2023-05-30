@@ -17,8 +17,7 @@ class GetUpdateDeleteDoctorProfileView(generics.UpdateAPIView,generics.DestroyAP
     serializer_class = DoctorProfileSerializer
     permission_classes= [IsAdminUser]
     
-    def get_object(self):
-        
+    def get_object(self):     
         try:
             user = self.request.user
             return user.doctor
@@ -47,8 +46,6 @@ class GetAllDoctors(generics.ListAPIView):
         state = self.request.query_params.get('state')
         
         if (query or state) is not None:
-            print(f'state:{state}')
-            print(f'q:{query}')
             queryset = queryset.filter(
                                        Q(user__state__icontains=state)&
                                        (Q(user__first_name__icontains=query)

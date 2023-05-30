@@ -4,12 +4,12 @@ import { TextField, CheckBox } from "../Form";
 import { useAuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import  { axiosInstance } from "../../utils/axios";
-import useError from "../../hooks/useError";
+import useError from "../../hooks/useFormValidator";
 
 
  function SignUpForm({userType}) {
   const navigate = useNavigate()
-  const {errors,dispatch} =  useError()
+  const {validator,dispatch} =  useError()
   const [signUpValues, setSignUpValues] = useState({
     firstname: "",
     lastname: "",
@@ -18,14 +18,8 @@ import useError from "../../hooks/useError";
     agree: false,
   });
 
-  const [validatorError,setValidatorError] = useState({
-   
-  })
-
- console.log(errors)
-
   const onChange = ({ target }) => {
-    const { name, value, checked,type } = target;
+    const { name, value, checked } = target;
     
     if (name !== "agree") {
       setSignUpValues({
@@ -48,6 +42,8 @@ import useError from "../../hooks/useError";
       
   }
 
+  console.log(validator)
+
   const handleSubmit = async(e) => {
     e.preventDefault();
     const {firstname,lastname,password,email} = signUpValues;
@@ -63,7 +59,7 @@ import useError from "../../hooks/useError";
   dispatch({type:'email',value:email})
   dispatch({type:'password',value:password})
 
-  if(!Object.values(errors).includes(true)){
+  if(!Object.values(validator).includes(true)){
     try{
       const {data} = await axiosInstance.post(`/signup/`,userInput)    
       if(data){
@@ -74,11 +70,8 @@ import useError from "../../hooks/useError";
    }
   catch(error){
      toast.error(error.response.data?.email?error.response.data?.email?.[0]:'Invalid Credentials ');
+    }
   }
-
-  }
-   
-  
   return
   }
   return (
@@ -92,10 +85,10 @@ import useError from "../../hooks/useError";
               name="firstname"
               value={signUpValues.firstname}
               onChange={onChange}
-              error={errors.firstname}
+              error={validator.firstname}
               onBlur={handleBlur}
             />
-            {errors.firstname ?
+            {validator.firstname ?
             <small className="text-[.65rem] text-red-700">Text should be between 3 and 20 characters </small>
             :""
             }
@@ -106,10 +99,10 @@ import useError from "../../hooks/useError";
               name="lastname"
               value={signUpValues.lastname}
               onChange={onChange}
-              error={errors.lastname}
+              error={validator.lastname}
               onBlur={handleBlur}
             />
-            {errors.lastname ?
+            {validator.lastname ?
             <small className="text-[.65rem] text-red-700">Text should be between 3 and 20 characters </small>
             :""
             }
@@ -121,10 +114,10 @@ import useError from "../../hooks/useError";
             name="email"
             value={signUpValues.email}
             onChange={onChange}
-            error={errors.email}
+            error={validator.email}
             onBlur={handleBlur}
           />
-           {errors.email ?
+           {validator.email ?
             <small className="text-[.65rem] text-red-700">Please enter a valid email </small>
             :""
             }
@@ -136,10 +129,10 @@ import useError from "../../hooks/useError";
             name="password"
             value={signUpValues.password}
             onChange={onChange}
-            error={errors.password}
+            error={validator.password}
             onBlur={handleBlur}
           />
-          {errors.password ?
+          {validator.password ?
             <small className="text-[.65rem] text-red-700"> Password should be more than 5 characters long</small>
             :""
             }
