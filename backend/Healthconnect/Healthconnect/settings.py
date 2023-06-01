@@ -15,7 +15,6 @@ from decouple import config
 from datetime import timedelta
 import  os
 import django_heroku
-import  dj_database_url
 
 
 
