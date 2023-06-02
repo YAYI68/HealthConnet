@@ -14,7 +14,10 @@ from pathlib import Path
 from decouple import config
 from datetime import timedelta
 import  os
-import django_heroku
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+# import django_heroku
 
 
 
@@ -43,10 +46,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "cloudinary_storage"
     "corsheaders",
     'hcb.apps.HcbConfig',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -228,3 +233,19 @@ WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 AUTH_USER_MODEL = 'hcb.User'
 
 # django_heroku.settings(locals())
+
+# Cloudinary Django Integration
+# cloudinary.config(
+#   cloud_name = config('Cloudinary_cloud_name'),
+#   api_key = config('Cloudinary_api_key'),
+#   api_secret = config('Cloudinary_api_secret'),
+#   secure = config('Cloudinary_secure')
+# )
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('Cloudinary_cloud_name'),
+    'API_KEY': config('Cloudinary_api_key'),
+    'API_SECRET': config('Cloudinary_api_secret'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
