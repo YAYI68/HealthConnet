@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'hcb.apps.HcbConfig',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
+     'cloudinary_storage',
     'cloudinary',
 ]
 
@@ -210,13 +211,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# STORAGES = {
-#     # Enable WhiteNoise's GZip and Brotli compression of static assets:
-#     # https://whitenoise.readthedocs.io/en/latest/django.html#add-compression-and-caching-support
-#     "staticfiles": {
-#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-#     },
-# }
+
 
 MEDIA_URL = "/images/"
 MEDIA_ROOT = "media/images"
