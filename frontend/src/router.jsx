@@ -20,11 +20,11 @@ import AllAppointments from "./pages/AllAppointments";
 
 export const router = createBrowserRouter([
   {
-    element:<PersistLogin />,
-    children:[
-      { 
-        path:'/',
-        element:<MainLayout />,
+    element: <PersistLogin />,
+    children: [
+      {
+        path: "/",
+        element: <MainLayout />,
         children: [
           { path: "", element: <Home /> },
           {
@@ -32,48 +32,46 @@ export const router = createBrowserRouter([
             element: <Register />,
           },
           {
-            path:'blog',
-            children:[
-              {path:'',element:<BlogList />,},
+            path: "blog",
+            children: [
+              { path: "", element: <BlogList /> },
               {
-                path:':id',element:<BlogDetail />,
-              }
-            ]
+                path: ":id",
+                element: <BlogDetail />,
+              },
+            ],
           },
           {
             path: "sign-up",
             element: <Register />,
           },
-          { element:<ProtectedRoute/>,
-           children:[
-            
-           { path:'appointment',element: <BookAppointment />},
-           {path:'appointment/:slug',element: <BookingPage />}
-          ]
-         },
-         
-         ],
-        },
-      { element: <ProtectedRoute />,
-       children:[
-          { 
-          path: "/dashboard", element:<DashboardLayout /> ,
-          children: [
-          { path: "overview", element: <OverviewPage />},  
-          { path: "setting", element:<SettingPage /> },
-          {path:'appointment',element:<AllAppointments/>},
-          { path: "history", element:<HistoryPage /> },
-          { path: "notification", element:<Notification /> },
-          { path: "profile", element:<Profile />},
-          { path:'profile/edit', element:<EditProfile />},
-          
-          ]
-         },
-      ]
+          {
+            element: <ProtectedRoute />,
+            children: [
+              { path: "appointment", element: <BookAppointment /> },
+              { path: "appointment/:slug", element: <BookingPage /> },
+            ],
+          },
+        ],
       },
-
-     
-    ]
+      {
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "/dashboard",
+            element: <DashboardLayout />,
+            children: [
+              { path: "overview", element: <OverviewPage /> },
+              { path: "setting", element: <SettingPage /> },
+              { path: "appointment", element: <AllAppointments /> },
+              { path: "history", element: <HistoryPage /> },
+              { path: "notification", element: <Notification /> },
+              { path: "profile", element: <Profile /> },
+              { path: "profile/edit", element: <EditProfile /> },
+            ],
+          },
+        ],
+      },
+    ],
   },
-  
 ]);
