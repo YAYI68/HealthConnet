@@ -79,7 +79,16 @@ class resetPassword(APIView):
         if user and default_token_generator.check_token(user, token):
             user.set_password(password)
             user.save()
+            subject = "Password Reset Success"
+            recipient_list = [user.email]
+
+            html_message = render_to_string('forget_password_email.html', {
+                "name": user.first_name,
+            })
+            sendEmail(subject, recipient_list, html_message)
             return Response({"message": "Password reset successfully."}, status=status.HTTP_201_CREATED)
+        else:
+            return Response({"message": "Password reset fail"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 def get_tokens_for_user(user):
