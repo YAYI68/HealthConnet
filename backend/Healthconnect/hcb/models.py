@@ -36,11 +36,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
     email = models.EmailField(unique=True)
-    first_name = models.CharField(max_length=30, blank=True)
-    last_name = models.CharField(max_length=30, blank=True)
+    first_name = models.CharField(max_length=30, )
+    last_name = models.CharField(max_length=30,)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    role = models.CharField(max_length=30, choices=User_Roles)
+    role = models.CharField(max_length=10, choices=User_Roles)
     country = models.CharField(max_length=20, null=True, blank=True)
     state = models.CharField(max_length=20, null=True, blank=True)
     image = models.ImageField(
@@ -73,6 +73,15 @@ Patient_MaritalStatus = (
     ('MARRIED', 'MARRIED'),
     ('DIVORCED', 'DIVORCED'),
 )
+
+
+class UserToken(models.Model):
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name='currentUser')
+    token = models.CharField(max_length=5, null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.user.first_name}'
 
 
 class Patient (models.Model):
