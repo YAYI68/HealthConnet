@@ -25,11 +25,6 @@ class UserSignUpSerializer(serializers.ModelSerializer):
             "token": randToken
         })
         sendEmail(subject, recipient_list, html_message)
-
-        # if user.role == 'DOCTOR':
-        #     user.is_staff = True
-        #     user.save()
-        #     return user
         return user
 
 
@@ -40,7 +35,7 @@ class UserLoginSeriliazer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'image', 'role', 'email',
-                  'state', 'firstname', 'lastname')
+                  'state', 'firstname', 'lastname', "is_complete")
 
 
 class UserProfileSeriliazer(serializers.ModelSerializer):
