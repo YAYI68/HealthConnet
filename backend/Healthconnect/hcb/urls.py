@@ -17,6 +17,8 @@ urlpatterns = [
     path('review/', review.ReviewView.as_view(), name='review'),
     path('blog/', blog.BlogView.as_view()),
     path('doctors/all/', doctor.GetAllDoctors.as_view()),
+    path('doctor/register/', doctor.CreateDoctor.as_view()),
+    path('patient/register/', patient.CreatePatient.as_view()),
     path('token/refresh/', user.CookieTokenRefreshView.as_view(),
          name='token_refresh'),
     path('user/<str:pk>/', user.ProfileDetailVeiw.as_view()),

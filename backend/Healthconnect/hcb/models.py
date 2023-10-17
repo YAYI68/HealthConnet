@@ -40,6 +40,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=30,)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    is_complete = models.BooleanField(default=False)
     role = models.CharField(max_length=10, choices=User_Roles)
     country = models.CharField(max_length=20, null=True, blank=True)
     state = models.CharField(max_length=20, null=True, blank=True)

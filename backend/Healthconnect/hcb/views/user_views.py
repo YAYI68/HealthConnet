@@ -16,7 +16,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from decouple import config
 from hcb.models import User, UserToken
-from hcb.serializers.user_serializers import UserProfileSeriliazer, UserSignUpSerializer, CookieTokenRefreshSerializer
+from hcb.serializers.user_serializers import UserProfileSeriliazer, UserSignUpSerializer, UserLoginSeriliazer, CookieTokenRefreshSerializer
 from hcb.serializers.patient_serializers import PatientProfileSerializer
 from hcb.serializers.doctor_serializers import DoctorProfileSerializer
 from hcb.utils import sendEmail
@@ -125,7 +125,7 @@ class LoginView(APIView):
                 samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
             )
             csrf.get_token(request)
-            userInfo = UserProfileSeriliazer(user).data
+            userInfo = UserLoginSeriliazer(user).data
             response.data = {"success": "Login successfully",
                              'access_token': data['access_token'], 'refresh_token': data['refresh_token'], 'user': userInfo}
             response.status = status.HTTP_200_OK

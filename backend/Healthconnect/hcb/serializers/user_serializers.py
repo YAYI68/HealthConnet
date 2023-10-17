@@ -33,7 +33,7 @@ class UserSignUpSerializer(serializers.ModelSerializer):
         return user
 
 
-class UserProfileSeriliazer(serializers.ModelSerializer):
+class UserLoginSeriliazer(serializers.ModelSerializer):
     firstname = serializers.CharField(source='first_name')
     lastname = serializers.CharField(source='last_name')
 
@@ -41,6 +41,16 @@ class UserProfileSeriliazer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'image', 'role', 'email',
                   'state', 'firstname', 'lastname')
+
+
+class UserProfileSeriliazer(serializers.ModelSerializer):
+    firstname = serializers.CharField(source='first_name')
+    lastname = serializers.CharField(source='last_name')
+
+    class Meta:
+        model = User
+        fields = ('id', 'image', 'role', 'email',
+                  'state', 'firstname', 'lastname', "is_complete")
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
