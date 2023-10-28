@@ -28,7 +28,7 @@ class UserSignUpSerializer(serializers.ModelSerializer):
         return user
 
 
-class UserLoginSeriliazer(serializers.ModelSerializer):
+class UserSeriliazer(serializers.ModelSerializer):
     firstname = serializers.CharField(source='first_name')
     lastname = serializers.CharField(source='last_name')
 
