@@ -2,7 +2,7 @@ from rest_framework import exceptions as rest_exceptions
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework import status, generics
 from rest_framework.response import Response
-from hcb.models import Patient
+from hcb.models import Patient, User
 
 from hcb.serializers.patient_serializers import (
     PatientProfileSerializer
@@ -14,8 +14,8 @@ class CreatePatient(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        user = request.user
         data = request.data
+        user = User.objects.get(uid=data.userId)
         user.country = data.get('country')
         user.state = data.get('state')
         user.gender = data.get('gender')

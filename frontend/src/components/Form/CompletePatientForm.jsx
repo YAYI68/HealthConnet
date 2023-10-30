@@ -4,7 +4,7 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import UserImg from "../../assets/images/default.png";
 import { FaPen } from "react-icons/fa";
 
-const CompletePatientForm = () => {
+const CompletePatientForm = ({ userId }) => {
   const axiosPrivate = useAxiosPrivate();
   const [preview, setPreview] = useState();
   const [imgFile, setImgFile] = useState();

@@ -75,7 +75,9 @@ const TokenForm = () => {
       });
       toast.success(data.message);
       handleVerifyToken(false);
-      navigate("/login");
+      navigate("/complete/profile", {
+        state: { userId: data.userId, role: data.role, name: data.name },
+      });
     } catch (error) {
       toast.error(error.response.data.message);
     }

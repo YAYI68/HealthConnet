@@ -99,9 +99,9 @@ const CompleteDoctorForm = () => {
                 onChange={handleOnChange}
                 defaultValue={""}
                 name="gender"
+                placeholder="Gender"
                 className="p-2 w-full  outline-none border-primary border rounded-md"
               >
-                <option></option>
                 <option value="MALE">Male</option>
                 <option value="FEMALE">Female</option>
               </select>
@@ -116,7 +116,7 @@ const CompleteDoctorForm = () => {
                 defaultValue={""}
                 onChange={handleOnChange}
                 name="qualification"
-                placeholder="Qualification"
+                placeholder="E.g Bsc Dentistry"
                 className="p-2 w-full outline-none border-primary border rounded-md"
               />
             </div>
@@ -130,7 +130,7 @@ const CompleteDoctorForm = () => {
                 defaultValue={""}
                 onChange={handleOnChange}
                 name="field"
-                placeholder="Specialization"
+                placeholder="E.g Dentist"
                 className="p-2 w-full outline-none border-primary border rounded-md"
               />
             </div>
