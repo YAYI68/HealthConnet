@@ -11,30 +11,34 @@ from hcb.serializers.patient_serializers import (
 
 class CreatePatient(generics.CreateAPIView):
     serializer_class = PatientProfileSerializer
-    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         data = request.data
-        user = User.objects.get(uid=data.userId)
-        user.country = data.get('country')
-        user.state = data.get('state')
-        user.gender = data.get('gender')
-        user.phone_number = data.get('phoneNumber')
-        user.image = data.get('image')
-        user.is_complete = True
-        user.save()
-        patient = Patient.objects.create(user=user,
-                                         blood_group=data.get('blood_group'),
-                                         genotype=data.get('genotype'),
-                                         weight=data.get('weight'),
-                                         age=data.get('age'),
-                                         marital_status=data.get(
-                                             'marital_status'),
-                                         medical_history=data.get(
-                                             'medical_history')
-                                         )
-        serializer = PatientProfileSerializer(patient, many=False)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        try:
+
+            user = User.objects.get(uid=data.userId)
+            user.country = data.get('country')
+            user.state = data.get('state')
+            user.gender = data.get('gender')
+            user.phone_number = data.get('phoneNumber')
+            user.image = data.get('image')
+            user.is_complete = True
+            user.save()
+            patient = Patient.objects.create(user=user,
+                                             blood_group=data.get(
+                                                 'blood_group'),
+                                             genotype=data.get('genotype'),
+                                             weight=data.get('weight'),
+                                             age=data.get('age'),
+                                             marital_status=data.get(
+                                                 'marital_status'),
+                                             medical_history=data.get(
+                                                 'medical_history')
+                                             )
+            serializer = PatientProfileSerializer(patient, many=False)
+            return Response({"message": "Profile created successfully"}, status=status.HTTP_201_CREATED)
+        except:
+            return Response({"message": "Invalid Data Input, Kindly enter appropriate information"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class GetUpdateDeletePatientProfileView(generics.RetrieveUpdateDestroyAPIView):

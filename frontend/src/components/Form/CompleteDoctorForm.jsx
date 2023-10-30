@@ -5,7 +5,7 @@ import UserImg from "../../assets/images/default.png";
 import { FaPen } from "react-icons/fa";
 import { SubmitButton } from "../UI";
 
-const CompleteDoctorForm = () => {
+const CompleteDoctorForm = ({ userId }) => {
   const axiosPrivate = useAxiosPrivate();
 
   const [preview, setPreview] = useState();

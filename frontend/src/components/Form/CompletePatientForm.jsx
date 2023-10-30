@@ -3,6 +3,9 @@ import { filteredInput } from "../../utils";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import UserImg from "../../assets/images/default.png";
 import { FaPen } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../../utils/axios";
 
 const CompletePatientForm = ({ userId }) => {
   const axiosPrivate = useAxiosPrivate();
@@ -17,6 +20,7 @@ const CompletePatientForm = ({ userId }) => {
     genotype: "",
     medical_history: "",
   });
+  const navigate = useNavigate();
 
   const handleUpload = (event) => {
     setImgFile(event.target.files[0]);
@@ -43,15 +47,16 @@ const CompletePatientForm = ({ userId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const inputData = { ...values, image: imgFile };
+    const inputData = { ...values, image: imgFile, userId };
     const newData = filteredInput(inputData);
-    // const response = await axiosPrivate.patch(`/patient/`, newData);
-    // if (response.status === 200) {
-    //   mutate();
-    //   toast.success("Profile successfully updated ");
-    //   setUpdateModal(false);
-    //   navigate("/dashboard/profile");
-    // }
+    try{
+      const response = await axiosInstance.patch(`/patient/register/`, newData);
+      if (response.status === 200) {
+        toast.success("Profile successfully updated,Please kindly Login");
+        navigate("/login");
+      }
+    }
+ 
   };
 
   return (
