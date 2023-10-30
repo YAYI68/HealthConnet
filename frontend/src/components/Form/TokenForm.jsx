@@ -72,7 +72,6 @@ const TokenForm = () => {
           />
         ))}
       </div>
-
       <SubmitButton text={"Apply Token"} className={""} loading={""} />
     </form>
   );

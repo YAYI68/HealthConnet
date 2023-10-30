@@ -11,7 +11,9 @@ const VerifyEmail = () => {
           <h2 className=" font-[900] text-[1.5rem] mt-4 mb-[3rem]">
             Verify Email
           </h2>
-          <p>Enter the code that was sent to your email</p>
+          <p className="text-center">
+            Enter the code that was sent to your email
+          </p>
         </div>
         <div className="w-full mt-[2rem] flex flex-col  items-center">
           <TokenForm />
