@@ -17,9 +17,9 @@ function PatientForm() {
   const navigate = useNavigate();
   const {
     data: patient,
-    error,
+
     isLoading,
-    updateData,
+
     mutate,
   } = useUpdateData(DATA_KEY, API_URL);
   const [preview, setPreview] = useState();

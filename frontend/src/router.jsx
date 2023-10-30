@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import MainLayout from "./components/Layout/MainLayout";
@@ -17,6 +16,10 @@ import Profile from "./pages/Profile";
 import BlogList from "./pages/BlogList";
 import BlogDetail from "./pages/BlogDetail";
 import AllAppointments from "./pages/AllAppointments";
+import VerifyEmail from "./pages/VerifyEmail";
+import CompleteProfile from "./pages/CompleteProfile";
+import ForgetPassword from "./pages/ForgetPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -28,10 +31,6 @@ export const router = createBrowserRouter([
         children: [
           { path: "", element: <Home /> },
           {
-            path: "login",
-            element: <Register />,
-          },
-          {
             path: "blog",
             children: [
               { path: "", element: <BlogList /> },
@@ -42,10 +41,6 @@ export const router = createBrowserRouter([
             ],
           },
           {
-            path: "sign-up",
-            element: <Register />,
-          },
-          {
             element: <ProtectedRoute />,
             children: [
               { path: "appointment", element: <BookAppointment /> },
@@ -53,6 +48,30 @@ export const router = createBrowserRouter([
             ],
           },
         ],
+      },
+      {
+        path: "/login",
+        element: <Register />,
+      },
+      {
+        path: "/sign-up",
+        element: <Register />,
+      },
+      {
+        path: "/verify",
+        element: <VerifyEmail />,
+      },
+      {
+        path: "/forget-password",
+        element: <ForgetPassword />,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPassword />,
+      },
+      {
+        path: "/complete/profile",
+        element: <CompleteProfile />,
       },
       {
         element: <ProtectedRoute />,

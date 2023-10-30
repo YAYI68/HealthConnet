@@ -49,7 +49,7 @@ class forgetPassword(APIView):
             user = User.objects.get(email=email)
             token = default_token_generator.make_token(user)
             uid = urlsafe_base64_encode(force_bytes(user.id))
-            link = f"{config('CLIENT_URL')}/reset/?uid={uid}&token={token}"
+            link = f"{config('CLIENT_URL')}/reset-password/?uid={uid}&token={token}"
             subject = "Password Reset Request"
             recipient_list = [user.email]
 
