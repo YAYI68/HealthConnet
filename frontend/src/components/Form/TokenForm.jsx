@@ -56,17 +56,23 @@ const TokenForm = () => {
   }, [otp.length]);
 
   return (
-    <form action="" className="w-full lg:w-[60%] flex items-center gap-4 ">
-      {Array.from({ length: 5 }, (_, index) => (
-        <TokenInput
-          key={index}
-          index={index}
-          otp={otp}
-          activeOtpIndex={activeOtpIndex}
-          handleOnchange={handleOnchange}
-          handleOnKeyDown={handleOnKeyDown}
-        />
-      ))}
+    <form
+      action=""
+      className="w-full lg:w-[60%] flex flex-col items-center gap-4 "
+    >
+      <div className="w-full flex items-center gap-4">
+        {Array.from({ length: 5 }, (_, index) => (
+          <TokenInput
+            key={index}
+            index={index}
+            otp={otp}
+            activeOtpIndex={activeOtpIndex}
+            handleOnchange={handleOnchange}
+            handleOnKeyDown={handleOnKeyDown}
+          />
+        ))}
+      </div>
+
       <SubmitButton text={"Apply Token"} className={""} loading={""} />
     </form>
   );
