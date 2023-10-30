@@ -29,7 +29,7 @@ const CompleteProfile = () => {
           {state.role === "DOCTOR" ? (
             <CompleteDoctorForm userId={state.userId} />
           ) : (
-            <CompletePatientForm userid={state.userId} />
+            <CompletePatientForm userId={state.userId} />
           )}
         </div>
       </div>

@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { filteredInput } from "../../utils";
-import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import UserImg from "../../assets/images/default.png";
 import { FaPen } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../utils/axios";
+import { SubmitButton } from "../UI";
 
 const CompletePatientForm = ({ userId }) => {
-  const axiosPrivate = useAxiosPrivate();
   const [preview, setPreview] = useState();
   const [imgFile, setImgFile] = useState();
   const [values, setValues] = useState({
@@ -18,10 +17,12 @@ const CompletePatientForm = ({ userId }) => {
     blood_group: "",
     age: "",
     genotype: "",
+    marital_status: "",
+    weight: "",
     medical_history: "",
   });
   const navigate = useNavigate();
-
+  console.log({ userId });
   const handleUpload = (event) => {
     setImgFile(event.target.files[0]);
   };
@@ -49,14 +50,15 @@ const CompletePatientForm = ({ userId }) => {
     e.preventDefault();
     const inputData = { ...values, image: imgFile, userId };
     const newData = filteredInput(inputData);
-    try{
+    try {
       const response = await axiosInstance.patch(`/patient/register/`, newData);
-      if (response.status === 200) {
+      if (response.status === 201) {
         toast.success("Profile successfully updated,Please kindly Login");
         navigate("/login");
       }
+    } catch (error) {
+      toast.error(error.response.data.message);
     }
- 
   };
 
   return (
@@ -88,7 +90,7 @@ const CompletePatientForm = ({ userId }) => {
         <div className="w-full flex flex-col lg:flex-row gap-2 lg:justify-between">
           <div className="lg:w-[45%] w-full">
             <label htmlFor="" className="text-primary font-medium">
-              Gender
+              Gender *
             </label>
             <br />
             <select
@@ -97,14 +99,13 @@ const CompletePatientForm = ({ userId }) => {
               name="gender"
               className="p-2 w-full  outline-none border-primary border rounded-md"
             >
-              <option></option>
               <option value="MALE">Male</option>
               <option value="FEMALE">Female</option>
             </select>
           </div>
           <div className="lg:w-[45%] w-full">
             <label htmlFor="" className="text-primary font-medium">
-              Age
+              Age *
             </label>
             <br />
             <input
@@ -120,7 +121,7 @@ const CompletePatientForm = ({ userId }) => {
         <div className="w-full flex flex-col lg:flex-row gap-2 lg:justify-between lg:flex-wrap">
           <div className="lg:w-[45%] w-full">
             <label htmlFor="" className="text-primary font-medium">
-              Country
+              Country *
             </label>
             <br />
             <select
@@ -133,7 +134,7 @@ const CompletePatientForm = ({ userId }) => {
           </div>
           <div>
             <label htmlFor="" className="text-primary font-medium">
-              State
+              State *
             </label>
             <br />
             <input
@@ -162,27 +163,30 @@ const CompletePatientForm = ({ userId }) => {
               className="p-2 w-full outline-none border-primary border rounded-md"
             />
           </div>
-          <div>
+          <div className="lg:w-[45%] w-full">
             <label htmlFor="" className="text-primary font-medium">
               Marital Status
             </label>
             <br />
-            <input
-              type="text"
-              defaultValue={""}
-              name="marital_status"
+            <select
               onChange={handleOnChange}
+              name="marital_status"
               placeholder="Marital Status"
-              className="p-2 w-full outline-none border-primary border rounded-md"
-            />
+              className="p-2 w-full  outline-none border-primary border rounded-md"
+            >
+              <option value="SINGLE">Single</option>
+              <option value="MARRIED">Married</option>
+              <option value="DIVORCED">Divorced</option>
+            </select>
           </div>
 
           <div>
             <label htmlFor="" className="text-primary font-medium">
-              Genotype
+              Genotype *
             </label>
             <br />
             <input
+              required
               type="text"
               name="genotype"
               defaultValue={""}
@@ -201,7 +205,7 @@ const CompletePatientForm = ({ userId }) => {
               name="weight"
               defaultValue={""}
               onChange={handleOnChange}
-              placeholder="Weight"
+              placeholder="Weight in kg"
               className="p-2 w-full  outline-none border-primary border rounded-md"
             />
           </div>
@@ -220,12 +224,7 @@ const CompletePatientForm = ({ userId }) => {
             />
           </div>
           <div className="mt-2 w-full">
-            <button
-              type="submit"
-              className="w-full py-3 font-bold text-white bg-primary rounded-2xl hover:bg-hover"
-            >
-              Submit
-            </button>
+            <SubmitButton text={"Submit"} />
           </div>
         </div>
       </form>

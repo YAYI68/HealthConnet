@@ -18,29 +18,30 @@ class CreateDoctor(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        user = request.user
         data = request.data
-        user.country = data.get('country')
-        user.state = data.get('state')
-        user.gender = data.get('gender')
-        user.phone_number = data.get('phoneNumber')
-        user.image = data.get('image')
-        user.is_staff = True
-        user.is_complete = True
-        user.save()
-        doctor = Doctor.objects.create(user=user,
-                                       hospital=data.get('hospital'),
-                                       experience=data.get('experience'),
-                                       field=data.get('field'),
-                                       bio=data.get('bio'),
-                                       qualification=data.get(
-                                           'qualification'),
-                                       location=data.get('location'),
-                                       price=data.get('price'),
-                                       )
-        serializer = DoctorProfileSerializer(doctor, many=False)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-
+        try:
+            user.country = data.get('country')
+            user.state = data.get('state')
+            user.gender = data.get('gender')
+            user.phone_number = data.get('phoneNumber')
+            user.image = data.get('image')
+            user.is_staff = True
+            user.is_complete = True
+            user.save()
+            doctor = Doctor.objects.create(user=user,
+                                        hospital=data.get('hospital'),
+                                        experience=data.get('experience'),
+                                        field=data.get('field'),
+                                        bio=data.get('bio'),
+                                        qualification=data.get(
+                                            'qualification'),
+                                        location=data.get('location'),
+                                        price=data.get('price'),
+                                        )
+            serializer = DoctorProfileSerializer(doctor, many=False)
+            return Response({"message": "Profile created successfully"},, status=status.HTTP_201_CREATED)
+        except:
+            return Response({"message": "Invalid Data Input, Kindly enter appropriate information"}, status=status.HTTP_400_BAD_REQUEST)
 
 class GetUpdateDeleteDoctorProfileView(generics.UpdateAPIView, generics.DestroyAPIView, generics.RetrieveAPIView):
     serializer_class = DoctorProfileSerializer

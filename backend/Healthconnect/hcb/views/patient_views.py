@@ -15,12 +15,10 @@ class CreatePatient(generics.CreateAPIView):
     def post(self, request):
         data = request.data
         try:
-
-            user = User.objects.get(uid=data.userId)
+            user = User.objects.get(id=data.get('userId'))
             user.country = data.get('country')
             user.state = data.get('state')
             user.gender = data.get('gender')
-            user.phone_number = data.get('phoneNumber')
             user.image = data.get('image')
             user.is_complete = True
             user.save()
