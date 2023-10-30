@@ -38,8 +38,6 @@ const UserRegister = () => {
       ) : (
         <LoginForm userType={userType} />
       )}
-      {/* sign up with google */}
-
       <div className="mt-8 flex flex-col ">
         <p className="text-center mt-6 text-[.9rem] mb-4">
           {pathname === "/login"

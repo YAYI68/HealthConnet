@@ -4,8 +4,12 @@ import { TextField, CheckBox } from "../Form";
 import { toast } from "react-toastify";
 import { axiosInstance } from "../../utils/axios";
 import useError from "../../hooks/useFormValidator";
+import { useAuthContext } from "../../context/AuthContext";
+import { SubmitButton } from "../UI";
 
 function SignUpForm({ userType }) {
+  const { verifyToken, handleVerifyToken } = useAuthContext();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { validator, dispatch } = useError();
   const [signUpValues, setSignUpValues] = useState({
@@ -41,6 +45,7 @@ function SignUpForm({ userType }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const { firstname, lastname, password, email } = signUpValues;
     const userInput = {
       first_name: firstname,
@@ -59,7 +64,9 @@ function SignUpForm({ userType }) {
         const { data } = await axiosInstance.post(`/signup/`, userInput);
         if (data) {
           toast.success("Account successfully Registered, please log in");
-          navigate("/login");
+          handleVerifyToken(true);
+          navigate("/verify");
+          setLoading(false);
         }
       } catch (error) {
         toast.error(
@@ -67,10 +74,13 @@ function SignUpForm({ userType }) {
             ? error.response.data?.email?.[0]
             : "Invalid Credentials "
         );
+        handleVerifyToken(false);
+        setLoading(false);
       }
     }
     return;
   };
+
   return (
     <div>
       <form action="" className="w-full" onSubmit={handleSubmit}>
@@ -166,13 +176,7 @@ function SignUpForm({ userType }) {
         </div>
 
         <div className="mt-4">
-          <button
-            disabled={false}
-            type="submit"
-            className="bg-primary rounded-2xl w-full  py-3 text-white font-bold hover:bg-hover"
-          >
-            Sign Up
-          </button>
+          <SubmitButton text={"Sign up"} loading={loading} />
         </div>
       </form>
     </div>

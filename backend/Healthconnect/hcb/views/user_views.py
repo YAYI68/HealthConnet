@@ -32,12 +32,15 @@ class ConfirmAccount(APIView):
         data = request.data
         token = data.get('token')
         # print(data)
-        userToken = UserToken.objects.get(token=token)
-        user = userToken.user
-        user.is_active = True
-        user.save()
-        print(user)
-        return Response({"message": "Account Successfully Activated"}, status=status.HTTP_201_CREATED)
+        try:
+            userToken = UserToken.objects.get(token=token)
+
+            user = userToken.user
+            user.is_active = True
+            user.save()
+            return Response({"message": "Account Successfully Activated"}, status=status.HTTP_201_CREATED)
+        except:
+            return Response({'message': 'Invalid OTP,Kindly enter a valid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class forgetPassword(APIView):
