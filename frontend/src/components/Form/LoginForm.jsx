@@ -5,12 +5,15 @@ import { toast } from "react-toastify";
 import { axiosInstance } from "../../utils/axios";
 import { useAuthContext } from "../../context/AuthContext";
 import useUser from "../../hooks/useUser";
-import { useAppContext } from "../../context/AppContext";
 
 function LoginForm({ userType }) {
-  const { setAccessToken, setCSRFToken, setUser, verifyToken } =
-    useAuthContext();
-  const { upDateModal, setUpdateModal, setModalMessage } = useAppContext();
+  const {
+    setAccessToken,
+    setCSRFToken,
+    setUser,
+    verifyToken,
+    handleVerifyToken,
+  } = useAuthContext();
   const getUser = useUser();
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -26,7 +29,7 @@ function LoginForm({ userType }) {
     password: "",
     agree: false,
   });
-  console.log({ verifyToken });
+
   const onChange = ({ target }) => {
     const { name, value, checked } = target;
 
@@ -54,15 +57,28 @@ function LoginForm({ userType }) {
         setCSRFToken(response.headers["x-csrftoken"]);
         setUser(response.data?.user);
         const currentUser = response.data.user;
-        setModalMessage(
-          "Please complete your profile Information for good user experince."
-        );
-        setUpdateModal(!currentUser.isProfileComplete);
-        navigate("/dashboard/overview");
-        toast.success("User successfully Login ");
+        if (!currentUser.is_active) {
+          handleVerifyToken(true);
+          navigate("/verify");
+          toast.success(
+            '"Please, Kindly activate your account with the OTP sent to your email."'
+          );
+        }
+        if (!currentUser.is_complete) {
+          navigate("/complete/profile", {
+            state: {
+              userId: currentUser.userId,
+              role: currentUser.role,
+              name: currentUser.name,
+            },
+          });
+          toast.success('"Please,Kindly complete your profile"');
+        } else {
+          navigate("/");
+          toast.success("User successfully Login ");
+        }
       }
     } catch (error) {
-      console.log({ error });
       toast.error("Invalid Email/Password!");
     }
   };

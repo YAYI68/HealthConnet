@@ -31,11 +31,12 @@ class UserSignUpSerializer(serializers.ModelSerializer):
 class UserSeriliazer(serializers.ModelSerializer):
     firstname = serializers.CharField(source='first_name')
     lastname = serializers.CharField(source='last_name')
+    emailVerifield = serializers.BooleanField(source='is_active')
 
     class Meta:
         model = User
         fields = ('id', 'image', 'role', 'email',
-                  'state', 'firstname', 'lastname', "is_complete")
+                  'state', 'firstname', 'lastname', "is_complete", 'is_active')
 
 
 class UserProfileSeriliazer(serializers.ModelSerializer):

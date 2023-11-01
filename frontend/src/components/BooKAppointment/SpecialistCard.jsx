@@ -1,26 +1,17 @@
 import { useNavigate, Link } from "react-router-dom";
 import { MdLocationPin } from "react-icons/md";
 import { useAuthContext } from "../../context/AuthContext";
-import { useAppContext } from "../../context/AppContext";
+
 import { TbCurrencyNaira } from "react-icons/tb";
 
 export default function SpecialistCard({ doctor }) {
   const { user } = useAuthContext();
-  const { setUpdateModal, setModalMessage } = useAppContext();
 
   console.log({ user });
 
   const navigate = useNavigate();
 
   function handleNavigate(doctor) {
-    // if (user.isProfileComplete) {
-    //   navigate(`/appointment/${doctor.slug}`, { state: { id: doctor.uid } });
-    // } else {
-    //   setModalMessage(
-    //     "Please Update your profile and medical information before you proceed to Book Appointment"
-    //   );
-    //   setUpdateModal(!user.isProfileComlete);
-    // }
     navigate(`/appointment/${doctor.slug}`, { state: { id: doctor.uid } });
   }
   return (

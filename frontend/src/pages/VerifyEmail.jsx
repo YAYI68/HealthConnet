@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { TokenForm } from "../components/Form";
 import { RegisterBanner } from "../components/UI";
 import { useAuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const VerifyEmail = () => {
   const { verifyToken, setVerifyToken } = useAuthContext();
@@ -29,6 +29,12 @@ const VerifyEmail = () => {
         <div className="w-full mt-[2rem] flex flex-col  items-center">
           <TokenForm />
         </div>
+        <p className="text-center mt-6 text-[.9rem] mb-4">
+          want to register with a new email
+          <Link to={"/sign-up"} className="text-primary hover:underline">
+            Sign up
+          </Link>
+        </p>
       </div>
     </div>
   );

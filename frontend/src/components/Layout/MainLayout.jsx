@@ -1,42 +1,28 @@
-import React, { Fragment } from 'react'
-import Navbar from '../Header/Navbar'
-import Footer from './Footer';
-import { Outlet, useLocation } from 'react-router-dom'
-import UpdateProfileModal from '../UI/UpdateProfileModal';
-import { useAppContext } from '../../context/AppContext';
-
+import { Fragment } from "react";
+import Navbar from "../Header/Navbar";
+import Footer from "./Footer";
+import { Outlet, useLocation } from "react-router-dom";
 
 function MainLayout() {
   const { pathname } = useLocation();
-  const{ upDateModal, setUpdateModal } = useAppContext()
 
   return (
     <Fragment>
-      {pathname === '/login' ||
-       pathname === '/sign-up'
-       ? <main>
-        {upDateModal?
-        <UpdateProfileModal />
-        :''
-        }
-        
-        <Outlet />
-          </main> 
-        : 
+      {pathname === "/login" || pathname === "/sign-up" ? (
+        <main>
+          <Outlet />
+        </main>
+      ) : (
         <Fragment>
-        <Navbar/>
-          <main className=''>
-          {upDateModal?
-           <UpdateProfileModal />
-          :''
-          }
-         <Outlet />
+          <Navbar />
+          <main className="">
+            <Outlet />
           </main>
-         <Footer />
+          <Footer />
         </Fragment>
-      }    
+      )}
     </Fragment>
-  )
+  );
 }
 
-export default MainLayout
+export default MainLayout;

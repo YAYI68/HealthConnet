@@ -4,7 +4,6 @@ import UserImg from "../../assets/images/default.png";
 import useUpdateData from "../../hooks/useUpdateData";
 import { filteredInput } from "../../utils";
 import { useEffect, useState } from "react";
-import { useAppContext } from "../../context/AppContext";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { toast } from "react-toastify";
 
@@ -12,7 +11,6 @@ const API_URL = "patient";
 const DATA_KEY = "patientProfile";
 
 function PatientForm() {
-  const { setUpdateModal } = useAppContext();
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const {
@@ -68,7 +66,6 @@ function PatientForm() {
     if (response.status === 200) {
       mutate();
       toast.success("Profile successfully updated ");
-      setUpdateModal(false);
       navigate("/dashboard/profile");
     }
   };

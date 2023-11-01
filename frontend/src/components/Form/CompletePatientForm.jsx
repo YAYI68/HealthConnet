@@ -6,8 +6,10 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../utils/axios";
 import { SubmitButton } from "../UI";
+import { useAuthContext } from "../../context/AuthContext";
 
 const CompletePatientForm = ({ userId }) => {
+  const { verifyToken, handleVerifyToken } = useAuthContext();
   const [preview, setPreview] = useState();
   const [imgFile, setImgFile] = useState();
   const [values, setValues] = useState({
@@ -55,6 +57,7 @@ const CompletePatientForm = ({ userId }) => {
       if (response.status === 201) {
         toast.success("Profile successfully updated,Please kindly Login");
         navigate("/login");
+        handleVerifyToken(false);
       }
     } catch (error) {
       toast.error(error.response.data.message);
@@ -86,7 +89,7 @@ const CompletePatientForm = ({ userId }) => {
           </label>
         </div>
       </div>
-      <form className="flex flex-col gap-2">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <div className="w-full flex flex-col lg:flex-row gap-2 lg:justify-between">
           <div className="lg:w-[45%] w-full">
             <label htmlFor="" className="text-primary font-medium">

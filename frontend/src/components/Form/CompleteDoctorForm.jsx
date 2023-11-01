@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { filteredInput } from "../../utils";
-import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import UserImg from "../../assets/images/default.png";
 import { FaPen } from "react-icons/fa";
 import { SubmitButton } from "../UI";
+import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../../utils/axios";
+import { toast } from "react-toastify";
 
 const CompleteDoctorForm = ({ userId }) => {
-  const axiosPrivate = useAxiosPrivate();
-
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [preview, setPreview] = useState();
   const [imgFile, setImgFile] = useState();
   const [values, setValues] = useState({
@@ -17,10 +19,10 @@ const CompleteDoctorForm = ({ userId }) => {
     field: "",
     hospital: "",
     location: "",
-    phonenumber: "",
     state: "",
     country: "",
     qualification: "",
+    price: "",
   });
 
   const handleUpload = (event) => {
@@ -46,16 +48,23 @@ const CompleteDoctorForm = ({ userId }) => {
     setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
 
-  const handleSubmit = async () => {
-    const inputData = { ...values, image: imgFile };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const inputData = { ...values, image: imgFile, userId };
     const newData = filteredInput(inputData);
     console.log({ newData });
-    //   const response = await axiosPrivate.patch(`/doctor/`, newData);
-    //   if (response.status === 200) {
-    //     mutate();
-    //     toast.success("Profile successfully updated ");
-    //     navigate("/dashboard/profile");
-    //   }
+    try {
+      const response = await axiosInstance.post(`/doctor/register/`, newData);
+      if (response.status === 201) {
+        toast.success("Profile successfully updated,Please kindly Login");
+        navigate("/login");
+        setLoading(false);
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+      setLoading(false);
+    }
   };
 
   return (
@@ -83,7 +92,7 @@ const CompleteDoctorForm = ({ userId }) => {
           </label>
         </div>
       </div>
-      <form className="flex flex-col gap-2">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <div className="">
           <label htmlFor="" className="text-primary font-medium">
             Medical Information
@@ -97,13 +106,28 @@ const CompleteDoctorForm = ({ userId }) => {
               <br />
               <select
                 onChange={handleOnChange}
-                defaultValue={""}
                 name="gender"
                 placeholder="Gender"
                 className="p-2 w-full  outline-none border-primary border rounded-md"
               >
+                <option value=""></option>
                 <option value="MALE">Male</option>
                 <option value="FEMALE">Female</option>
+              </select>
+            </div>
+            <div className="lg:w-[45%] w-full">
+              <label htmlFor="" className="text-primary font-medium">
+                Country
+              </label>
+              <br />
+              <select
+                onChange={handleOnChange}
+                name="country"
+                placeholder="Country"
+                className="p-2 w-full  outline-none border-primary border rounded-md"
+              >
+                <option value=""></option>
+                <option value="Nigeria">Nigeria</option>
               </select>
             </div>
             <div className="lg:w-[45%] w-full">
@@ -131,6 +155,20 @@ const CompleteDoctorForm = ({ userId }) => {
                 onChange={handleOnChange}
                 name="field"
                 placeholder="E.g Dentist"
+                className="p-2 w-full outline-none border-primary border rounded-md"
+              />
+            </div>
+            <div className="lg:w-[45%] w-full">
+              <label htmlFor="" className="text-primary font-medium">
+                Appointment Fee <span className="text-xs">(in naira)</span>
+              </label>
+              <br />
+              <input
+                type="text"
+                defaultValue={""}
+                onChange={handleOnChange}
+                name="price"
+                placeholder="E.g #5,000/appointment"
                 className="p-2 w-full outline-none border-primary border rounded-md"
               />
             </div>
@@ -215,7 +253,7 @@ const CompleteDoctorForm = ({ userId }) => {
             </div>
           </div>
           <div className="mt-2 w-full">
-            <SubmitButton text={"Submit"} className={""} loading={""} />
+            <SubmitButton text={"Submit"} className={""} loading={loading} />
           </div>
         </div>
       </form>

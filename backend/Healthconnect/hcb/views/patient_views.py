@@ -19,7 +19,7 @@ class CreatePatient(generics.CreateAPIView):
             user.country = data.get('country')
             user.state = data.get('state')
             user.gender = data.get('gender')
-            user.image = data.get('image')
+            user.image = data.get('image', user.image)
             user.is_complete = True
             user.save()
             patient = Patient.objects.create(user=user,

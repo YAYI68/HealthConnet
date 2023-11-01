@@ -48,6 +48,12 @@ const TokenForm = () => {
     }
   };
 
+  useEffect(() => {
+    if (!verifyToken) {
+      navigate("/login");
+    }
+  }, [verifyToken]);
+  console.log({ verifyToken });
   const handleOnKeyDown = (e, index) => {
     currentOtpIndex = index;
     if (e.key === "Backspace") {
@@ -55,18 +61,12 @@ const TokenForm = () => {
     }
   };
 
-  useEffect(() => {
-    if (otp.length >= 5) {
-      console.log("send Otp");
-    }
-  }, [otp.length]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (otp.length < 5 || otp.length > 5) {
       toast.error("Kindly Provide a vaild OTP sent to your email.");
     }
-    console.log({ otp });
+
     const otpData = otp.join("");
     console.log({ otpData });
     try {
