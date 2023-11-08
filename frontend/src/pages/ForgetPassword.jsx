@@ -1,8 +1,34 @@
 import { Link } from "react-router-dom";
 import { TextField } from "../components/Form";
 import { RegisterBanner, SubmitButton } from "../components/UI";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { axiosInstance } from "../utils/axios";
 
 const ForgetPassword = () => {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleOnChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    console.log({ email });
+    try {
+      const { data } = await axiosInstance.post(`/forget_password/`, {
+        email,
+      });
+      toast.success(data.message);
+      setLoading(false);
+    } catch (error) {
+      toast.error(error.response.data.message);
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="md:bg-primary flex w-[80%] md:w-[100%]  min-h-[100vh] mx-auto relative ">
       <RegisterBanner />
@@ -11,17 +37,23 @@ const ForgetPassword = () => {
           <h2 className=" font-[900] text-[1.5rem] mt-4 mb-[3rem]">
             Forget Password
           </h2>
-          <p className="text-center">Kindly Enter your register email.</p>
+          <p className="text-center font-semibold lg:text-[1.2rem]">
+            Kindly Enter your register email.
+          </p>
         </div>
         <div className="w-full mt-[2rem] flex flex-col  items-center">
-          <form action="" className="w-full lg:w-[80%]">
+          <form
+            onSubmit={handleOnSubmit}
+            action=""
+            className="w-full lg:w-[80%]"
+          >
             <TextField
               placeholder="Email"
               name="email"
-              // onChange={onChange}
+              onChange={handleOnChange}
             />
             <div className="mt-2 w-full">
-              <SubmitButton className={""} text={"Submit"} loading={true} />
+              <SubmitButton className={""} text={"Submit"} loading={loading} />
             </div>
           </form>
           <div className="mt-8">

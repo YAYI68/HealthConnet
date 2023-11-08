@@ -19,79 +19,12 @@ from hcb.models import User, UserToken
 from hcb.serializers.user_serializers import UserProfileSeriliazer, UserSignUpSerializer, UserSeriliazer, CookieTokenRefreshSerializer
 from hcb.serializers.patient_serializers import PatientProfileSerializer
 from hcb.serializers.doctor_serializers import DoctorProfileSerializer
-from hcb.utils import sendEmail
+from hcb.utils import sendEmail, generate_random_code
 
 
 class UserRegistrationView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSignUpSerializer
-
-
-class ConfirmAccount(APIView):
-    def post(self, request):
-        data = request.data
-        token = data.get('token')
-        # print(data)
-        try:
-            userToken = UserToken.objects.get(token=token)
-
-            user = userToken.user
-            user.is_active = True
-            user.save()
-            return Response({"message": "Account Successfully Activated", "userId": user.id, "role": user.role, "name": user.first_name}, status=status.HTTP_201_CREATED)
-        except:
-            return Response({'message': 'Invalid OTP,Kindly enter a valid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
-
-
-class forgetPassword(APIView):
-
-    def post(self, request):
-        data = request.data
-        email = data.get('email')
-        try:
-            user = User.objects.get(email=email)
-            token = default_token_generator.make_token(user)
-            uid = urlsafe_base64_encode(force_bytes(user.id))
-            link = f"{config('CLIENT_URL')}/reset-password/?uid={uid}&token={token}"
-            subject = "Password Reset Request"
-            recipient_list = [user.email]
-
-            html_message = render_to_string('forget_password_email.html', {
-                "name": user.first_name,
-                "link": link
-            })
-            sendEmail(subject, recipient_list, html_message)
-            return Response({"message": "Password reset successfully sent,Kindly check your email to reset your password"}, status=status.HTTP_200_OK)
-        except:
-            return Response({"message": "User not Found"}, status=status.HTTP_404_NOT_FOUND)
-
-
-class resetPassword(APIView):
-
-    def post(request):
-        data = request.data
-        uid = data.get('uid')
-        token = data.get('token')
-        password = data.get('password')
-
-        try:
-            user_id = force_str(urlsafe_base64_decode(uid))
-            user = User.objects.get(id=user_id)
-        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
-            return Response({"message": "User not Found"}, status=status.HTTP_404_NOT_FOUND)
-        if user and default_token_generator.check_token(user, token):
-            user.set_password(password)
-            user.save()
-            subject = "Password Reset Success"
-            recipient_list = [user.email]
-
-            html_message = render_to_string('forget_password_email.html', {
-                "name": user.first_name,
-            })
-            sendEmail(subject, recipient_list, html_message)
-            return Response({"message": "Password reset successfully."}, status=status.HTTP_201_CREATED)
-        else:
-            return Response({"message": "Password reset fail"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 def get_tokens_for_user(user):
@@ -157,6 +90,44 @@ def logout(request):
         raise rest_exceptions.ParseError('Invalid Token')
 
 
+class ConfirmAccount(APIView):
+    def post(self, request):
+        data = request.data
+        token = data.get('token')
+        # print(data)
+        try:
+            userToken = UserToken.objects.get(token=token)
+
+            user = userToken.user
+            user.is_active = True
+            user.save()
+            return Response({"message": "Account Successfully Activated", "userId": user.id, "role": user.role, "name": user.first_name}, status=status.HTTP_201_CREATED)
+        except:
+            return Response({'message': 'Invalid OTP,Kindly enter a valid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ResendOTP(APIView):
+
+    def post(self, request):
+        data = request.data
+        email = data.get('email')
+        try:
+            user = User.objects.get(email=email)
+            randToken = generate_random_code()
+            UserToken.objects.get(user=user)
+            UserToken.token = randToken
+            UserToken.save()
+            subject = "Account Activation"
+            recipient_list = [user.email]  # Use the user's email address here
+            html_message = render_to_string('account_activation.html', {
+                "token": randToken
+            })
+            sendEmail(subject, recipient_list, html_message)
+            return Response({"message": "Please, Kindly activate your account with the OTP sent to your email"}, status=status.HTTP_201_CREATED)
+        except:
+            return Response({"message": "OTP  failed to send"}, status=status.HTTP_400_BAD_REQUEST)
+
+
 class CookieTokenRefreshView(jwt_views.TokenRefreshView):
     serializer_class = CookieTokenRefreshSerializer
 
@@ -204,3 +175,54 @@ class ProfileDetailVeiw (generics.RetrieveAPIView):
             return PatientProfileSerializer
         elif obj.user.role == 'DOCTOR':
             return DoctorProfileSerializer
+
+
+class ForgetPassword(APIView):
+
+    def post(self, request):
+        data = request.data
+        email = data.get('email')
+        try:
+            user = User.objects.get(email=email)
+            token = default_token_generator.make_token(user)
+            uid = urlsafe_base64_encode(force_bytes(user.id))
+            link = f"{config('CLIENT_URL')}/reset-password/?uid={uid}&token={token}"
+            subject = "Password Reset Request"
+            recipient_list = [user.email]
+
+            html_message = render_to_string('forget_password_email.html', {
+                "name": user.first_name,
+                "link": link
+            })
+            sendEmail(subject, recipient_list, html_message)
+            return Response({"message": "Password reset successfully sent,Kindly check your email to reset your password"}, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "User not Found"}, status=status.HTTP_404_NOT_FOUND)
+
+
+class ResetPassword(APIView):
+
+    def post(self, request):
+        data = request.data
+        uid = data.get('uid')
+        token = data.get('token')
+        password = data.get('password')
+
+        try:
+            user_id = force_str(urlsafe_base64_decode(uid))
+            user = User.objects.get(id=user_id)
+        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+            return Response({"message": "User not Found"}, status=status.HTTP_404_NOT_FOUND)
+        if user and default_token_generator.check_token(user, token):
+            user.set_password(password)
+            user.save()
+            subject = "Password Reset Success"
+            recipient_list = [user.email]
+
+            html_message = render_to_string('reset_password_success.html', {
+                "name": user.first_name,
+            })
+            sendEmail(subject, recipient_list, html_message)
+            return Response({"message": "Password reset successfully."}, status=status.HTTP_201_CREATED)
+        else:
+            return Response({"message": "Password reset fail"}, status=status.HTTP_400_BAD_REQUEST)

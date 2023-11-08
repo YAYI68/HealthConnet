@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { SubmitButton } from "../UI";
 import { toast } from "react-toastify";
 import { axiosInstance } from "../../utils/axios";
-import { useAuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext";
 
 const TokenInput = ({
   otp,
@@ -48,14 +48,6 @@ const TokenForm = () => {
     }
   };
 
-  console.log({ verifyToken });
-
-  useEffect(() => {
-    if (!verifyToken) {
-      navigate("/login");
-    }
-  }, [verifyToken]);
-  console.log({ verifyToken });
   const handleOnKeyDown = (e, index) => {
     currentOtpIndex = index;
     if (e.key === "Backspace") {
@@ -67,21 +59,22 @@ const TokenForm = () => {
     e.preventDefault();
     if (otp.length < 5 || otp.length > 5) {
       toast.error("Kindly Provide a vaild OTP sent to your email.");
+      return;
     }
 
     const otpData = otp.join("");
-    console.log({ otpData });
     try {
       const { data } = await axiosInstance.post(`/confirm/account/`, {
         token: otpData,
       });
       toast.success(data.message);
-      handleVerifyToken(false);
       navigate("/complete/profile", {
         state: { userId: data.userId, role: data.role, name: data.name },
       });
+      handleVerifyToken(false);
     } catch (error) {
       toast.error(error.response.data.message);
+      handleVerifyToken(true);
     }
   };
 

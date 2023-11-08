@@ -27,6 +27,13 @@ class UserSignUpSerializer(serializers.ModelSerializer):
         sendEmail(subject, recipient_list, html_message)
         return user
 
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        user = instance
+
+        data['emailVerifield'] = user.is_active
+        return data
+
 
 class UserSeriliazer(serializers.ModelSerializer):
     firstname = serializers.CharField(source='first_name')

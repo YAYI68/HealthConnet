@@ -74,7 +74,6 @@ function SignUpForm({ userType }) {
             ? error.response.data?.email?.[0]
             : "Invalid Credentials "
         );
-        handleVerifyToken(false);
         setLoading(false);
       }
     }

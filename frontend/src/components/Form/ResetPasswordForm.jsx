@@ -2,10 +2,14 @@ import { useState } from "react";
 import useFormValidator from "../../hooks/useFormValidator";
 import TextField from "./TextField";
 import { SubmitButton } from "../UI";
+import { axiosInstance } from "../../utils/axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-const ResetPasswordForm = () => {
+const ResetPasswordForm = ({ uid, token }) => {
   const { validator, dispatch } = useFormValidator();
-
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [formValue, setFormValue] = useState({
     password: "",
     confirmPassword: "",
@@ -22,9 +26,32 @@ const ResetPasswordForm = () => {
     }
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { password, confirmPassword } = formValue;
+    dispatch({ type: "password", value: formValue.password });
+
+    if (password !== confirmPassword) {
+      toast.error("Password does not match");
+      return;
+    }
+    setLoading(true);
+    try {
+      const { data } = await axiosInstance.post(`/reset_password/`, {
+        uid,
+        token,
+        password: formValue.password,
+      });
+      toast.success(data.message);
+      navigate("/login");
+      setLoading(false);
+    } catch (error) {
+      toast.error(error.response.data.message);
+      setLoading(false);
+    }
+  };
   return (
-    <form action="" className="w-full lg:w-[80%]">
+    <form onSubmit={handleSubmit} action="" className="w-full lg:w-[80%]">
       <div className="w-full">
         <label htmlFor="" className="text-primary">
           New Password
@@ -53,7 +80,7 @@ const ResetPasswordForm = () => {
         />
       </div>
       <div className="mt-2 w-full">
-        <SubmitButton text="Submit" loading={true} className={""} />
+        <SubmitButton text="Submit" loading={loading} className={""} />
       </div>
     </form>
   );

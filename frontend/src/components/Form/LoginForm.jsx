@@ -19,7 +19,7 @@ function LoginForm({ userType }) {
   const { state } = useLocation();
 
   useEffect(() => {
-    if (verifyToken) {
+    if (verifyToken === "true") {
       navigate("/verify");
     }
   }, [verifyToken]);
@@ -46,6 +46,13 @@ function LoginForm({ userType }) {
     }
   };
 
+  const sendOTP = async (email) => {
+    const response = await axiosInstance.post(`/login/`, {
+      email,
+    });
+    return response;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = loginValues;
@@ -58,13 +65,17 @@ function LoginForm({ userType }) {
         setUser(response.data?.user);
         const currentUser = response.data.user;
         if (!currentUser.is_active) {
+          const res = await sendOTP(currentUser.email);
+          if (res.status !== 201) {
+            toast.error(res.data.message);
+            return;
+          }
           handleVerifyToken(true);
           navigate("/verify");
-          toast.success(
-            '"Please, Kindly activate your account with the OTP sent to your email."'
-          );
+          toast.success(res.data.message);
         }
         if (!currentUser.is_complete) {
+          toast.success('"Please,Kindly complete your profile"');
           navigate("/complete/profile", {
             state: {
               userId: currentUser.userId,
@@ -72,14 +83,16 @@ function LoginForm({ userType }) {
               name: currentUser.name,
             },
           });
-          toast.success('"Please,Kindly complete your profile"');
+          handleVerifyToken(false);
         } else {
           navigate("/");
+          handleVerifyToken(false);
           toast.success("User successfully Login ");
         }
       }
     } catch (error) {
       toast.error("Invalid Email/Password!");
+      handleVerifyToken(false);
     }
   };
   return (

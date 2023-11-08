@@ -5,11 +5,11 @@ import { useAuthContext } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
 const VerifyEmail = () => {
-  const { verifyToken, setVerifyToken } = useAuthContext();
+  const { verifyToken, handleVerifyToken } = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!verifyToken) {
+    if (!verifyToken || verifyToken !== "true") {
       navigate("/login");
     }
   }, [verifyToken]);

@@ -3,17 +3,17 @@ import { createContext, useContext, useState } from "react";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const otp = localStorage.getItem("_otp");
+  const otp = sessionStorage.getItem("_otp");
   const [user, setUser] = useState(null);
   const [accessToken, setAccessToken] = useState("");
   const [refreshToken, setRefreshToken] = useState("");
   const [csrftoken, setCSRFToken] = useState("");
   const [isloading, setIsLoading] = useState(true);
-  const [verifyToken, setVerifyToken] = useState(Boolean(otp));
+  const [verifyToken, setVerifyToken] = useState(otp);
 
   console.log({ verify: verifyToken, otp });
   const handleVerifyToken = (state) => {
-    localStorage.setItem("_otp", state);
+    sessionStorage.setItem("_otp", state);
     setVerifyToken(state);
   };
 
