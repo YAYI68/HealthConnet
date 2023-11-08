@@ -36,7 +36,7 @@ class UserSeriliazer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'image', 'role', 'email',
-                  'state', 'firstname', 'lastname', "is_complete", 'is_active')
+                  'state', 'firstname', 'lastname', "is_complete", 'is_active', 'emailVerifield')
 
 
 class UserProfileSeriliazer(serializers.ModelSerializer):

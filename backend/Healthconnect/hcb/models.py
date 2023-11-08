@@ -45,7 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     country = models.CharField(max_length=20, null=True, blank=True)
     state = models.CharField(max_length=20, null=True, blank=True)
     image = models.ImageField(
-        upload_to='users', null=True, blank=True, default='default.jpg')
+        upload_to='users', default='/users/default.png')
     phone_number = models.CharField(max_length=20, blank=True, null=True)
     gender = models.CharField(
         max_length=10, choices=User_Gender, null=True, blank=True)

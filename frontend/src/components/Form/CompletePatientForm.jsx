@@ -6,10 +6,9 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../utils/axios";
 import { SubmitButton } from "../UI";
-import { useAuthContext } from "../../context/AuthContext";
 
 const CompletePatientForm = ({ userId }) => {
-  const { verifyToken, handleVerifyToken } = useAuthContext();
+  const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState();
   const [imgFile, setImgFile] = useState();
   const [values, setValues] = useState({
@@ -50,17 +49,19 @@ const CompletePatientForm = ({ userId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const inputData = { ...values, image: imgFile, userId };
     const newData = filteredInput(inputData);
     try {
-      const response = await axiosInstance.patch(`/patient/register/`, newData);
+      const response = await axiosInstance.post(`/patient/register/`, newData);
       if (response.status === 201) {
         toast.success("Profile successfully updated,Please kindly Login");
         navigate("/login");
-        handleVerifyToken(false);
+        setLoading(false);
       }
     } catch (error) {
       toast.error(error.response.data.message);
+      setLoading(false);
     }
   };
 
@@ -102,6 +103,7 @@ const CompletePatientForm = ({ userId }) => {
               name="gender"
               className="p-2 w-full  outline-none border-primary border rounded-md"
             >
+              <option value=""></option>
               <option value="MALE">Male</option>
               <option value="FEMALE">Female</option>
             </select>
@@ -132,6 +134,7 @@ const CompletePatientForm = ({ userId }) => {
               name="country"
               className="p-2 w-full  outline-none border-primary border rounded-md"
             >
+              <option value=""></option>
               <option value="Nigeria">Nigeria</option>
             </select>
           </div>
@@ -227,7 +230,7 @@ const CompletePatientForm = ({ userId }) => {
             />
           </div>
           <div className="mt-2 w-full">
-            <SubmitButton text={"Submit"} />
+            <SubmitButton text={"Submit"} loading={loading} />
           </div>
         </div>
       </form>

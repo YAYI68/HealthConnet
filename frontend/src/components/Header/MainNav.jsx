@@ -8,7 +8,7 @@ import { MdSpaceDashboard } from "react-icons/md";
 import { IoExit } from "react-icons/io5";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import useLogout from "../../hooks/useLogout";
-import { BASE_URL } from "../../utils/constant";
+import UserImg from "../../assets/images/default.png";
 
 function MainNav() {
   const [dropdown, setDropDown] = useState(false);
@@ -92,11 +92,7 @@ function MainNav() {
                 >
                   <div className="w-[2rem] h-[2rem] overflow-hidden  rounded-[50%]">
                     <img
-                      src={
-                        user.image?.includes(BASE_URL)
-                          ? user.image
-                          : `${BASE_URL}/${user.image}`
-                      }
+                      src={user.image ? user.image : UserImg}
                       alt=""
                       className="h-full w-full"
                     />

@@ -7,7 +7,7 @@ import { TbCurrencyNaira } from "react-icons/tb";
 export default function SpecialistCard({ doctor }) {
   const { user } = useAuthContext();
 
-  console.log({ user });
+  console.log({ doctor });
 
   const navigate = useNavigate();
 

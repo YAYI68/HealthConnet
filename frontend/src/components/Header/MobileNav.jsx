@@ -7,14 +7,13 @@ import { BsBellFill } from "react-icons/bs";
 import { MdSpaceDashboard } from "react-icons/md";
 import { IoExit } from "react-icons/io5";
 import { useAuthContext } from "../../context/AuthContext";
-import { BASE_URL } from "../../utils/constant";
+import UserImg from "../../assets/images/default.png";
 import useLogout from "../../hooks/useLogout";
 
 function MobileNav() {
   const [dropdown, setDropDown] = useState(false);
   const [toggle, setToggle] = useState(false);
   const { accessToken, user } = useAuthContext();
-  console.log({ accessToken, user });
   const navigate = useNavigate();
   const logout = useLogout();
   const authUser = !!accessToken;
@@ -50,11 +49,7 @@ function MobileNav() {
                 >
                   <div className="w-[2rem] h-[2rem]  rounded-[50%]">
                     <img
-                      src={
-                        user.image?.includes(BASE_URL)
-                          ? user.image
-                          : `${BASE_URL}/${user.image}`
-                      }
+                      src={user.image ? user.image : UserImg}
                       alt=""
                       className="h-full w-full"
                     />

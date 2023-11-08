@@ -48,6 +48,8 @@ const TokenForm = () => {
     }
   };
 
+  console.log({ verifyToken });
+
   useEffect(() => {
     if (!verifyToken) {
       navigate("/login");

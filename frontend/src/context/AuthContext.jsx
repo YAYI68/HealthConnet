@@ -9,10 +9,9 @@ export function AuthProvider({ children }) {
   const [refreshToken, setRefreshToken] = useState("");
   const [csrftoken, setCSRFToken] = useState("");
   const [isloading, setIsLoading] = useState(true);
-  const [verifyToken, setVerifyToken] = useState(Boolean(otp) || false);
+  const [verifyToken, setVerifyToken] = useState(Boolean(otp));
 
-  console.log({ verify: verifyToken });
-
+  console.log({ verify: verifyToken, otp });
   const handleVerifyToken = (state) => {
     localStorage.setItem("_otp", state);
     setVerifyToken(state);
