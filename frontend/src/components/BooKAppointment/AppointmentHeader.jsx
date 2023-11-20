@@ -13,7 +13,7 @@ export default function AppointmentHeader({ getLocation, getQuery }) {
     <>
       <div className=" w-full bg-secondary p-2 rounded-md">
         <h3 className=" text-[1.3rem] md:text-[2rem] font-bold font-jost py-8 ">
-          Find a Specialist!
+          Find a Specialist around Nigeria!
         </h3>
         <div className="flex flex-col lg:flex-row  gap-2 justify-flex-start">
           <div className="relative w-full lg:w-[20%]">

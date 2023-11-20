@@ -19,10 +19,10 @@ export default function SpecialistCard({ doctor }) {
       className="card-hover w-[95%]  md:w-[47%] lg:w-[40%] justify-between 
     flex relative rounded-xl shadow-services-card  cursor-pointer gap-2 pr-2"
     >
-      <div className="flex-1 basis-[30%] flex items-center justify-center rounded-2xl bg-secondary">
+      <div className="flex-1 basis-[50%] lg:basis-[40%] flex items-center justify-center rounded-2xl bg-secondary">
         <img src={doctor.image} alt="doctor image" className="max-h-[80%] " />
       </div>
-      <div className="flex-1 basis-[70%] flex flex-col gap-2">
+      <div className="flex-1 basis-[50%] lg:basis-[60%] flex flex-col gap-2">
         <Link
           to={`/appointment/${doctor.slug}`}
           state={{ id: doctor.uid }}

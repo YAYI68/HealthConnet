@@ -6,13 +6,14 @@ import {
 import useSecureDataFetcher from "../hooks/useSecureDataFetcher";
 import NotFound from "../components/UI/NotFound";
 import { useAuthContext } from "../context/AuthContext";
+import Spinner from "../components/UI/Spinner";
 
 const API_URL = "doctors/all/";
 const DATA_KEY = "allDoctors";
 
 export default function BookAppointment() {
   const { user } = useAuthContext();
-  const [location, setLocation] = useState(`${user.state ? user.state : ""}`);
+  const [location, setLocation] = useState(``);
   const [searchquery, setSearchQuery] = useState("");
   const { data: doctors, isLoading } = useSecureDataFetcher(
     `${DATA_KEY}\?state=${location}&q=${searchquery}`,
@@ -20,7 +21,7 @@ export default function BookAppointment() {
   );
 
   if (isLoading) {
-    return <h1>Loading.....</h1>;
+    return <Spinner />;
   }
   return (
     <div className="w-[95%] md:w-[80%] mx-auto p-2 md:p-6 mt-6 ">
