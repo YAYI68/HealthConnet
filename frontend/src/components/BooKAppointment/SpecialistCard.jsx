@@ -1,13 +1,10 @@
 import { useNavigate, Link } from "react-router-dom";
 import { MdLocationPin } from "react-icons/md";
 import { useAuthContext } from "../../context/AuthContext";
-
 import { TbCurrencyNaira } from "react-icons/tb";
 
 export default function SpecialistCard({ doctor }) {
   const { user } = useAuthContext();
-
-  console.log({ doctor });
 
   const navigate = useNavigate();
 
@@ -16,7 +13,7 @@ export default function SpecialistCard({ doctor }) {
   }
   return (
     <div
-      className="card-hover w-[95%]  md:w-[47%] lg:w-[40%] justify-between 
+      className="card-hover w-[95%]  md:w-[47%] h-[12rem] lg:w-[40%] justify-between 
     flex relative rounded-xl shadow-services-card  cursor-pointer gap-2 pr-2"
     >
       <div className="flex-1 basis-[50%] lg:basis-[40%] flex items-center justify-center rounded-2xl bg-secondary">

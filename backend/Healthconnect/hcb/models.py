@@ -126,6 +126,7 @@ class Specialization(models.Model):
 class Doctor(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
+
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='doctor')
     hospital = models.CharField(max_length=50, null=True, blank=True)

@@ -66,7 +66,7 @@ export default function BookingPage() {
       <section className=" w-[95%] md:w-[80%] mx-auto p-2 md:p-6 mt-6">
         <div className="flex w-full flex-col bg-secondary rounded-md lg:flex-row lg:items-center p-4">
           <div className="w-full flex lg:justify-between flex-col md:flex-row p-4 gap-4 lg:items-center lg:w-[80%]">
-            <div className="h-[12rem] md:h-[15rem] lg:h-[18rem] w-full lg:w-[30%] bg-secondary rounded-md">
+            <div className="h-[12rem] md:h-[15rem] lg:h-[18rem] w-full lg:w-[35%] bg-secondary rounded-md">
               <img
                 src={doctor.image}
                 alt="doctor image"
