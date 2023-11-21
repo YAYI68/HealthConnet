@@ -12,7 +12,7 @@ const KEY = "new_appointment";
 const URL = "appointment";
 const AppointSummary = ({ step, setStep, doctor }) => {
   const { data, isLoading, mutate, postData } = usePostData(KEY, URL);
-  const { setPeriod, time, date } = usePeriod();
+  const { appointTime, appointDate } = usePeriod();
   const { user } = useAuthContext();
   const navigate = useNavigate();
   const position = summaryPosition - step;
@@ -36,8 +36,8 @@ const AppointSummary = ({ step, setStep, doctor }) => {
 
   const makeAppointment = async () => {
     const inputData = {
-      time,
-      date,
+      time: appointTime,
+      date: appointDate,
       name: "hello",
       doctor_id: doctor.uid,
     };
@@ -56,7 +56,7 @@ const AppointSummary = ({ step, setStep, doctor }) => {
         navigate(`/appointment/${doctor.slug}`);
       },
       onClose: () => {
-        toast.error("Your appointment has been cancelled");
+        toast.error("Your appointment was cancelled");
         navigate(`/appointment/${doctor.slug}`);
       },
     });
@@ -99,7 +99,9 @@ const AppointSummary = ({ step, setStep, doctor }) => {
 
           <div className=" w-full flex items-center justify-between p-2 border-b-2 border-b-black">
             <p>Date and Time</p>
-            <p className="text-primary">January 29, 2020 at 11:00 AM</p>
+            <p className="text-primary">
+              {new Date(appointDate).toDateString()} at {appointTime}
+            </p>
           </div>
 
           <div className=" w-full flex items-center justify-between p-2 border-b-2 border-b-black">

@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
 const usePeriod = create((set) => ({
-  bookstatus: "all",
   appointTime: "",
   appointDate: "",
   setPeriod: ({ date, time }) =>
-    set(() => ({
-      appointTime: time,
-      appointDate: date,
+    set((state) => ({
+      ...state,
+      appointTime: (state.appointTime = time),
+      appointDate: (state.appointDate = date),
     })),
 }));
 

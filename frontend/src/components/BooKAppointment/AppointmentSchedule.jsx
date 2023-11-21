@@ -9,7 +9,7 @@ import usePeriod from "../../store/usePeriod";
 const schedulePosition = 0;
 
 function AppointmentSchedule({ step, setStep, doctor }) {
-  const { setPeriod, time, date } = usePeriod();
+  const { setPeriod, appointTime, appointDate } = usePeriod();
   const position = schedulePosition - step;
 
   const currentAppointmentTime = [
@@ -20,30 +20,29 @@ function AppointmentSchedule({ step, setStep, doctor }) {
     if (!isWorkingDays) {
       toast.warning("Sorry, Please select a weekday from Monday to Friday");
     } else {
-      setPeriod({ date: value });
+      setPeriod({ date: value, time: appointTime });
     }
   };
 
   const getTime = (time) => {
-    setPeriod({ time });
+    setPeriod({ time, date: appointDate });
   };
 
+  console.log({ appointTime, appointDate });
   const nextPage = async () => {
-    if (time && !date) {
+    if (appointTime && !appointDate) {
       toast.warning(
         "Sorry, Please select Your Appointment Date before you proceed."
       );
-    } else if (date && !time) {
+    } else if (appointDate && !appointTime) {
       toast.warning(
         "Sorry, Please select Your Appointment Time before you proceed."
       );
-    } else if (!date && !time) {
+    } else if (!appointDate && !appointTime) {
       toast.warning(
         "Sorry, Please select Your Appointment Time and Date before you proceed."
       );
     } else {
-      mutate();
-      await postData(inputData);
       setStep((prev) => prev + 1);
     }
   };
@@ -87,9 +86,9 @@ function AppointmentSchedule({ step, setStep, doctor }) {
         <p className="font-semibold">Schedule Date</p>
         <input
           type="date"
-          defaultValue={date}
+          defaultValue={appointDate}
           name=""
-          value={date}
+          value={appointDate}
           onChange={(e) => handleChange(e.target.value)}
           className="p-2 text-primary rounded-md"
         />
@@ -104,7 +103,7 @@ function AppointmentSchedule({ step, setStep, doctor }) {
                 key={i}
                 period={period}
                 getTime={getTime}
-                current={time}
+                current={appointTime}
                 disabled={disabled}
               />
             );
