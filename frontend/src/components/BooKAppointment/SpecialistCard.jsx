@@ -10,6 +10,7 @@ export default function SpecialistCard({ doctor }) {
 
   function handleNavigate(doctor) {
     navigate(`/appointment/${doctor.slug}`, { state: { id: doctor.uid } });
+    sessionStorage.setItem("doctorUid", doctor.uid);
   }
   return (
     <div

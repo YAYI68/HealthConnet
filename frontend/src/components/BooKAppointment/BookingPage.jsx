@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { MdLocationPin } from "react-icons/md";
-import { useLocation } from "react-router-dom";
 import { BiInjection } from "react-icons/bi";
 import BookingReview from "./BookingReview";
 import AppoimentSection from "./AppoimentSection";
@@ -16,10 +15,11 @@ const DATA_KEY = "Doctor";
 
 export default function BookingPage() {
   const { user } = useAuthContext();
-  const { state } = useLocation();
+  // const { state } = useLocation();
+  const doctorUid = sessionStorage.getItem("doctorUid");
   const { data: doctor, isLoading } = useSecureDataFetcher(
     DATA_KEY,
-    `${API_URL}/${state.id}`
+    `${API_URL}/${doctorUid}`
   );
   const [step, setStep] = useState(0);
   const [toggle, setToggle] = useState(false);
